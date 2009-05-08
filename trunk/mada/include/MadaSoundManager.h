@@ -16,8 +16,25 @@
     along with Kraft der Mada. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef __MADA_MADAPREREQUISITES_H__
-#define __MADA_MADAPREREQUISITES_H__
+#ifndef __MADA_MADASOUNDMANAGER_H__
+#define __MADA_MADASOUNDMANAGER_H__
 
+#include <OgreString.h>
+#include <irrKlang.h>
+
+namespace mada
+{
+	class SoundManager
+	{
+	public:
+		SoundManager();
+		~SoundManager();
+
+		void playSound2d(const Ogre::String& fileName, bool loop = false);
+
+	private:
+		irrklang::ISoundEngine* mEngine;
+	};
+}
 
 #endif

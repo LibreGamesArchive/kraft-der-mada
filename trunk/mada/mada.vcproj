@@ -21,7 +21,7 @@
 			OutputDirectory="bin\$(ConfigurationName)"
 			IntermediateDirectory="obj\$(ConfigurationName)"
 			ConfigurationType="1"
-			CharacterSet="1"
+			CharacterSet="0"
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
@@ -41,7 +41,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories=".\include;..\dependencies\ogre\OgreMain\include;..\dependencies\ogre\Dependencies\include"
+				AdditionalIncludeDirectories=".\include;.\sqlite;..\dependencies\ogre\OgreMain\include;..\dependencies\ogre\Dependencies\include;&quot;..\dependencies\irrKlang-1.1.3\include&quot;"
 				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
@@ -61,9 +61,9 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="OgreMain_d.lib"
+				AdditionalDependencies="OgreMain_d.lib irrKlang.lib"
 				LinkIncremental="2"
-				AdditionalLibraryDirectories="..\dependencies\ogre\lib;&quot;..\dependencies\ogre\Dependencies\lib\$(ConfigurationName)&quot;"
+				AdditionalLibraryDirectories="..\dependencies\ogre\lib;&quot;..\dependencies\ogre\Dependencies\lib\$(ConfigurationName)&quot;;&quot;..\dependencies\irrKlang-1.1.3\lib\Win32-visualStudio&quot;"
 				GenerateDebugInformation="true"
 				SubSystem="2"
 				TargetMachine="1"
@@ -95,7 +95,7 @@
 			OutputDirectory="bin\$(ConfigurationName)"
 			IntermediateDirectory="obj\$(ConfigurationName)"
 			ConfigurationType="1"
-			CharacterSet="1"
+			CharacterSet="0"
 			WholeProgramOptimization="1"
 			>
 			<Tool
@@ -117,7 +117,7 @@
 				Name="VCCLCompilerTool"
 				Optimization="2"
 				EnableIntrinsicFunctions="true"
-				AdditionalIncludeDirectories=".\include;..\dependencies\ogre\OgreMain\include;..\dependencies\ogre\Dependencies\include"
+				AdditionalIncludeDirectories=".\include;.\sqlite;..\dependencies\ogre\OgreMain\include;..\dependencies\ogre\Dependencies\include;&quot;..\dependencies\irrKlang-1.1.3\include&quot;"
 				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS"
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"
@@ -136,8 +136,9 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
+				AdditionalDependencies="OgreMain.lib irrKlang.lib"
 				LinkIncremental="1"
-				AdditionalLibraryDirectories="..\dependencies\ogre\lib;&quot;..\dependencies\ogre\Dependencies\lib\$(ConfigurationName)&quot;"
+				AdditionalLibraryDirectories="..\dependencies\ogre\lib;&quot;..\dependencies\ogre\Dependencies\lib\$(ConfigurationName)&quot;;&quot;..\dependencies\irrKlang-1.1.3\lib\Win32-visualStudio&quot;"
 				GenerateDebugInformation="true"
 				SubSystem="2"
 				OptimizeReferences="2"
@@ -179,6 +180,14 @@
 				RelativePath=".\src\Mada.cpp"
 				>
 			</File>
+			<File
+				RelativePath=".\src\MadaDatabase.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\src\MadaSoundManager.cpp"
+				>
+			</File>
 		</Filter>
 		<Filter
 			Name="Header Files"
@@ -190,7 +199,15 @@
 				>
 			</File>
 			<File
+				RelativePath=".\include\MadaDatabase.h"
+				>
+			</File>
+			<File
 				RelativePath=".\include\MadaPrerequisites.h"
+				>
+			</File>
+			<File
+				RelativePath=".\include\MadaSoundManager.h"
 				>
 			</File>
 		</Filter>
@@ -199,6 +216,22 @@
 			Filter="rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav"
 			UniqueIdentifier="{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}"
 			>
+		</Filter>
+		<Filter
+			Name="sqlite"
+			>
+			<File
+				RelativePath=".\sqlite\sqlite3.c"
+				>
+			</File>
+			<File
+				RelativePath=".\sqlite\sqlite3.h"
+				>
+			</File>
+			<File
+				RelativePath=".\sqlite\sqlite3ext.h"
+				>
+			</File>
 		</Filter>
 	</Files>
 	<Globals>
