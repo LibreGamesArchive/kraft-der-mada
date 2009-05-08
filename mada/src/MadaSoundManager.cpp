@@ -16,38 +16,33 @@
     along with Kraft der Mada. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef __MADA_MADA_H__
-#define __MADA_MADA_H__
-
-#include "MadaDatabase.h"
+#include "MadaPrerequisites.h"
 #include "MadaSoundManager.h"
 
-#include <OgreString.h>
-#include <OgreRoot.h>
+using namespace irrklang;
+using namespace Ogre;
 
 namespace mada
 {
-	class Mada
+	SoundManager::SoundManager() : mEngine(NULL)
 	{
-	public:
-		Mada();
-		~Mada();
-		void start();
+		mEngine = createIrrKlangDevice();
+		if (mEngine == NULL)
+		{
+			throw std::exception("Could not create IrrKlangDevice");
+		}
+	}
+	//--------------------------------------------------------------------------------------------
 
-		Ogre::String getGlobalParameter(const Ogre::String& key);
+	SoundManager::~SoundManager()
+	{
+		mEngine->drop();
+	}
+	//--------------------------------------------------------------------------------------------
 
-	protected:
-		void showMainMenu();
-		void showOptionsMenu();
-		void showModuleMenu();
-
-		void startModule(const Ogre::String& name);
-
-	private:
-		Ogre::String mBaseDir;
-		Ogre::Root* mOgreRoot;
-		Database* mDatabase;
-		SoundManager* mSoundManager;
-	};
+	void SoundManager::playSound2d(const String& fileName, bool loop)
+	{
+		mEngine->play2D(fileName.c_str(), loop);
+	}
+	//--------------------------------------------------------------------------------------------
 }
-#endif
