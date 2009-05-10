@@ -16,11 +16,9 @@
     along with Kraft der Mada. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "MadaPrerequisites.h"
 #include "MadaSoundManager.h"
 
 using namespace irrklang;
-using namespace Ogre;
 
 namespace mada
 {

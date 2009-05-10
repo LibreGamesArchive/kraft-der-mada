@@ -16,69 +16,116 @@
     along with Kraft der Mada. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "MadaPrerequisites.h"
 #include "Mada.h"
 
-#include <Winuser.h>
 #include <fstream>
+#include <Winuser.h>
+
+#include <OgreMovableObject.h>
 
 using namespace Ogre;
 
 namespace mada
 {
-	Mada::Mada() : mBaseDir(""), mOgreRoot(NULL), mDatabase(NULL), mSoundManager(NULL)
+	Mada::Mada() : mBaseDir(""),
+				   mOgreRoot(NULL),
+				   mMainWindow(NULL),
+				   mSceneManager(NULL),
+				   mDatabase(NULL),
+				   mSoundManager(NULL),
+				   mCloseRequested(false)
 	{
 		std::ifstream baseDirFile = std::ifstream("basedir.cfg", std::ios_base::in);
 		std::getline(baseDirFile, mBaseDir);
+
+        MovableObject::setDefaultQueryFlags(0);
+		mOgreRoot = new Root("", "", "ogre.log");
+
+#ifdef OGRE_DEBUG_MODE
+        mOgreRoot->loadPlugin("RenderSystem_Direct3D9_d.dll");
+#else
+        mOgreRoot->loadPlugin("RenderSystem_Direct3D9.dll");
+#endif
+
+		RenderSystemList* renderers = mOgreRoot->getAvailableRenderers();
+		assert(!renderers->empty());
+		mOgreRoot->setRenderSystem(*renderers->begin());
+		mOgreRoot->initialise(false, "");
+
+		NameValuePairList windowOptions;
+		windowOptions["title"] = "Kraft der Mada";
+		windowOptions["useNVPerfHUD"] = "true";
+        mMainWindow = mOgreRoot->createRenderWindow("mada_main_window", 1024, 768, false, &windowOptions);
+		WindowEventUtilities::addWindowEventListener(mMainWindow, this);
+
+		mSceneManager = mOgreRoot->createSceneManager(ST_GENERIC);
+
 		mDatabase = new Database(mBaseDir + "\\data\\mada.db3");
 		mSoundManager = new SoundManager();
+		mGuiManager = new GuiManager(mMainWindow);
 	}
 	//--------------------------------------------------------------------------------------------
 
 	Mada::~Mada()
 	{
+		delete mGuiManager;
 		delete mSoundManager;
 		delete mDatabase;
+
+		delete mOgreRoot;
 	}
 	//--------------------------------------------------------------------------------------------
 
-	String getGlobalParameter(const String& key)
+	String Mada::getGlobalParameter(const String& key)
 	{
-		return "";
+		String rval = "";
+		QueryResultSet* result = mDatabase->executeQuery(
+			"select global_parameters.value from global_parameters\
+			   where global_parameters.key = '" + key + "'");
+		if (result->getNumRows() == 1)
+		{
+			result->next();
+			rval = result->getFieldAsString(0);
+		}
+		mDatabase->destroyQueryResultSet(result);
+		return rval;
 	}
 	//--------------------------------------------------------------------------------------------
 
 	void Mada::start()
 	{
 		showMainMenu();
-
-		for(;;)
-		{
-			Sleep(1000);
-		}
+		mainLoop();
 	}
 	//--------------------------------------------------------------------------------------------
 
 	void Mada::showMainMenu()
 	{
-		// Get main menu music file
-		QueryResultSet* result = mDatabase->executeQuery(
-			"select global_parameters.value from global_parameters\
-			   where global_parameters.key = 'music_main_menu'");
-		if (result->getNumRows() == 1)
-		{
-			result->next();
-			Ogre::String musicFile = result->getFieldAsString(0);
-			// Play it
-			mSoundManager->playSound2d(mBaseDir + "\\media\\" + musicFile, true);
-
-		}
-		mDatabase->destroyQueryResultSet(result);
+		String musicFile = getGlobalParameter("music_main_menu");
+		mSoundManager->playSound2d(mBaseDir + "\\media\\" + musicFile, true);
 	}
 	//--------------------------------------------------------------------------------------------
 
 	void Mada::startModule(const String& name)
 	{
+	}
+	//--------------------------------------------------------------------------------------------
+
+	void Mada::mainLoop()
+	{
+		while (!mCloseRequested)
+		{
+			WindowEventUtilities::messagePump();
+			mOgreRoot->renderOneFrame();
+		}
+	}
+	//--------------------------------------------------------------------------------------------
+
+	bool Mada::windowClosing(Ogre::RenderWindow*)
+	{
+		// Return false for now, but initiate shutdown.
+		mCloseRequested = true;
+		return false;
 	}
 	//--------------------------------------------------------------------------------------------
 }

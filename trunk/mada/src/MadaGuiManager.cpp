@@ -16,14 +16,23 @@
     along with Kraft der Mada. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef __MADA_MADA_PREREQUISITES_H__
-#define __MADA_MADA_PREREQUISITES_H__
+#include "MadaGuiManager.h"
 
-#include <string>
+using namespace MyGUI;
+using namespace Ogre;
 
-// common typedefs
 namespace mada
 {
-	typedef std::string String;
+	GuiManager::GuiManager(RenderWindow* renderWindow) : mGui(NULL)
+	{
+		mGui = new Gui();
+		mGui->initialise(renderWindow);
+	}
+	//--------------------------------------------------------------------------------------------
+
+	GuiManager::~GuiManager()
+	{
+		delete mGui;
+	}
+	//--------------------------------------------------------------------------------------------
 }
-#endif

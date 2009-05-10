@@ -19,35 +19,52 @@
 #ifndef __MADA_MADA_H__
 #define __MADA_MADA_H__
 
+#include "MadaPrerequisites.h"
+
 #include "MadaDatabase.h"
+#include "MadaGuiManager.h"
 #include "MadaSoundManager.h"
 
-#include <OgreString.h>
 #include <OgreRoot.h>
+#include <OgreRenderWindow.h>
+#include <OgreSceneManager.h>
+#include <OgreWindowEventUtilities.h>
 
 namespace mada
 {
-	class Mada
+	class Mada : public Ogre::WindowEventListener
 	{
 	public:
 		Mada();
 		~Mada();
+
 		void start();
 
-		Ogre::String getGlobalParameter(const Ogre::String& key);
+		String getGlobalParameter(const String& key);
 
-	protected:
+	private:
+		String mBaseDir;
+
+		Ogre::Root* mOgreRoot;
+		Ogre::RenderWindow* mMainWindow;
+		Ogre::SceneManager* mSceneManager;
+
+		Database* mDatabase;
+		SoundManager* mSoundManager;
+		GuiManager* mGuiManager;
+
+		bool mCloseRequested;
+
+		void mainLoop();
+
+		bool windowClosing(Ogre::RenderWindow*);
+
 		void showMainMenu();
 		void showOptionsMenu();
 		void showModuleMenu();
 
-		void startModule(const Ogre::String& name);
+		void startModule(const String& name);
 
-	private:
-		Ogre::String mBaseDir;
-		Ogre::Root* mOgreRoot;
-		Database* mDatabase;
-		SoundManager* mSoundManager;
 	};
 }
 #endif

@@ -16,11 +16,7 @@
     along with Kraft der Mada. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "MadaPrerequisites.h"
-
 #include "MadaDatabase.h"
-
-using namespace Ogre;
 
 namespace mada
 {
@@ -73,7 +69,7 @@ namespace mada
 	}
 	//--------------------------------------------------------------------------------------------
 
-	Ogre::String QueryResultSet::getColName(int idx) const
+	String QueryResultSet::getColName(int idx) const
 	{
 		if (idx < getNumCols())
 		{
@@ -83,7 +79,7 @@ namespace mada
 	}
 	//--------------------------------------------------------------------------------------------
 
-	Ogre::String QueryResultSet::getFieldAsString(int idx) const
+	String QueryResultSet::getFieldAsString(int idx) const
 	{
 		if (mCursor < getNumRows() && idx < getNumCols())
 		{
@@ -94,9 +90,9 @@ namespace mada
 	}
 	//--------------------------------------------------------------------------------------------
 
-	Ogre::String QueryResultSet::getFieldAsString(const Ogre::String& colName) const
+	String QueryResultSet::getFieldAsString(const String& colName) const
 	{
-		std::map<Ogre::String, int>::const_iterator it = mFieldNameIndices.find(colName);
+		std::map<String, int>::const_iterator it = mFieldNameIndices.find(colName);
 		if (it != mFieldNameIndices.end())
 		{
 			return getFieldAsString(it->second);
@@ -115,7 +111,7 @@ namespace mada
 			}
 		}
 
-		std::vector<Ogre::String> row;
+		std::vector<String> row;
 		for (int i = 0; i < argc; ++i)
 		{
 			row.push_back(argv[i]);

@@ -16,11 +16,12 @@
     along with Kraft der Mada. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef __MADA_MADADATABASE_H__
-#define __MADA_MADADATABASE_H__
+#ifndef __MADA_MADA_DATABASE_H__
+#define __MADA_MADA_DATABASE_H__
+
+#include "MadaPrerequisites.h"
 
 #include "sqlite3.h"
-#include <OgreString.h>
 #include <vector>
 #include <map>
 
@@ -42,28 +43,28 @@ namespace mada
 		/// So you have to call next, before being able to get fields.
 		bool next();
 
-		Ogre::String getColName(int idx) const;
-		Ogre::String getFieldAsString(int idx) const;
-		Ogre::String getFieldAsString(const Ogre::String& colName) const;
+		String getColName(int idx) const;
+		String getFieldAsString(int idx) const;
+		String getFieldAsString(const String& colName) const;
 
 		/// Used by internal callback to fill the result set.
 		/// DATABASE INTERNAL USE ONLY!
 		void _addRow(int argc, char **argv, char **azColName);
 
 	private:
-		std::vector<Ogre::String> mColNames;
-		std::map<Ogre::String, int> mFieldNameIndices;
-		std::vector<std::vector<Ogre::String> > mResult;
+		std::vector<String> mColNames;
+		std::map<String, int> mFieldNameIndices;
+		std::vector<std::vector<String> > mResult;
 		int mCursor;
 	};
 
 	class Database
 	{
 	public:
-		Database(const Ogre::String& dbfile);
+		Database(const String& dbfile);
 		~Database();
 
-		QueryResultSet* executeQuery(const Ogre::String& query);
+		QueryResultSet* executeQuery(const String& query);
 		void destroyQueryResultSet(QueryResultSet*);
 	private:
 		sqlite3* mDbHandle;
