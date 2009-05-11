@@ -16,53 +16,54 @@
     along with Kraft der Mada. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef __MADA_MADA_H__
-#define __MADA_MADA_H__
+#ifndef __MADA_MADA_GAME_LOOP_H__
+#define __MADA_MADA_GAME_LOOP_H__
 
 #include "MadaPrerequisites.h"
 
-#include "MadaDatabase.h"
-#include "MadaGameLoop.h"
-#include "MadaGuiManager.h"
-#include "MadaSoundManager.h"
+#include "MadaGameState.h"
+#include "MadaGameTask.h"
 
-#include <OgreRoot.h>
-#include <OgreRenderWindow.h>
-#include <OgreSceneManager.h>
-#include <OgreWindowEventUtilities.h>
+#include <deque>
+#include <stack>
+#include <vector>
 
 namespace mada
 {
-	class Mada : public Ogre::WindowEventListener
+	class GameLoop
 	{
 	public:
-		Mada();
-		~Mada();
+		GameLoop();
+		~GameLoop();
 
-		void start();
+		void pushState(GameState* state);
+		void popState(GameState* state);
+		void setState(GameState* state);
+		void clearStates();
 
-		String getGlobalParameter(const String& key);
+		void addTask(GameTask* task);
+		void removeTask(GameTask* task);
+
+		void loop();
+		void quit();
 
 	private:
-		String mBaseDir;
+		typedef std::vector<GameTask*> GameTaskVector;
+		typedef std::stack<GameState*> GameStateStack;
 
-		Ogre::Root* mOgreRoot;
-		Ogre::RenderWindow* mMainWindow;
-		Ogre::SceneManager* mSceneManager;
+		GameStateStack mStates;
+		GameTaskVector mTasks;
 
-		Database* mDatabase;
-		GuiManager* mGuiManager;
-		SoundManager* mSoundManager;
-		GameLoop* mGameLoop;
+		GameTaskVector mAddedTasks;
+		GameTaskVector mRemovedTasks;
 
-		bool windowClosing(Ogre::RenderWindow*);
+		std::deque<unsigned long> mFrameTimes;
 
-		void showMainMenu();
-		void showOptionsMenu();
-		void showModuleMenu();
+		bool mQuitRequested;
 
-		void startModule(const String& name);
-
+		void updateTaskList();
+		unsigned long smoothFrameTime(unsigned long frameTime);
 	};
 }
+
 #endif

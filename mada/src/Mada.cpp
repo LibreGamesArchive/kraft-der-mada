@@ -33,7 +33,7 @@ namespace mada
 				   mSceneManager(NULL),
 				   mDatabase(NULL),
 				   mSoundManager(NULL),
-				   mCloseRequested(false)
+				   mGameLoop(NULL)
 	{
 		std::ifstream baseDirFile = std::ifstream("basedir.cfg", std::ios_base::in);
 		std::getline(baseDirFile, mBaseDir);
@@ -63,11 +63,13 @@ namespace mada
 		mDatabase = new Database(mBaseDir + "\\data\\mada.db3");
 		mSoundManager = new SoundManager();
 		mGuiManager = new GuiManager(mMainWindow);
+		mGameLoop = new GameLoop();
 	}
 	//--------------------------------------------------------------------------------------------
 
 	Mada::~Mada()
 	{
+		delete mGameLoop;
 		delete mGuiManager;
 		delete mSoundManager;
 		delete mDatabase;
@@ -95,7 +97,7 @@ namespace mada
 	void Mada::start()
 	{
 		showMainMenu();
-		mainLoop();
+		mGameLoop->loop();
 	}
 	//--------------------------------------------------------------------------------------------
 
@@ -111,20 +113,9 @@ namespace mada
 	}
 	//--------------------------------------------------------------------------------------------
 
-	void Mada::mainLoop()
-	{
-		while (!mCloseRequested)
-		{
-			WindowEventUtilities::messagePump();
-			mOgreRoot->renderOneFrame();
-		}
-	}
-	//--------------------------------------------------------------------------------------------
-
 	bool Mada::windowClosing(Ogre::RenderWindow*)
 	{
-		// Return false for now, but initiate shutdown.
-		mCloseRequested = true;
+		mGameLoop->quit();
 		return false;
 	}
 	//--------------------------------------------------------------------------------------------
