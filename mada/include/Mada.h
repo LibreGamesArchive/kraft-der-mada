@@ -29,11 +29,12 @@
 #include <OgreRoot.h>
 #include <OgreRenderWindow.h>
 #include <OgreSceneManager.h>
+#include <OgreSingleton.h>
 #include <OgreWindowEventUtilities.h>
 
 namespace mada
 {
-	class Mada : public Ogre::WindowEventListener
+	class Mada : public Ogre::Singleton<Mada>, public Ogre::WindowEventListener
 	{
 	public:
 		Mada();

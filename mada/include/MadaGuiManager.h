@@ -26,7 +26,7 @@
 
 namespace mada
 {
-	class GuiManager
+	class GuiManager : public Ogre::Singleton<GuiManager>
 	{
 	public:
 		GuiManager(Ogre::RenderWindow*);

@@ -16,9 +16,13 @@
     along with Kraft der Mada. If not, see <http://www.gnu.org/licenses/>.
 */
 
+#include <stdinc.h>
+
 #include "MadaSoundManager.h"
 
 using namespace irrklang;
+
+mada::SoundManager* Ogre::Singleton<mada::SoundManager>::ms_Singleton = NULL;
 
 namespace mada
 {

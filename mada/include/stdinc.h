@@ -16,27 +16,29 @@
     along with Kraft der Mada. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include <stdinc.h>
+#ifndef __MADA_stdinc_h__
+#define __MADA_stdinc_h__
 
-#include "MadaGuiManager.h"
+#include <list>
+#include <map>
+#include <set>
+#include <string>
+#include <vector>
 
-using namespace MyGUI;
-using namespace Ogre;
+#include <iostream>
+#include <sstream>
 
-mada::GuiManager* Ogre::Singleton<mada::GuiManager>::ms_Singleton = NULL;
+#include <algorithm>
+#include <functional>
+#include <utility>
 
-namespace mada
-{
-	GuiManager::GuiManager(RenderWindow* renderWindow) : mGui(NULL)
-	{
-		mGui = new Gui();
-		mGui->initialise(renderWindow);
-	}
-	//--------------------------------------------------------------------------------------------
 
-	GuiManager::~GuiManager()
-	{
-		delete mGui;
-	}
-	//--------------------------------------------------------------------------------------------
-}
+#include <Windows.h>
+
+
+#include <irrKlang.h>
+#include <MyGui.h>
+#include <Ogre.h>
+#include <OIS.h>
+
+#endif
