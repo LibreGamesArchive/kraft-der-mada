@@ -16,7 +16,11 @@
     along with Kraft der Mada. If not, see <http://www.gnu.org/licenses/>.
 */
 
+#include <stdinc.h>
+
 #include "MadaDatabase.h"
+
+mada::Database* Ogre::Singleton<mada::Database>::ms_Singleton = NULL;
 
 namespace mada
 {

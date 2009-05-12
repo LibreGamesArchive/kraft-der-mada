@@ -16,6 +16,8 @@
     along with Kraft der Mada. If not, see <http://www.gnu.org/licenses/>.
 */
 
+#include <stdinc.h>
+
 #include "Mada.h"
 
 #include <fstream>
@@ -24,6 +26,8 @@
 #include <OgreMovableObject.h>
 
 using namespace Ogre;
+
+mada::Mada* Ogre::Singleton<mada::Mada>::ms_Singleton = NULL;
 
 namespace mada
 {

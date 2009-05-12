@@ -30,7 +30,7 @@
 
 namespace mada
 {
-	class GameLoop
+	class GameLoop : public Ogre::Singleton<GameLoop>
 	{
 	public:
 		GameLoop();

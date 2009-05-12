@@ -58,7 +58,7 @@ namespace mada
 		int mCursor;
 	};
 
-	class Database
+	class Database : public Ogre::Singleton<Database>
 	{
 	public:
 		Database(const String& dbfile);

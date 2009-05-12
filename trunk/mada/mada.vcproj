@@ -40,13 +40,15 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
+				AdditionalOptions="/Zm256"
 				Optimization="0"
 				AdditionalIncludeDirectories=".\include;.\sqlite;..\dependencies\ois\includes;..\dependencies\ogre\OgreMain\include;..\dependencies\ogre\Dependencies\include;..\dependencies\irrKlang\include;..\dependencies\MyGUI\MyGUIEngine\include"
 				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
-				UsePrecompiledHeader="0"
+				UsePrecompiledHeader="2"
+				PrecompiledHeaderThrough="stdinc.h"
 				WarningLevel="3"
 				DebugInformationFormat="4"
 			/>
@@ -115,13 +117,15 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
+				AdditionalOptions="/Zm256"
 				Optimization="2"
 				EnableIntrinsicFunctions="true"
 				AdditionalIncludeDirectories=".\include;.\sqlite;..\dependencies\ois\includes;..\dependencies\ogre\OgreMain\include;..\dependencies\ogre\Dependencies\include;..\dependencies\irrKlang\include;..\dependencies\MyGUI\MyGUIEngine\include"
 				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS"
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"
-				UsePrecompiledHeader="0"
+				UsePrecompiledHeader="2"
+				PrecompiledHeaderThrough="stdinc.h"
 				WarningLevel="3"
 				DebugInformationFormat="3"
 			/>
@@ -234,6 +238,10 @@
 				RelativePath=".\include\MadaSoundManager.h"
 				>
 			</File>
+			<File
+				RelativePath=".\include\stdinc.h"
+				>
+			</File>
 		</Filter>
 		<Filter
 			Name="Resource Files"
@@ -247,6 +255,22 @@
 			<File
 				RelativePath=".\sqlite\sqlite3.c"
 				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath=".\sqlite\sqlite3.h"

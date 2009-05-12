@@ -25,7 +25,7 @@
 
 namespace mada
 {
-	class SoundManager
+	class SoundManager : public Ogre::Singleton<SoundManager>
 	{
 	public:
 		SoundManager();

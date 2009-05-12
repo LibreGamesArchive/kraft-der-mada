@@ -16,6 +16,8 @@
     along with Kraft der Mada. If not, see <http://www.gnu.org/licenses/>.
 */
 
+#include <stdinc.h>
+
 #include "MadaGameLoop.h"
 
 #include <numeric>
@@ -25,6 +27,8 @@
 #include <OgreWindowEventUtilities.h>
 
 using namespace Ogre;
+
+mada::GameLoop* Ogre::Singleton<mada::GameLoop>::ms_Singleton = NULL;
 
 namespace mada
 {
