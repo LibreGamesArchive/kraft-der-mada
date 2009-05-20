@@ -197,6 +197,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\src\MadaMainMenuGameState.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\src\MadaSoundManager.cpp"
 				>
 			</File>
@@ -228,6 +232,10 @@
 			</File>
 			<File
 				RelativePath=".\include\MadaGuiManager.h"
+				>
+			</File>
+			<File
+				RelativePath=".\include\MadaMainMenuGameState.h"
 				>
 			</File>
 			<File

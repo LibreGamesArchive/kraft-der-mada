@@ -16,38 +16,36 @@
     along with Kraft der Mada. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef __MADA_MADA_SOUNDMANAGER_H__
-#define __MADA_MADA_SOUNDMANAGER_H__
+#ifndef __MADA_MADA_MAIN_MENU_GAME_STATE_H__
+#define __MADA_MADA_MAIN_MENU_GAME_STATE_H__
 
 #include "MadaPrerequisites.h"
-
-#include <map>
-#include <set>
-
-#include <irrKlang.h>
-
-#include "MadaGameTask.h"
+#include "MadaGameState.h"
 
 namespace mada
 {
-	class SoundManager : public GameTask, public Ogre::Singleton<SoundManager>
+	class MainMenuGameState : public GameState
 	{
 	public:
-		SoundManager(const String& basedir);
-		~SoundManager();
+		MainMenuGameState();
+		virtual ~MainMenuGameState();
 
-		void playSound2d(const String& fileName, bool loop = false);
-		void stopSound(const String& fileName, float fade = 0.0f);
+		virtual void resume();
+		virtual void suspend();
 
 		virtual void run(unsigned long millisSinceLastFrame);
 
+		virtual bool keyPressed(const OIS::KeyEvent&);
+		virtual bool keyReleased(const OIS::KeyEvent&);
+
+		virtual bool mouseMoved(const OIS::MouseEvent&);
+		virtual bool mousePressed(const OIS::MouseEvent&, OIS::MouseButtonID);
+		virtual bool mouseReleased(const OIS::MouseEvent&, OIS::MouseButtonID);
 	private:
-		typedef std::set<irrklang::ISound*> SoundSet;
-		typedef std::map<String, irrklang::ISound*> SoundMap;
-		irrklang::ISoundEngine* mEngine;
-		String mBaseDir;
-		SoundMap mSoundsPlaying;
-		SoundSet mSoundsFading;
+
+		void showMainMenu();
+		void showOptionsMenu();
+		void showModuleMenu();
 	};
 }
 
