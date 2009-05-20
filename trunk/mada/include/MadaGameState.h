@@ -23,14 +23,22 @@
 
 namespace mada
 {
-	class GameState
+	class GameState : public OIS::MouseListener , public OIS::KeyListener
 	{
 	public:
+		GameState() {}
+		virtual ~GameState() {}
 		virtual void resume() = 0;
 		virtual void suspend() = 0;
 
 		virtual void run(unsigned long millisSinceLastFrame) = 0;
+
+		virtual bool keyPressed(const OIS::KeyEvent&) { return false; }
+		virtual bool keyReleased(const OIS::KeyEvent&) { return false; }
+
+		virtual bool mouseMoved(const OIS::MouseEvent&) { return false; }
+		virtual bool mousePressed(const OIS::MouseEvent&, OIS::MouseButtonID) { return false; }
+		virtual bool mouseReleased(const OIS::MouseEvent&, OIS::MouseButtonID) { return false; }
 	};
 }
-
 #endif

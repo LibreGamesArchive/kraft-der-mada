@@ -26,7 +26,8 @@ mada::SoundManager* Ogre::Singleton<mada::SoundManager>::ms_Singleton = NULL;
 
 namespace mada
 {
-	SoundManager::SoundManager() : mEngine(NULL)
+	SoundManager::SoundManager(const String& basedir)
+		: mEngine(NULL), mBaseDir(basedir), mSoundsPlaying(), mSoundsFading()
 	{
 		mEngine = createIrrKlangDevice();
 		if (mEngine == NULL)
@@ -44,7 +45,61 @@ namespace mada
 
 	void SoundManager::playSound2d(const String& fileName, bool loop)
 	{
-		mEngine->play2D(fileName.c_str(), loop);
+		ISound* sound = mEngine->play2D((mBaseDir + "\\media\\" + fileName).c_str(), loop, false, true);
+		mSoundsPlaying.insert(std::make_pair(fileName, sound));
+	}
+	//--------------------------------------------------------------------------------------------
+
+	void SoundManager::stopSound(const String& fileName, float fade)
+	{
+		SoundMap::iterator it = mSoundsPlaying.find(fileName);
+		if (it != mSoundsPlaying.end())
+		{
+			if (fade)
+			{
+				mSoundsFading.insert(it->second);
+			}
+			else
+			{
+				it->second->stop();
+			}
+		}
+	}
+	//--------------------------------------------------------------------------------------------
+
+	void SoundManager::run(unsigned long millisSinceLastFrame)
+	{
+		// Check all sounds currently in the play list, whether they have stopped.
+		// If so, remove and drop them.
+		// Also apply fading to sounds set to fading and stop them when volume would hit zero.
+		for (SoundMap::iterator it = mSoundsPlaying.begin(), end = mSoundsPlaying.end(); it != end;)
+		{
+			ISound* sound = it->second;
+			if (sound->isFinished())
+			{
+				sound->drop();
+				mSoundsPlaying.erase(it++);
+			}
+			else
+			{
+				SoundSet::iterator fadingIt = mSoundsFading.find(sound);
+				if (fadingIt != mSoundsFading.end())
+				{
+					float volume = sound->getVolume();
+					volume -= 0.3f * millisSinceLastFrame / 1000.f;
+					if (volume < 0.f)
+					{
+						sound->stop();
+						mSoundsFading.erase(fadingIt);
+					}
+					else
+					{
+						sound->setVolume(volume);
+					}
+				}
+				++it;
+			}
+		}
 	}
 	//--------------------------------------------------------------------------------------------
 }

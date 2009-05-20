@@ -43,6 +43,9 @@ namespace mada
 		void start();
 
 		String getGlobalParameter(const String& key);
+		String getMediaFilePath(const String& filename);
+
+		Ogre::Camera* getMainCamera();
 
 	private:
 		String mBaseDir;
@@ -50,6 +53,7 @@ namespace mada
 		Ogre::Root* mOgreRoot;
 		Ogre::RenderWindow* mMainWindow;
 		Ogre::SceneManager* mSceneManager;
+		Ogre::Camera* mCamera;
 
 		Database* mDatabase;
 		GuiManager* mGuiManager;
@@ -57,10 +61,6 @@ namespace mada
 		GameLoop* mGameLoop;
 
 		bool windowClosing(Ogre::RenderWindow*);
-
-		void showMainMenu();
-		void showOptionsMenu();
-		void showModuleMenu();
 
 		void startModule(const String& name);
 

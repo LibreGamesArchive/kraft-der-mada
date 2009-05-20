@@ -36,6 +36,7 @@ namespace mada
 
 	GuiManager::~GuiManager()
 	{
+		mGui->shutdown();
 		delete mGui;
 	}
 	//--------------------------------------------------------------------------------------------

@@ -25,6 +25,8 @@
 
 #include <OgreMovableObject.h>
 
+#include "MadaMainMenuGameState.h"
+
 using namespace Ogre;
 
 mada::Mada* Ogre::Singleton<mada::Mada>::ms_Singleton = NULL;
@@ -35,6 +37,7 @@ namespace mada
 				   mOgreRoot(NULL),
 				   mMainWindow(NULL),
 				   mSceneManager(NULL),
+				   mCamera(NULL),
 				   mDatabase(NULL),
 				   mSoundManager(NULL),
 				   mGameLoop(NULL)
@@ -63,16 +66,24 @@ namespace mada
 		WindowEventUtilities::addWindowEventListener(mMainWindow, this);
 
 		mSceneManager = mOgreRoot->createSceneManager(ST_GENERIC);
+		mCamera = mSceneManager->createCamera("mada_main_camera");
+		mMainWindow->addViewport(mCamera);
 
 		mDatabase = new Database(mBaseDir + "\\data\\mada.db3");
-		mSoundManager = new SoundManager();
+		mSoundManager = new SoundManager(mBaseDir);
 		mGuiManager = new GuiManager(mMainWindow);
 		mGameLoop = new GameLoop();
+
+		mGameLoop->addTask(mSoundManager);
 	}
 	//--------------------------------------------------------------------------------------------
 
 	Mada::~Mada()
 	{
+		WindowEventUtilities::removeWindowEventListener(mMainWindow, this);
+
+		mGameLoop->removeTask(mSoundManager);
+
 		delete mGameLoop;
 		delete mGuiManager;
 		delete mSoundManager;
@@ -100,15 +111,10 @@ namespace mada
 
 	void Mada::start()
 	{
-		showMainMenu();
+		// put the first game state onto the stack
+		MainMenuGameState* state = new MainMenuGameState();
+		mGameLoop->pushState(state);
 		mGameLoop->loop();
-	}
-	//--------------------------------------------------------------------------------------------
-
-	void Mada::showMainMenu()
-	{
-		String musicFile = getGlobalParameter("music_main_menu");
-		mSoundManager->playSound2d(mBaseDir + "\\media\\" + musicFile, true);
 	}
 	//--------------------------------------------------------------------------------------------
 
@@ -121,6 +127,12 @@ namespace mada
 	{
 		mGameLoop->quit();
 		return false;
+	}
+	//--------------------------------------------------------------------------------------------
+
+	Camera* Mada::getMainCamera()
+	{
+		return mCamera;
 	}
 	//--------------------------------------------------------------------------------------------
 }

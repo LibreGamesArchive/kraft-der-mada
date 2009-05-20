@@ -137,6 +137,11 @@ namespace mada
 			unsigned long frameTime = smoothFrameTime(timer.getMilliseconds() - currentTime);
 			currentTime += frameTime;
 
+			if (!mStates.empty())
+			{
+				mStates.top()->run(frameTime);
+			}
+
 			for (unsigned int i = 0, end = mTasks.size(); i < end; ++i)
 			{
 				mTasks[i]->run(frameTime);
