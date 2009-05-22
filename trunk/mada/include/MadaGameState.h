@@ -21,24 +21,45 @@
 
 #include "MadaPrerequisites.h"
 
+#include "MadaInputListener.h"
+
 namespace mada
 {
-	class GameState : public OIS::MouseListener , public OIS::KeyListener
+	class GuiManager;
+	class InputManager;
+
+	class GameState : public InputListener
 	{
 	public:
-		GameState() {}
-		virtual ~GameState() {}
-		virtual void resume() = 0;
-		virtual void suspend() = 0;
+		GameState();
+		virtual ~GameState();
 
-		virtual void run(unsigned long millisSinceLastFrame) = 0;
+		virtual void resume();
+		virtual void suspend();
 
-		virtual bool keyPressed(const OIS::KeyEvent&) { return false; }
-		virtual bool keyReleased(const OIS::KeyEvent&) { return false; }
+		virtual void run(Real timeSinceLastFrame) = 0;
 
-		virtual bool mouseMoved(const OIS::MouseEvent&) { return false; }
-		virtual bool mousePressed(const OIS::MouseEvent&, OIS::MouseButtonID) { return false; }
-		virtual bool mouseReleased(const OIS::MouseEvent&, OIS::MouseButtonID) { return false; }
+		// InputListener overrides
+		virtual bool keyPressed(const OIS::KeyEvent&);
+		virtual bool keyReleased(const OIS::KeyEvent&);
+
+		virtual bool mouseMoved(const OIS::MouseEvent&);
+		virtual bool mousePressed(const OIS::MouseEvent&, OIS::MouseButtonID);
+		virtual bool mouseReleased(const OIS::MouseEvent&, OIS::MouseButtonID);
+
+	protected:
+		GuiManager* mGuiManager;
+		InputManager* mInputManager;
+
+		virtual bool keyPressedImpl(const OIS::KeyEvent&) { return false; }
+		virtual bool keyReleasedImpl(const OIS::KeyEvent&) { return false; }
+
+		virtual bool mouseMovedImpl(const OIS::MouseEvent&) { return false; }
+		virtual bool mousePressedImpl(const OIS::MouseEvent&, OIS::MouseButtonID) { return false; }
+		virtual bool mouseReleasedImpl(const OIS::MouseEvent&, OIS::MouseButtonID) { return false; }
+
+		virtual void resumeImpl() = 0;
+		virtual void suspendImpl() = 0;
 	};
 }
 #endif

@@ -15,65 +15,87 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Kraft der Mada. If not, see <http://www.gnu.org/licenses/>.
 */
+#include "stdinc.h"
 
-#include <stdinc.h>
+#include "MadaGameState.h"
 
 #include "MadaGuiManager.h"
-
-#include "MadaLogging.h"
-
-using namespace MyGUI;
-using namespace Ogre;
-
-mada::GuiManager* Ogre::Singleton<mada::GuiManager>::ms_Singleton = NULL;
+#include "MadaInputManager.h"
 
 namespace mada
 {
-	GuiManager::GuiManager(RenderWindow* renderWindow) : mGui(NULL)
+	GameState::GameState() : mGuiManager(NULL), mInputManager(NULL)
 	{
-		mGui = new Gui();
-		mGui->initialise(renderWindow);
+		mGuiManager = GuiManager::getSingletonPtr();
+		mInputManager = InputManager::getSingletonPtr();
 	}
 	//--------------------------------------------------------------------------------------------
+	GameState::~GameState()
+	{
+		mInputManager = NULL;
+		mGuiManager = NULL;
+	}
+	//--------------------------------------------------------------------------------------------
+	void GameState::resume()
+	{
+		mInputManager->setInputHandler(this);
+		resumeImpl();
+	}
+	//--------------------------------------------------------------------------------------------
+	void GameState::suspend()
+	{
+		mInputManager->setInputHandler(NULL);
+		suspendImpl();
+	}
+	//--------------------------------------------------------------------------------------------
+	bool GameState::keyPressed(const OIS::KeyEvent& evt)
+	{
+		if (mGuiManager->keyPressed(evt))
+		{
+			return true;
+		}
 
-	GuiManager::~GuiManager()
-	{
-		mGui->shutdown();
-		delete mGui;
+		return keyPressedImpl(evt);
 	}
 	//--------------------------------------------------------------------------------------------
-	void GuiManager::run(Real elapsedTime)
+	bool GameState::keyReleased(const OIS::KeyEvent& evt)
 	{
-		MADA_LOG_CORE("begin GuiManager::run");
+		if (mGuiManager->keyReleased(evt))
+		{
+			return true;
+		}
 
-		mGui->injectFrameEntered(elapsedTime);
+		return keyReleasedImpl(evt);
+	}
+	//--------------------------------------------------------------------------------------------
+	bool GameState::mouseMoved(const OIS::MouseEvent& evt)
+	{
+		if (mGuiManager->mouseMoved(evt))
+		{
+			return true;
+		}
 
-		MADA_LOG_CORE("end GuiManager::run");
+		return mouseMovedImpl(evt);
 	}
 	//--------------------------------------------------------------------------------------------
-    bool GuiManager::mousePressed(const OIS::MouseEvent& evt, OIS::MouseButtonID id)
+	bool GameState::mousePressed(const OIS::MouseEvent& evt, OIS::MouseButtonID id)
 	{
-		return mGui->injectMousePress(evt, id);
+		if (mGuiManager->mousePressed(evt, id))
+		{
+			return true;
+		}
+
+		return mousePressedImpl(evt, id);
 	}
 	//--------------------------------------------------------------------------------------------
-    bool GuiManager::mouseReleased(const OIS::MouseEvent& evt, OIS::MouseButtonID id)
+	bool GameState::mouseReleased(const OIS::MouseEvent& evt, OIS::MouseButtonID id)
 	{
-		return mGui->injectMouseRelease(evt, id);
-	}
-	//--------------------------------------------------------------------------------------------
-    bool GuiManager::mouseMoved(const OIS::MouseEvent& evt)
-	{
-		return mGui->injectMouseMove(evt);
-	}
-	//--------------------------------------------------------------------------------------------
-    bool GuiManager::keyPressed(const OIS::KeyEvent& evt)
-	{
-		return mGui->injectKeyPress(evt);
-	}
-	//--------------------------------------------------------------------------------------------
-    bool GuiManager::keyReleased(const OIS::KeyEvent& evt)
-	{
-		return mGui->injectKeyRelease(evt);
+		if (mGuiManager->mouseReleased(evt, id))
+		{
+			return true;
+		}
+
+		return mouseReleasedImpl(evt, id);
 	}
 	//--------------------------------------------------------------------------------------------
 }

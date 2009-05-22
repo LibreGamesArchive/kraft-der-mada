@@ -15,47 +15,45 @@
     You should have received a copy of the GNU General Public License
     along with Kraft der Mada. If not, see <http://www.gnu.org/licenses/>.
 */
-
 #include "stdinc.h"
-#include "MadaMainMenuGameState.h"
 
-#include "Mada.h"
-#include "MadaSoundManager.h"
+#include "MadaLogging.h"
+
+#ifndef MADA_NO_LOGGING
 
 namespace mada
 {
-	MainMenuGameState::MainMenuGameState()
+	Logger* Logger::logger = NULL;
+
+	Logger::Logger(const String& filename) : mOut(filename.c_str()), mIndent("  "), mMillis(0)
 	{
+		logger = this;
+		mOut << "<html>" << std::endl;
+		mOut << mIndent << "<head></head>" << std::endl;
+		mOut << mIndent << "<body>" << std::endl;
 	}
 	//--------------------------------------------------------------------------------------------
-	MainMenuGameState::~MainMenuGameState()
-	{
+	Logger::~Logger()
+	{				
+		mOut << mIndent << "</body>" << std::endl;
+		mOut << "</html>" << std::endl;
+		mOut.flush();
+		mOut.close();
+		logger = NULL;
 	}
 	//--------------------------------------------------------------------------------------------
-	void MainMenuGameState::resumeImpl()
+	void Logger::update(Real timeSinceLastFrame)
 	{
-		String musicFile = Mada::getSingleton().getGlobalParameter("music_main_menu");
-		SoundManager::getSingleton().playSound2d(musicFile, true);
+		mMillis += timeSinceLastFrame * 1000;
 	}
 	//--------------------------------------------------------------------------------------------
-	void MainMenuGameState::suspendImpl()
+	void Logger::log(const String& text, unsigned long style)
 	{
-	}
-	//--------------------------------------------------------------------------------------------
-	void MainMenuGameState::run(Real timeSinceLastFrame)
-	{
-	}
-	//--------------------------------------------------------------------------------------------
-	void MainMenuGameState::showMainMenu()
-	{
-	}
-	//--------------------------------------------------------------------------------------------
-	void MainMenuGameState::showOptionsMenu()
-	{
-	}
-	//--------------------------------------------------------------------------------------------
-	void MainMenuGameState::showModuleMenu()
-	{
+		mOut << mIndent << mIndent;
+		mOut << Ogre::StringConverter::toString(mMillis, 10, '0') << " | " << text << "</br>" << std::endl;
+		mOut.flush();
 	}
 	//--------------------------------------------------------------------------------------------
 }
+
+#endif

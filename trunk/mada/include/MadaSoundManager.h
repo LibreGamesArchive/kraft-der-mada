@@ -39,7 +39,7 @@ namespace mada
 		void playSound2d(const String& fileName, bool loop = false);
 		void stopSound(const String& fileName, float fade = 0.0f);
 
-		virtual void run(unsigned long millisSinceLastFrame);
+		virtual void run(Real timeSinceLastFrame);
 
 	private:
 		typedef std::set<irrklang::ISound*> SoundSet;
