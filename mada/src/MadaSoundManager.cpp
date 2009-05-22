@@ -20,6 +20,8 @@
 
 #include "MadaSoundManager.h"
 
+#include "MadaLogging.h"
+
 using namespace irrklang;
 
 mada::SoundManager* Ogre::Singleton<mada::SoundManager>::ms_Singleton = NULL;
@@ -67,8 +69,10 @@ namespace mada
 	}
 	//--------------------------------------------------------------------------------------------
 
-	void SoundManager::run(unsigned long millisSinceLastFrame)
+	void SoundManager::run(Real timeSinceLastFrame)
 	{
+		MADA_LOG_CORE("begin SoundManager::run");
+
 		// Check all sounds currently in the play list, whether they have stopped.
 		// If so, remove and drop them.
 		// Also apply fading to sounds set to fading and stop them when volume would hit zero.
@@ -86,7 +90,7 @@ namespace mada
 				if (fadingIt != mSoundsFading.end())
 				{
 					float volume = sound->getVolume();
-					volume -= 0.3f * millisSinceLastFrame / 1000.f;
+					volume -= 0.3f * timeSinceLastFrame;
 					if (volume < 0.f)
 					{
 						sound->stop();
@@ -100,6 +104,8 @@ namespace mada
 				++it;
 			}
 		}
+
+		MADA_LOG_CORE("end SoundManager::run");
 	}
 	//--------------------------------------------------------------------------------------------
 }

@@ -24,6 +24,7 @@
 #include "MadaDatabase.h"
 #include "MadaGameLoop.h"
 #include "MadaGuiManager.h"
+#include "MadaInputManager.h"
 #include "MadaSoundManager.h"
 
 #include <OgreRoot.h>
@@ -57,6 +58,7 @@ namespace mada
 
 		Database* mDatabase;
 		GuiManager* mGuiManager;
+		InputManager* mInputManager;
 		SoundManager* mSoundManager;
 		GameLoop* mGameLoop;
 

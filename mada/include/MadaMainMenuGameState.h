@@ -30,18 +30,11 @@ namespace mada
 		MainMenuGameState();
 		virtual ~MainMenuGameState();
 
-		virtual void resume();
-		virtual void suspend();
+		virtual void run(Real timeSinceLastFrame);
 
-		virtual void run(unsigned long millisSinceLastFrame);
-
-		virtual bool keyPressed(const OIS::KeyEvent&);
-		virtual bool keyReleased(const OIS::KeyEvent&);
-
-		virtual bool mouseMoved(const OIS::MouseEvent&);
-		virtual bool mousePressed(const OIS::MouseEvent&, OIS::MouseButtonID);
-		virtual bool mouseReleased(const OIS::MouseEvent&, OIS::MouseButtonID);
 	private:
+		virtual void resumeImpl();
+		virtual void suspendImpl();
 
 		void showMainMenu();
 		void showOptionsMenu();

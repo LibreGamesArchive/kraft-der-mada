@@ -16,37 +16,47 @@
     along with Kraft der Mada. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef __MADA_MADA_GUI_MANAGER_H__
-#define __MADA_MADA_GUI_MANAGER_H__
+#ifndef __MADA_MADA_INPUT_MANAGER_H__
+#define __MADA_MADA_INPUT_MANAGER_H__
 
 #include "MadaPrerequisites.h"
-
-#include <MyGui.h>
-#include <OgreRenderWindow.h>
 
 #include "MadaGameTask.h"
 #include "MadaInputListener.h"
 
 namespace mada
 {
-	class GuiManager : public GameTask, public Ogre::Singleton<GuiManager>, public InputListener
+	class InputManager : public GameTask, public InputListener, public Ogre::Singleton<InputManager>
 	{
 	public:
-		GuiManager(Ogre::RenderWindow*);
-		~GuiManager();
+		InputManager(Ogre::RenderWindow* wnd);
+		virtual ~InputManager();
+
+        bool isMouseButtonDown(OIS::MouseButtonID buttonID);
+        bool isKeyDown(OIS::KeyCode key);
+
+		Real getMouseRelativeX(void) const;
+		Real getMouseRelativeY(void) const;
+		Real getMouseRelativeZ(void) const;
 
         // GameTask overrides
 		void run(Real elapsedTime);
-
+		
 		// InputListener overrides
         virtual bool mousePressed(const OIS::MouseEvent& evt, OIS::MouseButtonID id);
         virtual bool mouseReleased(const OIS::MouseEvent& evt, OIS::MouseButtonID id);
         virtual bool mouseMoved(const OIS::MouseEvent& evt);
         virtual bool keyPressed(const OIS::KeyEvent& evt);
         virtual bool keyReleased(const OIS::KeyEvent& evt);
+
+		void setInputHandler(InputListener* listener);
+
 	private:
-		MyGUI::Gui* mGui;
+        OIS::Mouse* mOisMouse;
+        OIS::Keyboard* mOisKeyboard;
+        OIS::InputManager* mOisInputManager;
+
+		InputListener* mInputHandler;
 	};
 }
-
 #endif

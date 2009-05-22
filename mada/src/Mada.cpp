@@ -25,6 +25,7 @@
 
 #include <OgreMovableObject.h>
 
+#include "MadaLogging.h"
 #include "MadaMainMenuGameState.h"
 
 using namespace Ogre;
@@ -39,13 +40,17 @@ namespace mada
 				   mSceneManager(NULL),
 				   mCamera(NULL),
 				   mDatabase(NULL),
+				   mGuiManager(NULL),
+				   mInputManager(NULL),
 				   mSoundManager(NULL),
 				   mGameLoop(NULL)
 	{
+		// Get the base directory, so we can find all files needed.
 		std::ifstream baseDirFile = std::ifstream("basedir.cfg", std::ios_base::in);
 		std::getline(baseDirFile, mBaseDir);
 
-        MovableObject::setDefaultQueryFlags(0);
+		// Init Ogre
+		MovableObject::setDefaultQueryFlags(0);
 		mOgreRoot = new Root("", "", "ogre.log");
 
 #ifdef OGRE_DEBUG_MODE
@@ -65,16 +70,29 @@ namespace mada
         mMainWindow = mOgreRoot->createRenderWindow("mada_main_window", 1024, 768, false, &windowOptions);
 		WindowEventUtilities::addWindowEventListener(mMainWindow, this);
 
+		// Initialise resources
+
+		ResourceGroupManager* groupMgr = ResourceGroupManager::getSingletonPtr();
+		groupMgr->addResourceLocation(mBaseDir + "\\media\\gui\\core", "FileSystem");
+		groupMgr->addResourceLocation(mBaseDir + "\\media\\gui\\layouts", "FileSystem");
+		groupMgr->initialiseAllResourceGroups();
+
 		mSceneManager = mOgreRoot->createSceneManager(ST_GENERIC);
 		mCamera = mSceneManager->createCamera("mada_main_camera");
 		mMainWindow->addViewport(mCamera);
 
+		// Initialise mada managers
+
 		mDatabase = new Database(mBaseDir + "\\data\\mada.db3");
-		mSoundManager = new SoundManager(mBaseDir);
 		mGuiManager = new GuiManager(mMainWindow);
+		mInputManager = new InputManager(mMainWindow);
+		mSoundManager = new SoundManager(mBaseDir);
+
 		mGameLoop = new GameLoop();
 
 		mGameLoop->addTask(mSoundManager);
+		mGameLoop->addTask(mGuiManager);
+		mGameLoop->addTask(mInputManager);
 	}
 	//--------------------------------------------------------------------------------------------
 
@@ -82,9 +100,12 @@ namespace mada
 	{
 		WindowEventUtilities::removeWindowEventListener(mMainWindow, this);
 
+		mGameLoop->removeTask(mInputManager);
+		mGameLoop->removeTask(mGuiManager);
 		mGameLoop->removeTask(mSoundManager);
 
 		delete mGameLoop;
+		delete mInputManager;
 		delete mGuiManager;
 		delete mSoundManager;
 		delete mDatabase;
@@ -141,6 +162,9 @@ using namespace mada;
 
 INT WINAPI WinMain( HINSTANCE hInst, HINSTANCE, LPSTR strCmdLine, INT )
 {
+	MADA_LOG_OPEN("mada_log.html");
+	MADA_LOG_CORE("Starting mada...");
+
 	try
 	{
 		Mada mada;
@@ -149,8 +173,13 @@ INT WINAPI WinMain( HINSTANCE hInst, HINSTANCE, LPSTR strCmdLine, INT )
 	catch (std::exception& e)
 	{
 		MessageBox(NULL, e.what(), "FATAL ERROR", MB_ICONERROR | MB_OK);
+
+		MADA_LOG_CORE(mada::String("fatal exception: ") + e.what());
+
 		return -1;
 	}
+
+	MADA_LOG_CLOSE();
 
 	return 0;
 }

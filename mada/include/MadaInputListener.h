@@ -16,15 +16,18 @@
     along with Kraft der Mada. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef __MADA_MADA_PREREQUISITES_H__
-#define __MADA_MADA_PREREQUISITES_H__
+#ifndef __MADA_MADA_INPUT_LISTENER_H__
+#define __MADA_MADA_INPUT_LISTENER_H__
 
-#include <string>
+#include "MadaPrerequisites.h"
 
-// common typedefs
 namespace mada
 {
-	typedef std::string String;
-	typedef float Real;
+	class InputListener : public OIS::MouseListener , public OIS::KeyListener
+	{
+	public:
+		InputListener() {}
+		virtual ~InputListener() {}
+	};
 }
 #endif

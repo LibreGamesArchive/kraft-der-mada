@@ -26,7 +26,7 @@ namespace mada
 	class GameTask
 	{
 	public:
-		virtual void run(unsigned long millisSinceLastFrame) = 0;
+		virtual void run(Real timeSinceLastFrame) = 0;
 	};
 }
 

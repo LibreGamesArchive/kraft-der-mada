@@ -26,6 +26,8 @@
 #include <OgreTimer.h>
 #include <OgreWindowEventUtilities.h>
 
+#include "MadaLogging.h"
+
 using namespace Ogre;
 
 mada::GameLoop* Ogre::Singleton<mada::GameLoop>::ms_Singleton = NULL;
@@ -131,21 +133,34 @@ namespace mada
 		unsigned long currentTime = timer.getMilliseconds() - 50; 
 		while (!mQuitRequested)
 		{
+			MADA_LOG_CORE("begin loop");
+
 			WindowEventUtilities::messagePump();
 			Root::getSingleton().renderOneFrame();
 
-			unsigned long frameTime = smoothFrameTime(timer.getMilliseconds() - currentTime);
+			unsigned long time = timer.getMilliseconds();
+			long diffTime = time - currentTime;
+			if (diffTime < 20) diffTime = 20;
+			long frameTime = smoothFrameTime(diffTime);
 			currentTime += frameTime;
+
+			MADA_LOG_UPDATE(frameTime / 1000.f);
+
+			MADA_LOG_CORE("Frame time: " + StringConverter::toString(frameTime, 4, '0'));
 
 			if (!mStates.empty())
 			{
-				mStates.top()->run(frameTime);
+				mStates.top()->run(frameTime / 1000.f);
 			}
 
 			for (unsigned int i = 0, end = mTasks.size(); i < end; ++i)
 			{
-				mTasks[i]->run(frameTime);
+				mTasks[i]->run(frameTime / 1000.f);
 			}
+
+			updateTaskList();
+
+			MADA_LOG_CORE("end loop");
 		}
 	}
 	//--------------------------------------------------------------------------------------------
@@ -175,12 +190,26 @@ namespace mada
 
 	unsigned long GameLoop::smoothFrameTime(unsigned long frameTime)
 	{
+		MADA_LOG_CORE("smoothFrameTime: frameTime == " + StringConverter::toString(frameTime, 4, '0'));
+
 		mFrameTimes.push_back(frameTime);
+
+		while (mFrameTimes.size() < 10) mFrameTimes.push_back(frameTime);
+
 		if (mFrameTimes.size() > 10)
 		{
 			mFrameTimes.pop_front();
 		}
-		return std::accumulate(mFrameTimes.begin(), mFrameTimes.end(), 0) / mFrameTimes.size();
+		unsigned long rval = 0;
+		for (size_t i = 0; i < 10; ++i)
+		{
+			rval += mFrameTimes[i];
+		}
+		rval /= 10;
+		//unsigned long rval = std::accumulate(mFrameTimes.begin(), mFrameTimes.end(), 0) / mFrameTimes.size();
+		MADA_LOG_CORE("smoothFrameTime: rval == " + StringConverter::toString(frameTime, 4, '0'));
+		return rval;
 	}
 	//--------------------------------------------------------------------------------------------
 }
+

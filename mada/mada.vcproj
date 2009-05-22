@@ -63,9 +63,9 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="OgreMain_d.lib irrKlang.lib MyGUI_d.lib"
+				AdditionalDependencies="OgreMain_d.lib irrKlang.lib MyGUI_d.lib OIS_static_d.lib"
 				LinkIncremental="2"
-				AdditionalLibraryDirectories="..\dependencies\ogre\lib;&quot;..\dependencies\ogre\Dependencies\lib\$(ConfigurationName)&quot;;&quot;..\dependencies\irrKlang\lib\Win32-visualStudio&quot;;&quot;..\dependencies\MyGUI\MyGUIEngine\lib\$(ConfigurationName)&quot;"
+				AdditionalLibraryDirectories="..\dependencies\ois\lib;..\dependencies\ogre\lib;&quot;..\dependencies\ogre\Dependencies\lib\$(ConfigurationName)&quot;;&quot;..\dependencies\irrKlang\lib\Win32-visualStudio&quot;;&quot;..\dependencies\MyGUI\MyGUIEngine\lib\$(ConfigurationName)&quot;"
 				GenerateDebugInformation="true"
 				SubSystem="2"
 				TargetMachine="1"
@@ -140,9 +140,9 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="OgreMain.lib irrKlang.lib MyGUI.lib"
+				AdditionalDependencies="OgreMain.lib irrKlang.lib MyGUI.lib OIS_static.lib"
 				LinkIncremental="1"
-				AdditionalLibraryDirectories="..\dependencies\ogre\lib;&quot;..\dependencies\ogre\Dependencies\lib\$(ConfigurationName)&quot;;&quot;..\dependencies\irrKlang\lib\Win32-visualStudio&quot;;&quot;..\dependencies\MyGUI\MyGUIEngine\lib\$(ConfigurationName)&quot;"
+				AdditionalLibraryDirectories="..\dependencies\ois\lib;..\dependencies\ogre\lib;&quot;..\dependencies\ogre\Dependencies\lib\$(ConfigurationName)&quot;;&quot;..\dependencies\irrKlang\lib\Win32-visualStudio&quot;;&quot;..\dependencies\MyGUI\MyGUIEngine\lib\$(ConfigurationName)&quot;"
 				GenerateDebugInformation="true"
 				SubSystem="2"
 				OptimizeReferences="2"
@@ -193,7 +193,19 @@
 				>
 			</File>
 			<File
+				RelativePath=".\src\MadaGameState.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\src\MadaGuiManager.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\src\MadaInputManager.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\src\MadaLogging.cpp"
 				>
 			</File>
 			<File
@@ -232,6 +244,18 @@
 			</File>
 			<File
 				RelativePath=".\include\MadaGuiManager.h"
+				>
+			</File>
+			<File
+				RelativePath=".\include\MadaInputListener.h"
+				>
+			</File>
+			<File
+				RelativePath=".\include\MadaInputManager.h"
+				>
+			</File>
+			<File
+				RelativePath=".\include\MadaLogging.h"
 				>
 			</File>
 			<File
