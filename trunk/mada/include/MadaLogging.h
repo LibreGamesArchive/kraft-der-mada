@@ -19,17 +19,7 @@
 #ifndef __MADA_MADA_LOGGING_H__
 #define __MADA_MADA_LOGGING_H__
 
-#define MADA_LOG_COLOUR_BLACK 0x00000001
-#define MADA_LOG_COLOUR_RED   0x00000002
-#define MADA_LOG_COLOUR_GREEN 0x00000004
-#define MADA_LOG_COLOUR_BLUE  0x00000008
-
-#define MADA_LOG_BOLD         0x00000100
-#define MADA_LOG_ITALICS      0x00000200
-#define MADA_LOG_UNDERLINE    0x00000400
-#define MADA_LOG_STRIKE       0x00000800
-
-#define MADA_LOG_STYLE_CORE MADA_LOG_COLOUR_BLUE
+#define MADA_LOG_STYLE_CORE "core"
 
 #ifndef MADA_NO_LOGGING
 
@@ -44,7 +34,7 @@ namespace mada
 		~Logger();
 
 		void update(Real timeSinceLastFrame);
-		void log(const String& text, unsigned long style);
+		void log(const String& text, const String& style);
 
 		static Logger* logger;
 	private:

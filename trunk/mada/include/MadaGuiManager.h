@@ -35,6 +35,8 @@ namespace mada
 		GuiManager(Ogre::RenderWindow*);
 		~GuiManager();
 
+		void setBackgroundImage(const String& textureName);
+
         // GameTask overrides
 		void run(Real elapsedTime);
 
@@ -44,8 +46,10 @@ namespace mada
         virtual bool mouseMoved(const OIS::MouseEvent& evt);
         virtual bool keyPressed(const OIS::KeyEvent& evt);
         virtual bool keyReleased(const OIS::KeyEvent& evt);
+
 	private:
 		MyGUI::Gui* mGui;
+		MyGUI::StaticImagePtr mBackgroundImage;
 	};
 }
 

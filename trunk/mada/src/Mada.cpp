@@ -30,20 +30,20 @@
 
 using namespace Ogre;
 
-mada::Mada* Ogre::Singleton<mada::Mada>::ms_Singleton = NULL;
+mada::Mada* Ogre::Singleton<mada::Mada>::ms_Singleton = nullptr;
 
 namespace mada
 {
 	Mada::Mada() : mBaseDir(""),
-				   mOgreRoot(NULL),
-				   mMainWindow(NULL),
-				   mSceneManager(NULL),
-				   mCamera(NULL),
-				   mDatabase(NULL),
-				   mGuiManager(NULL),
-				   mInputManager(NULL),
-				   mSoundManager(NULL),
-				   mGameLoop(NULL)
+				   mOgreRoot(nullptr),
+				   mMainWindow(nullptr),
+				   mSceneManager(nullptr),
+				   mCamera(nullptr),
+				   mDatabase(nullptr),
+				   mGuiManager(nullptr),
+				   mInputManager(nullptr),
+				   mSoundManager(nullptr),
+				   mGameLoop(nullptr)
 	{
 		// Get the base directory, so we can find all files needed.
 		std::ifstream baseDirFile = std::ifstream("basedir.cfg", std::ios_base::in);
@@ -75,6 +75,9 @@ namespace mada
 		ResourceGroupManager* groupMgr = ResourceGroupManager::getSingletonPtr();
 		groupMgr->addResourceLocation(mBaseDir + "\\media\\gui\\core", "FileSystem");
 		groupMgr->addResourceLocation(mBaseDir + "\\media\\gui\\layouts", "FileSystem");
+		groupMgr->addResourceLocation(mBaseDir + "\\media\\textures", "FileSystem");
+		groupMgr->addResourceLocation(mBaseDir + "\\media\\materials", "FileSystem");
+		groupMgr->addResourceLocation(mBaseDir + "\\media\\meshes", "FileSystem");
 		groupMgr->initialiseAllResourceGroups();
 
 		mSceneManager = mOgreRoot->createSceneManager(ST_GENERIC);
@@ -172,7 +175,7 @@ INT WINAPI WinMain( HINSTANCE hInst, HINSTANCE, LPSTR strCmdLine, INT )
 	}
 	catch (std::exception& e)
 	{
-		MessageBox(NULL, e.what(), "FATAL ERROR", MB_ICONERROR | MB_OK);
+		MessageBox(nullptr, e.what(), "FATAL ERROR", MB_ICONERROR | MB_OK);
 
 		MADA_LOG_CORE(mada::String("fatal exception: ") + e.what());
 
