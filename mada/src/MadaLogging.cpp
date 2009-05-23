@@ -23,13 +23,16 @@
 
 namespace mada
 {
-	Logger* Logger::logger = NULL;
+	Logger* Logger::logger = nullptr;
 
 	Logger::Logger(const String& filename) : mOut(filename.c_str()), mIndent("  "), mMillis(0)
 	{
 		logger = this;
 		mOut << "<html>" << std::endl;
-		mOut << mIndent << "<head></head>" << std::endl;
+		mOut << mIndent << "<head>" << std::endl;
+		mOut << mIndent << mIndent << "<title>Mada Log</title>" << std::endl;
+		mOut << mIndent << mIndent << "<link rel=\"stylesheet\" type=\"text/css\" href=\"log_style.css\">" << std::endl;
+		mOut << mIndent << "</head>" << std::endl;
 		mOut << mIndent << "<body>" << std::endl;
 	}
 	//--------------------------------------------------------------------------------------------
@@ -39,7 +42,7 @@ namespace mada
 		mOut << "</html>" << std::endl;
 		mOut.flush();
 		mOut.close();
-		logger = NULL;
+		logger = nullptr;
 	}
 	//--------------------------------------------------------------------------------------------
 	void Logger::update(Real timeSinceLastFrame)
@@ -47,10 +50,11 @@ namespace mada
 		mMillis += timeSinceLastFrame * 1000;
 	}
 	//--------------------------------------------------------------------------------------------
-	void Logger::log(const String& text, unsigned long style)
+	void Logger::log(const String& text, const String& style)
 	{
-		mOut << mIndent << mIndent;
-		mOut << Ogre::StringConverter::toString(mMillis, 10, '0') << " | " << text << "</br>" << std::endl;
+		mOut << mIndent << mIndent << "<p class=\"" + style + "\">";
+		mOut << Ogre::StringConverter::toString(mMillis, 10, '0') << " | " << text;
+		mOut << "</p>" << std::endl;
 		mOut.flush();
 	}
 	//--------------------------------------------------------------------------------------------

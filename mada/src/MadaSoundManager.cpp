@@ -24,15 +24,15 @@
 
 using namespace irrklang;
 
-mada::SoundManager* Ogre::Singleton<mada::SoundManager>::ms_Singleton = NULL;
+mada::SoundManager* Ogre::Singleton<mada::SoundManager>::ms_Singleton = nullptr;
 
 namespace mada
 {
 	SoundManager::SoundManager(const String& basedir)
-		: mEngine(NULL), mBaseDir(basedir), mSoundsPlaying(), mSoundsFading()
+		: mEngine(nullptr), mBaseDir(basedir), mSoundsPlaying(), mSoundsFading()
 	{
 		mEngine = createIrrKlangDevice();
-		if (mEngine == NULL)
+		if (mEngine == nullptr)
 		{
 			throw std::exception("Could not create IrrKlangDevice");
 		}

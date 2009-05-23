@@ -36,6 +36,7 @@ namespace mada
 	{
 		String musicFile = Mada::getSingleton().getGlobalParameter("music_main_menu");
 		SoundManager::getSingleton().playSound2d(musicFile, true);
+		mGuiManager->setBackgroundImage("bg_mainmenu.jpg");
 	}
 	//--------------------------------------------------------------------------------------------
 	void MainMenuGameState::suspendImpl()
