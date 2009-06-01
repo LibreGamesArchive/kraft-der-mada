@@ -20,23 +20,29 @@
 #include "MadaMainMenuGameState.h"
 
 #include "Mada.h"
+#include "MadaMainMenuWindow.h"
 #include "MadaSoundManager.h"
 
 namespace mada
 {
-	MainMenuGameState::MainMenuGameState()
+	MainMenuGameState::MainMenuGameState() : mWindow(NULL)
 	{
+		mWindow = new MainMenuWindow();
 	}
 	//--------------------------------------------------------------------------------------------
 	MainMenuGameState::~MainMenuGameState()
 	{
+		delete mWindow;
 	}
 	//--------------------------------------------------------------------------------------------
 	void MainMenuGameState::resumeImpl()
 	{
 		String musicFile = Mada::getSingleton().getGlobalParameter("music_main_menu");
 		SoundManager::getSingleton().playSound2d(musicFile, true);
-		mGuiManager->setBackgroundImage("bg_mainmenu.jpg");
+
+		//mGuiManager->setBackgroundImage("bg_mainmenu.jpg");
+
+		mWindow->setVisible(true);
 	}
 	//--------------------------------------------------------------------------------------------
 	void MainMenuGameState::suspendImpl()
@@ -44,18 +50,6 @@ namespace mada
 	}
 	//--------------------------------------------------------------------------------------------
 	void MainMenuGameState::run(Real timeSinceLastFrame)
-	{
-	}
-	//--------------------------------------------------------------------------------------------
-	void MainMenuGameState::showMainMenu()
-	{
-	}
-	//--------------------------------------------------------------------------------------------
-	void MainMenuGameState::showOptionsMenu()
-	{
-	}
-	//--------------------------------------------------------------------------------------------
-	void MainMenuGameState::showModuleMenu()
 	{
 	}
 	//--------------------------------------------------------------------------------------------

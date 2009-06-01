@@ -24,6 +24,8 @@
 
 namespace mada
 {
+	class MainMenuWindow;
+
 	class MainMenuGameState : public GameState
 	{
 	public:
@@ -33,12 +35,10 @@ namespace mada
 		virtual void run(Real timeSinceLastFrame);
 
 	private:
+		MainMenuWindow* mWindow;
+
 		virtual void resumeImpl();
 		virtual void suspendImpl();
-
-		void showMainMenu();
-		void showOptionsMenu();
-		void showModuleMenu();
 	};
 }
 

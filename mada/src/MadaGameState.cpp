@@ -24,7 +24,7 @@ along with Kraft der Mada. If not, see <http://www.gnu.org/licenses/>.
 
 namespace mada
 {
-	GameState::GameState() : mGuiManager(nullptr), mInputManager(nullptr)
+	GameState::GameState() : mGuiManager(NULL), mInputManager(NULL)
 	{
 		mGuiManager = GuiManager::getSingletonPtr();
 		mInputManager = InputManager::getSingletonPtr();
@@ -32,8 +32,8 @@ namespace mada
 	//--------------------------------------------------------------------------------------------
 	GameState::~GameState()
 	{
-		mInputManager = nullptr;
-		mGuiManager = nullptr;
+		mInputManager = NULL;
+		mGuiManager = NULL;
 	}
 	//--------------------------------------------------------------------------------------------
 	void GameState::resume()
@@ -44,7 +44,7 @@ namespace mada
 	//--------------------------------------------------------------------------------------------
 	void GameState::suspend()
 	{
-		mInputManager->setInputHandler(nullptr);
+		mInputManager->setInputHandler(NULL);
 		suspendImpl();
 	}
 	//--------------------------------------------------------------------------------------------

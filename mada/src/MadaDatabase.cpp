@@ -20,11 +20,11 @@
 
 #include "MadaDatabase.h"
 
-mada::Database* Ogre::Singleton<mada::Database>::ms_Singleton = nullptr;
+mada::Database* Ogre::Singleton<mada::Database>::ms_Singleton = NULL;
 
 namespace mada
 {
-	static QueryResultSet* s_result = nullptr;
+	static QueryResultSet* s_result = NULL;
 
 	static int sqlite_exec_callback(void *NotUsed, int argc, char **argv, char **azColName)
 	{
@@ -127,7 +127,7 @@ namespace mada
 	//--------------------------------------------------------------------------------------------
 	//--------------------------------------------------------------------------------------------
 
-	Database::Database(const String& dbfile) : mDbHandle(nullptr)
+	Database::Database(const String& dbfile) : mDbHandle(NULL)
 	{
 		if (sqlite3_open(dbfile.c_str(), &mDbHandle) != SQLITE_OK)
 		{
@@ -145,11 +145,11 @@ namespace mada
 	QueryResultSet* Database::executeQuery(const String& query)
 	{
 		s_result = new QueryResultSet();
-		char* errMsg = nullptr;
+		char* errMsg = NULL;
 		if (sqlite3_exec(mDbHandle, query.c_str(), sqlite_exec_callback, 0, &errMsg) != SQLITE_OK)
 		{
 			/// @todo Logging
-			return nullptr;
+			return NULL;
 		}
 		return s_result;
 	}

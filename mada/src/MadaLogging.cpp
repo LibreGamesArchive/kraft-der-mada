@@ -23,7 +23,7 @@
 
 namespace mada
 {
-	Logger* Logger::logger = nullptr;
+	Logger* Logger::logger = NULL;
 
 	Logger::Logger(const String& filename) : mOut(filename.c_str()), mIndent("  "), mMillis(0)
 	{
@@ -42,7 +42,7 @@ namespace mada
 		mOut << "</html>" << std::endl;
 		mOut.flush();
 		mOut.close();
-		logger = nullptr;
+		logger = NULL;
 	}
 	//--------------------------------------------------------------------------------------------
 	void Logger::update(Real timeSinceLastFrame)

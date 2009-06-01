@@ -32,12 +32,12 @@
 #include <functional>
 #include <utility>
 
-
+#define NOMINMAX
 #include <Windows.h>
 
 
 #include <irrKlang.h>
-#include <MyGui.h>
+#include <Cegui.h>
 #include <Ogre.h>
 #include <OIS.h>
 
