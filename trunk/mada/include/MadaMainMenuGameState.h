@@ -36,6 +36,7 @@ namespace mada
 
 	private:
 		MainMenuWindow* mWindow;
+		String mMusicFile;
 
 		virtual void resumeImpl();
 		virtual void suspendImpl();
