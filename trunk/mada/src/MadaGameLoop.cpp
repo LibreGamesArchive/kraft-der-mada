@@ -30,7 +30,7 @@
 
 using namespace Ogre;
 
-mada::GameLoop* Ogre::Singleton<mada::GameLoop>::ms_Singleton = nullptr;
+mada::GameLoop* Ogre::Singleton<mada::GameLoop>::ms_Singleton = NULL;
 
 namespace mada
 {

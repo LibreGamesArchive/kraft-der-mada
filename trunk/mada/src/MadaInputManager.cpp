@@ -23,12 +23,12 @@ along with Kraft der Mada. If not, see <http://www.gnu.org/licenses/>.
 
 using namespace OIS;
 
-mada::InputManager* Ogre::Singleton<mada::InputManager>::ms_Singleton = nullptr;
+mada::InputManager* Ogre::Singleton<mada::InputManager>::ms_Singleton = NULL;
 
 namespace mada
 {
 	InputManager::InputManager(Ogre::RenderWindow* window)
-		: mOisMouse(nullptr), mOisKeyboard(nullptr), mOisInputManager(nullptr), mInputHandler(nullptr)
+		: mOisMouse(NULL), mOisKeyboard(NULL), mOisInputManager(NULL), mInputHandler(NULL)
 	{
 		// Get Window handle from Ogre render window and convert it to String for OIS.
 		size_t windowHnd = 0;
@@ -63,7 +63,7 @@ namespace mada
 		mOisInputManager->destroyInputObject(mOisMouse);
 		mOisInputManager->destroyInputObject(mOisKeyboard);
 		OIS::InputManager::destroyInputSystem(mOisInputManager);
-		mOisInputManager = nullptr;
+		mOisInputManager = NULL;
 	}
 	//--------------------------------------------------------------------------------------------
 	bool InputManager::isMouseButtonDown(OIS::MouseButtonID buttonID)

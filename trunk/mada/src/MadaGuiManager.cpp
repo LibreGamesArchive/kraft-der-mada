@@ -20,71 +20,78 @@ along with Kraft der Mada. If not, see <http://www.gnu.org/licenses/>.
 
 #include "MadaGuiManager.h"
 
+#include "MadaCeguiHelper.h"
 #include "MadaLogging.h"
 
-using namespace MyGUI;
+using namespace CEGUI;
 using namespace Ogre;
 
-mada::GuiManager* Ogre::Singleton<mada::GuiManager>::ms_Singleton = nullptr;
+mada::GuiManager* Ogre::Singleton<mada::GuiManager>::ms_Singleton = NULL;
 
 namespace mada
 {
-	GuiManager::GuiManager(RenderWindow* renderWindow) : mGui(nullptr), mBackgroundImage(nullptr)
+	GuiManager::GuiManager(Ogre::RenderWindow* renderWindow, Ogre::SceneManager* sceneManager)
+		: mGuiSystem(NULL), mGuiResourceProvider(NULL), mGuiRenderer(NULL), mRootWindow(NULL)
 	{
-		mGui = new Gui();
-		mGui->initialise(renderWindow);
+		mGuiRenderer = new OgreCEGUIRenderer(renderWindow, Ogre::RENDER_QUEUE_OVERLAY, false, 3000, sceneManager);
+		mGuiResourceProvider = mGuiRenderer->createResourceProvider();        
+		mGuiSystem = new System(mGuiRenderer, mGuiResourceProvider, NULL, NULL, (utf8*)"cegui.config");
+
+		CEGUI::Logger::getSingleton().setLoggingLevel(CEGUI::Insane);
+
+		// load scheme and set up defaults
+		System::getSingleton().setDefaultMouseCursor((utf8*)"RastullahLook-Images",
+			(utf8*)"MouseArrow");
+		Window* sheet = CEGUI::WindowManager::getSingleton().createWindow((utf8*)"DefaultGUISheet",
+			(utf8*)"RootWindow");
+		sheet->setSize(CeGuiHelper::asAbsolute(CEGUI::Vector2(renderWindow->getWidth(), renderWindow->getHeight())));
+		sheet->setPosition(CeGuiHelper::asAbsolute(CEGUI::Point(0, 0)));
+		sheet->setZOrderingEnabled(true);
+		sheet->moveToBack();
+		System::getSingleton().setGUISheet(sheet);
+		mRootWindow = sheet;
 	}
 	//--------------------------------------------------------------------------------------------
-
 	GuiManager::~GuiManager()
 	{
-		mGui->shutdown();
-		delete mGui;
 	}
 	//--------------------------------------------------------------------------------------------
 	void GuiManager::setBackgroundImage(const String& textureName)
 	{
-		if (mBackgroundImage == nullptr)
-		{
-			mBackgroundImage = mGui->createWidget<MyGUI::StaticImage>("StaticImage",
-				MyGUI::IntCoord(MyGUI::IntPoint(), mGui->getViewSize()), MyGUI::Align::Stretch, "Back");
-		}
-		mBackgroundImage->setImageTexture(textureName);
-		mBackgroundImage->setNeedMouseFocus(false);
 	}
 	//--------------------------------------------------------------------------------------------
 	void GuiManager::run(Real elapsedTime)
 	{
-		MADA_LOG_CORE("begin GuiManager::run");
-
-		mGui->injectFrameEntered(elapsedTime);
-
-		MADA_LOG_CORE("end GuiManager::run");
 	}
 	//--------------------------------------------------------------------------------------------
 	bool GuiManager::mousePressed(const OIS::MouseEvent& evt, OIS::MouseButtonID id)
 	{
-		return mGui->injectMousePress(evt, id);
+		return CEGUI::System::getSingleton().injectMouseButtonDown(static_cast<CEGUI::MouseButton>(id));
 	}
 	//--------------------------------------------------------------------------------------------
 	bool GuiManager::mouseReleased(const OIS::MouseEvent& evt, OIS::MouseButtonID id)
 	{
-		return mGui->injectMouseRelease(evt, id);
+		return CEGUI::System::getSingleton().injectMouseButtonUp(static_cast<CEGUI::MouseButton>(id));
 	}
 	//--------------------------------------------------------------------------------------------
 	bool GuiManager::mouseMoved(const OIS::MouseEvent& evt)
 	{
-		return mGui->injectMouseMove(evt);
+		return CEGUI::System::getSingleton().injectMouseMove(evt.state.X.rel, evt.state.Y.rel);
 	}
 	//--------------------------------------------------------------------------------------------
 	bool GuiManager::keyPressed(const OIS::KeyEvent& evt)
 	{
-		return mGui->injectKeyPress(evt);
+		return CEGUI::System::getSingleton().injectKeyDown(evt.key);
 	}
 	//--------------------------------------------------------------------------------------------
 	bool GuiManager::keyReleased(const OIS::KeyEvent& evt)
 	{
-		return mGui->injectKeyRelease(evt);
+		return CEGUI::System::getSingleton().injectKeyUp(evt.key);
+	}
+	//--------------------------------------------------------------------------------------------
+	CEGUI::Window* GuiManager::_getRootWindow() const
+	{
+		return mRootWindow;
 	}
 	//--------------------------------------------------------------------------------------------
 }

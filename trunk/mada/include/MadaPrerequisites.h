@@ -26,5 +26,8 @@ namespace mada
 {
 	typedef std::string String;
 	typedef float Real;
+
+#define MADA_ASSERT(EXP)
+#define MADA_RAISE(EX)
 }
 #endif

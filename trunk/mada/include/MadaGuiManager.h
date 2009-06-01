@@ -21,7 +21,10 @@
 
 #include "MadaPrerequisites.h"
 
-#include <MyGui.h>
+#include <map>
+
+#include <Cegui.h>
+#include <OgreCEGUIRenderer.h>
 #include <OgreRenderWindow.h>
 
 #include "MadaGameTask.h"
@@ -32,24 +35,29 @@ namespace mada
 	class GuiManager : public GameTask, public Ogre::Singleton<GuiManager>, public InputListener
 	{
 	public:
-		GuiManager(Ogre::RenderWindow*);
+		GuiManager(Ogre::RenderWindow*, Ogre::SceneManager*);
 		~GuiManager();
 
 		void setBackgroundImage(const String& textureName);
 
-        // GameTask overrides
+		// GameTask overrides
 		void run(Real elapsedTime);
 
 		// InputListener overrides
-        virtual bool mousePressed(const OIS::MouseEvent& evt, OIS::MouseButtonID id);
-        virtual bool mouseReleased(const OIS::MouseEvent& evt, OIS::MouseButtonID id);
-        virtual bool mouseMoved(const OIS::MouseEvent& evt);
-        virtual bool keyPressed(const OIS::KeyEvent& evt);
-        virtual bool keyReleased(const OIS::KeyEvent& evt);
+		virtual bool mousePressed(const OIS::MouseEvent& evt, OIS::MouseButtonID id);
+		virtual bool mouseReleased(const OIS::MouseEvent& evt, OIS::MouseButtonID id);
+		virtual bool mouseMoved(const OIS::MouseEvent& evt);
+		virtual bool keyPressed(const OIS::KeyEvent& evt);
+		virtual bool keyReleased(const OIS::KeyEvent& evt);
 
+
+		// GUI system internal use functions
+		CEGUI::Window* _getRootWindow() const;
 	private:
-		MyGUI::Gui* mGui;
-		MyGUI::StaticImagePtr mBackgroundImage;
+		CEGUI::System* mGuiSystem;
+		CEGUI::ResourceProvider* mGuiResourceProvider;
+		CEGUI::OgreCEGUIRenderer* mGuiRenderer;
+		CEGUI::Window* mRootWindow;
 	};
 }
 

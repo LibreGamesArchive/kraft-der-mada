@@ -30,20 +30,20 @@
 
 using namespace Ogre;
 
-mada::Mada* Ogre::Singleton<mada::Mada>::ms_Singleton = nullptr;
+mada::Mada* Ogre::Singleton<mada::Mada>::ms_Singleton = NULL;
 
 namespace mada
 {
 	Mada::Mada() : mBaseDir(""),
-				   mOgreRoot(nullptr),
-				   mMainWindow(nullptr),
-				   mSceneManager(nullptr),
-				   mCamera(nullptr),
-				   mDatabase(nullptr),
-				   mGuiManager(nullptr),
-				   mInputManager(nullptr),
-				   mSoundManager(nullptr),
-				   mGameLoop(nullptr)
+				   mOgreRoot(NULL),
+				   mMainWindow(NULL),
+				   mSceneManager(NULL),
+				   mCamera(NULL),
+				   mDatabase(NULL),
+				   mGuiManager(NULL),
+				   mInputManager(NULL),
+				   mSoundManager(NULL),
+				   mGameLoop(NULL)
 	{
 		// Get the base directory, so we can find all files needed.
 		std::ifstream baseDirFile = std::ifstream("basedir.cfg", std::ios_base::in);
@@ -73,8 +73,11 @@ namespace mada
 		// Initialise resources
 
 		ResourceGroupManager* groupMgr = ResourceGroupManager::getSingletonPtr();
-		groupMgr->addResourceLocation(mBaseDir + "\\media\\gui\\core", "FileSystem");
+		groupMgr->addResourceLocation(mBaseDir + "\\media\\gui", "FileSystem");
+		groupMgr->addResourceLocation(mBaseDir + "\\media\\gui\\fonts", "FileSystem");
+		groupMgr->addResourceLocation(mBaseDir + "\\media\\gui\\imagesets", "FileSystem");
 		groupMgr->addResourceLocation(mBaseDir + "\\media\\gui\\layouts", "FileSystem");
+		groupMgr->addResourceLocation(mBaseDir + "\\media\\gui\\schemes", "FileSystem");
 		groupMgr->addResourceLocation(mBaseDir + "\\media\\textures", "FileSystem");
 		groupMgr->addResourceLocation(mBaseDir + "\\media\\materials", "FileSystem");
 		groupMgr->addResourceLocation(mBaseDir + "\\media\\meshes", "FileSystem");
@@ -87,7 +90,7 @@ namespace mada
 		// Initialise mada managers
 
 		mDatabase = new Database(mBaseDir + "\\data\\mada.db3");
-		mGuiManager = new GuiManager(mMainWindow);
+		mGuiManager = new GuiManager(mMainWindow, mSceneManager);
 		mInputManager = new InputManager(mMainWindow);
 		mSoundManager = new SoundManager(mBaseDir);
 
@@ -175,7 +178,7 @@ INT WINAPI WinMain( HINSTANCE hInst, HINSTANCE, LPSTR strCmdLine, INT )
 	}
 	catch (std::exception& e)
 	{
-		MessageBox(nullptr, e.what(), "FATAL ERROR", MB_ICONERROR | MB_OK);
+		MessageBox(NULL, e.what(), "FATAL ERROR", MB_ICONERROR | MB_OK);
 
 		MADA_LOG_CORE(mada::String("fatal exception: ") + e.what());
 
