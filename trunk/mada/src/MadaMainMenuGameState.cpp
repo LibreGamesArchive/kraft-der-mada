@@ -19,6 +19,8 @@
 #include "stdinc.h"
 #include "MadaMainMenuGameState.h"
 
+#include <Poco/Delegate.h>
+
 #include "Mada.h"
 #include "MadaMainMenuWindow.h"
 #include "MadaSoundManager.h"
@@ -39,10 +41,10 @@ namespace mada
 	void MainMenuGameState::resumeImpl()
 	{
 		SoundManager::getSingleton().playSound2d(mMusicFile, true);
-
-		//mGuiManager->setBackgroundImage("bg_mainmenu.jpg");
-
 		mWindow->setVisible(true);
+
+		mWindow->ENewGameButtonClicked += Poco::delegate(this, &MainMenuGameState::newGameClicked);
+		mWindow->EQuitButtonClicked += Poco::delegate(this, &MainMenuGameState::quitClicked);
 	}
 	//--------------------------------------------------------------------------------------------
 	void MainMenuGameState::suspendImpl()
@@ -53,6 +55,15 @@ namespace mada
 	//--------------------------------------------------------------------------------------------
 	void MainMenuGameState::run(Real timeSinceLastFrame)
 	{
+	}
+	//--------------------------------------------------------------------------------------------
+	void MainMenuGameState::newGameClicked(const void* sender, int& dummy)
+	{
+	}
+	//--------------------------------------------------------------------------------------------
+	void MainMenuGameState::quitClicked(const void* sender, int& dummy)
+	{
+		GameLoop::getSingleton().quit();
 	}
 	//--------------------------------------------------------------------------------------------
 }
