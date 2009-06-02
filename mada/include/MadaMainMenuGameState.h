@@ -40,6 +40,10 @@ namespace mada
 
 		virtual void resumeImpl();
 		virtual void suspendImpl();
+
+		// Event handlers
+		void newGameClicked(const void* sender, int& dummy);
+		void quitClicked(const void* sender, int& dummy);
 	};
 }
 

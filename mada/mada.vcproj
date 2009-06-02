@@ -42,7 +42,7 @@
 				Name="VCCLCompilerTool"
 				AdditionalOptions="/Zm256"
 				Optimization="0"
-				AdditionalIncludeDirectories=".\include;.\sqlite;..\dependencies\ois\includes;..\dependencies\ogre\OgreMain\include;..\dependencies\irrKlang\include;..\dependencies\cegui\include;..\dependencies\ogre\Samples\Common\CEGUIRenderer\include;..\dependencies\ogre\Dependencies\include"
+				AdditionalIncludeDirectories=".\include;.\sqlite;..\dependencies\ois\includes;..\dependencies\ogre\OgreMain\include;..\dependencies\irrKlang\include;..\dependencies\cegui\include;..\dependencies\ogre\Samples\Common\CEGUIRenderer\include;..\dependencies\ogre\Dependencies\include;..\dependencies\poco\Foundation\include"
 				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
@@ -63,9 +63,9 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="OgreMain_d.lib irrKlang.lib CEGUIBase_d.lib OgreGUIRenderer_d.lib OIS_static_d.lib"
+				AdditionalDependencies="OgreMain_d.lib irrKlang.lib CEGUIBase_d.lib OgreGUIRenderer_d.lib OIS_static_d.lib PocoFoundationd.lib"
 				LinkIncremental="2"
-				AdditionalLibraryDirectories="..\dependencies\ois\lib;..\dependencies\ogre\lib;..\dependencies\cegui\lib;&quot;..\dependencies\irrKlang\lib\Win32-visualStudio&quot;;&quot;..\dependencies\ogre\Dependencies\lib\$(ConfigurationName)&quot;"
+				AdditionalLibraryDirectories="..\dependencies\ois\lib;..\dependencies\ogre\lib;..\dependencies\cegui\lib;&quot;..\dependencies\irrKlang\lib\Win32-visualStudio&quot;;&quot;..\dependencies\ogre\Dependencies\lib\$(ConfigurationName)&quot;;..\dependencies\poco\lib"
 				GenerateDebugInformation="true"
 				SubSystem="2"
 				TargetMachine="1"
@@ -120,7 +120,7 @@
 				AdditionalOptions="/Zm256"
 				Optimization="2"
 				EnableIntrinsicFunctions="true"
-				AdditionalIncludeDirectories=".\include;.\sqlite;..\dependencies\ois\includes;..\dependencies\ogre\OgreMain\include;..\dependencies\irrKlang\include;..\dependencies\cegui\include;..\dependencies\ogre\Samples\Common\CEGUIRenderer\include;..\dependencies\ogre\Dependencies\include"
+				AdditionalIncludeDirectories=".\include;.\sqlite;..\dependencies\ois\includes;..\dependencies\ogre\OgreMain\include;..\dependencies\irrKlang\include;..\dependencies\cegui\include;..\dependencies\ogre\Samples\Common\CEGUIRenderer\include;..\dependencies\ogre\Dependencies\include;..\dependencies\poco\Foundation\include"
 				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS"
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"
@@ -140,9 +140,9 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="OgreMain.lib irrKlang.lib CEGUIBase.lib OgreGUIRenderer.lib OIS_static.lib"
+				AdditionalDependencies="OgreMain.lib irrKlang.lib CEGUIBase.lib OgreGUIRenderer.lib OIS_static.lib PocoFoundation.lib"
 				LinkIncremental="1"
-				AdditionalLibraryDirectories="..\dependencies\ois\lib;..\dependencies\ogre\lib;..\dependencies\cegui\lib;&quot;..\dependencies\irrKlang\lib\Win32-visualStudio&quot;;&quot;..\dependencies\ogre\Dependencies\lib\$(ConfigurationName)&quot;"
+				AdditionalLibraryDirectories="..\dependencies\ois\lib;..\dependencies\ogre\lib;..\dependencies\cegui\lib;&quot;..\dependencies\irrKlang\lib\Win32-visualStudio&quot;;&quot;..\dependencies\ogre\Dependencies\lib\$(ConfigurationName)&quot;;..\dependencies\poco\lib"
 				GenerateDebugInformation="true"
 				SubSystem="2"
 				OptimizeReferences="2"
