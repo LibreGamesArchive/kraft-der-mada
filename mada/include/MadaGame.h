@@ -16,39 +16,23 @@
     along with Kraft der Mada. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef __MADA_MADA_PREREQUISITES_H__
-#define __MADA_MADA_PREREQUISITES_H__
+#ifndef __MADA_MADA_GAME_H__
+#define __MADA_MADA_GAME_H__
 
-#include <string>
+#include "MadaPrerequisites.h"
 
-// common typedefs
+#include <Poco/BasicEvent.h>
+
 namespace mada
 {
-	typedef std::string String;
-	typedef float Real;
+	class Game
+	{
+	public:
+		Game();
+		~Game();
 
-#define MADA_ASSERT(EXP)
-#define MADA_RAISE(EX)
-
-	//forwards
-	class CeGuiHelper;
-	class Database;
-	class GameLoop;
-	class GameObject;
-	class GameObjectManager;
-	class GameState;
-	class GameTask;
-	class GoComponent;
-	class GuiManager;
-	class GuiWindow;
-	class InputListener;
-	class InputManager;
-	class Logger;
-	class Mada;
-	class MainMenuGameState;
-	class MainMenuWindow;
-	class QueryResultSet;
-	class SoundManager;
-
+	private:
+	};
 }
+
 #endif

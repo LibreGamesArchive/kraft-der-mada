@@ -16,39 +16,32 @@
     along with Kraft der Mada. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef __MADA_MADA_PREREQUISITES_H__
-#define __MADA_MADA_PREREQUISITES_H__
+#ifndef __MADA_MADA_GAME_OBJECT_COMPONENT_H__
+#define __MADA_MADA_GAME_OBJECT_COMPONENT_H__
 
-#include <string>
+#include "MadaPrerequisites.h"
 
-// common typedefs
+#include "MadaGameObject.h"
+
 namespace mada
 {
-	typedef std::string String;
-	typedef float Real;
+	class GoComponent
+	{
+	public:
+		GoComponent(const String& id);
+		virtual ~GoComponent();
 
-#define MADA_ASSERT(EXP)
-#define MADA_RAISE(EX)
+		virtual const String& componentId() const = 0;
+		virtual const String& familyId() const = 0;
 
-	//forwards
-	class CeGuiHelper;
-	class Database;
-	class GameLoop;
-	class GameObject;
-	class GameObjectManager;
-	class GameState;
-	class GameTask;
-	class GoComponent;
-	class GuiManager;
-	class GuiWindow;
-	class InputListener;
-	class InputManager;
-	class Logger;
-	class Mada;
-	class MainMenuGameState;
-	class MainMenuWindow;
-	class QueryResultSet;
-	class SoundManager;
+		virtual void update();
 
+		GameObject* getOwner() const;
+		void setOwner(GameObject* go);
+
+	private:
+		GameObject* mOwner;
+	};
 }
+
 #endif
