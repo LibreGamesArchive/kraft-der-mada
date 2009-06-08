@@ -25,9 +25,6 @@
 
 namespace mada
 {
-	class GuiManager;
-	class InputManager;
-
 	class GameState : public InputListener
 	{
 	public:

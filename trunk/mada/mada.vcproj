@@ -193,6 +193,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\src\MadaGameObject.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\src\MadaGameState.cpp"
 				>
 			</File>
@@ -247,11 +251,23 @@
 				>
 			</File>
 			<File
+				RelativePath=".\include\MadaGameObject.h"
+				>
+			</File>
+			<File
+				RelativePath=".\include\MadaGameObjectManager.h"
+				>
+			</File>
+			<File
 				RelativePath=".\include\MadaGameState.h"
 				>
 			</File>
 			<File
 				RelativePath=".\include\MadaGameTask.h"
+				>
+			</File>
+			<File
+				RelativePath=".\include\MadaGoComponent.h"
 				>
 			</File>
 			<File
