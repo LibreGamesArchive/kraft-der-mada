@@ -225,6 +225,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\src\MadaProperty.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\src\MadaSoundManager.cpp"
 				>
 			</File>
@@ -239,11 +243,19 @@
 				>
 			</File>
 			<File
+				RelativePath=".\include\MadaAny.h"
+				>
+			</File>
+			<File
 				RelativePath=".\include\MadaCeguiHelper.h"
 				>
 			</File>
 			<File
 				RelativePath=".\include\MadaDatabase.h"
+				>
+			</File>
+			<File
+				RelativePath=".\include\MadaGame.h"
 				>
 			</File>
 			<File
@@ -300,6 +312,14 @@
 			</File>
 			<File
 				RelativePath=".\include\MadaPrerequisites.h"
+				>
+			</File>
+			<File
+				RelativePath=".\include\MadaProperty.h"
+				>
+			</File>
+			<File
+				RelativePath=".\include\MadaScene.h"
 				>
 			</File>
 			<File
