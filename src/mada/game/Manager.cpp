@@ -16,27 +16,19 @@
     along with Kraft der Mada. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef __MADA_stdinc_h__
-#define __MADA_stdinc_h__
+#include "stdmadainc.h"
 
-#include <list>
-#include <map>
-#include <set>
-#include <string>
-#include <vector>
+#include "game/Manager.h"
 
-#include <iostream>
-#include <sstream>
+namespace mada
+{
+	__mada_implement_root_class(Manager);
 
-#include <algorithm>
-#include <functional>
-#include <utility>
+	Manager::Manager()
+	{
+	}
 
-#define NOMINMAX
-#include <Windows.h>
-
-
-#include <Ogre.h>
-#include <OIS.h>
-
-#endif
+	Manager::~Manager()
+	{
+	}
+}

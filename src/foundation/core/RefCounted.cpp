@@ -15,28 +15,53 @@
     You should have received a copy of the GNU General Public License
     along with Kraft der Mada. If not, see <http://www.gnu.org/licenses/>.
 */
+#include "stdmadainc.h"
+#include "core/RefCounted.h"
 
-#ifndef __MADA_stdinc_h__
-#define __MADA_stdinc_h__
+namespace mada
+{
+	RefCounted::RefCounted() : m_refCount(0)
+	{
+	}
 
-#include <list>
-#include <map>
-#include <set>
-#include <string>
-#include <vector>
+	RefCounted::~RefCounted()
+	{
+		mada_assert(0 == m_refCount);
+	}
 
-#include <iostream>
-#include <sstream>
+	int RefCounted::getRefCount() const
+	{
+		return m_refCount;
+	}
 
-#include <algorithm>
-#include <functional>
-#include <utility>
+	void RefCounted::addRef()
+	{
+		++m_refCount;
+	}
 
-#define NOMINMAX
-#include <Windows.h>
+	void RefCounted::release()
+	{
+		if (0 == --m_refCount)
+		{
+			mada_delete(this);
+		}
+	}
 
+	///\todo implement
+	String RefCounted::getClassName() const
+	{
+		return "TODO";
+	}
 
-#include <Ogre.h>
-#include <OIS.h>
+	///\todo implement
+	bool RefCounted::isInstanceOf(const String&) const
+	{
+		return false;
+	}
 
-#endif
+	///\todo implement
+	bool RefCounted::isA(const String&) const
+	{
+		return false;
+	}
+}

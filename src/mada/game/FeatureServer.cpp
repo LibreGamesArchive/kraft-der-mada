@@ -16,27 +16,51 @@
     along with Kraft der Mada. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef __MADA_stdinc_h__
-#define __MADA_stdinc_h__
+#include "stdmadainc.h"
 
-#include <list>
-#include <map>
-#include <set>
-#include <string>
-#include <vector>
+#include "game/FeatureServer.h"
 
-#include <iostream>
-#include <sstream>
+namespace mada
+{
+	__mada_implement_root_class(FeatureServer);
 
-#include <algorithm>
-#include <functional>
-#include <utility>
+	FeatureServer::FeatureServer()
+	{
+	}
 
-#define NOMINMAX
-#include <Windows.h>
+	FeatureServer::~FeatureServer()
+	{
+	}
 
+	void FeatureServer::onActivate()
+	{
+	}
 
-#include <Ogre.h>
-#include <OIS.h>
+	void FeatureServer::onDeactivate()
+	{
+	}
 
-#endif
+	void FeatureServer::onLoad()
+	{
+	}
+
+	void FeatureServer::onStart()
+	{
+	}
+
+	void FeatureServer::onSave()
+	{
+	}
+
+	void FeatureServer::onBeginFrame()
+	{
+	}
+
+	void FeatureServer::onFrame()
+	{
+	}
+
+	void FeatureServer::onEndFrame()
+	{
+	}
+}

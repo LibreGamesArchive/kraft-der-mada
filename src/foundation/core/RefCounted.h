@@ -1,3 +1,5 @@
+#pragma once
+
 /*
 	This file is part of Kraft der Mada.
 	Copyright (c) 2009 Daniel Wickert
@@ -16,27 +18,28 @@
     along with Kraft der Mada. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef __MADA_stdinc_h__
-#define __MADA_stdinc_h__
+#include "core/Factory.h"
+#include "core/Ptr.h"
+#include "core/Rtti.h"
 
-#include <list>
-#include <map>
-#include <set>
-#include <string>
-#include <vector>
+namespace mada
+{
+	class RefCounted
+	{
+	public:
+		RefCounted();
+		int getRefCount() const;
+		void addRef();
+		void release();
 
-#include <iostream>
-#include <sstream>
+		String getClassName() const;
+		bool isInstanceOf(const String&) const;
+		bool isA(const String&) const;
 
-#include <algorithm>
-#include <functional>
-#include <utility>
+	protected:
+		virtual ~RefCounted();
 
-#define NOMINMAX
-#include <Windows.h>
-
-
-#include <Ogre.h>
-#include <OIS.h>
-
-#endif
+	private:
+		int m_refCount;
+	};
+}

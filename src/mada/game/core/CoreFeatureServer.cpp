@@ -16,27 +16,39 @@
     along with Kraft der Mada. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef __MADA_stdinc_h__
-#define __MADA_stdinc_h__
+#include "stdmadainc.h"
 
-#include <list>
-#include <map>
-#include <set>
-#include <string>
-#include <vector>
+#include "game/core/CoreFeatureServer.h"
 
-#include <iostream>
-#include <sstream>
+#include "GameServer.h"
 
-#include <algorithm>
-#include <functional>
-#include <utility>
+namespace mada
+{
+	__mada_implement_class(CoreFeatureServer, FeatureServer);
+	__mada_implement_singleton(CoreFeatureServer);
 
-#define NOMINMAX
-#include <Windows.h>
+	CoreFeatureServer::CoreFeatureServer()
+	{
+		__mada_construct_singleton;
+	}
 
+	CoreFeatureServer::~CoreFeatureServer()
+	{
+		__mada_destruct_singleton;
+	}
 
-#include <Ogre.h>
-#include <OIS.h>
+	void CoreFeatureServer::onActivate()
+	{
+		FeatureServer::onActivate();
+	}
 
-#endif
+	void CoreFeatureServer::onDeactivate()
+	{
+		FeatureServer::onDeactivate();
+	}
+
+	void CoreFeatureServer::onEndFrame()
+	{
+		FeatureServer::onEndFrame();
+	}
+}

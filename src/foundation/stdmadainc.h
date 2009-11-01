@@ -1,3 +1,4 @@
+#pragma once
 /*
 	This file is part of Kraft der Mada.
 	Copyright (c) 2009 Daniel Wickert
@@ -16,27 +17,20 @@
     along with Kraft der Mada. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef __MADA_stdinc_h__
-#define __MADA_stdinc_h__
-
-#include <list>
-#include <map>
-#include <set>
-#include <string>
-#include <vector>
-
-#include <iostream>
-#include <sstream>
-
-#include <algorithm>
-#include <functional>
-#include <utility>
-
-#define NOMINMAX
-#include <Windows.h>
-
-
-#include <Ogre.h>
-#include <OIS.h>
-
+#include "core/Config.h"
+#if WIN32
+#include "core/win32/Precompiled.h"
+#else
+#error "precompiled.h not implemented on this platform"
 #endif
+//------------------------------------------------------------------------------
+
+#pragma hdrstop
+
+#include "core/Types.h"
+#include "core/Debug.h"
+#include "core/Memory.h"
+
+#include "core/Ptr.h"
+#include "core/RefCounted.h"
+#include "core/SingletonMacros.h"

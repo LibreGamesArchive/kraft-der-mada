@@ -15,28 +15,40 @@
     You should have received a copy of the GNU General Public License
     along with Kraft der Mada. If not, see <http://www.gnu.org/licenses/>.
 */
+#include "stdmadainc.h"
 
-#ifndef __MADA_stdinc_h__
-#define __MADA_stdinc_h__
+#include "messaging/Message.h"
 
-#include <list>
-#include <map>
-#include <set>
-#include <string>
-#include <vector>
+namespace mada
+{
+	__mada_implement_root_class(Message);
+	__mada_implement_message_id(Message);
 
-#include <iostream>
-#include <sstream>
+	Message::Message() :  m_isHandled(false)
+	{
+	}
 
-#include <algorithm>
-#include <functional>
-#include <utility>
+	Message::~Message()
+	{
+	}
 
-#define NOMINMAX
-#include <Windows.h>
+	bool Message::hasId(const MessageId& id) const
+	{
+		return id == m_id;
+	}
 
+	String Message::toString() const
+	{
+		return String("Message. ") + (m_isHandled ? "handled" : "unandled");
+	}
 
-#include <Ogre.h>
-#include <OIS.h>
+	bool Message::isHandled() const
+	{
+		return m_isHandled;
+	}
 
-#endif
+	void Message::setHandled(bool handled)
+	{
+		m_isHandled = handled;
+	}
+}

@@ -1,3 +1,5 @@
+#pragma once
+
 /*
 	This file is part of Kraft der Mada.
 	Copyright (c) 2009 Daniel Wickert
@@ -16,27 +18,44 @@
     along with Kraft der Mada. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef __MADA_stdinc_h__
-#define __MADA_stdinc_h__
+#include "game/FeatureServer.h"
 
-#include <list>
-#include <map>
-#include <set>
-#include <string>
+#include "MasterTime.h"
+
 #include <vector>
 
-#include <iostream>
-#include <sstream>
+namespace mada
+{
+	class GameServer : public RefCounted
+	{
+		__mada_declare_class(GameServer);
+		__mada_declare_singleton(GameServer);
+	public:
+		GameServer();
+		~GameServer();
 
-#include <algorithm>
-#include <functional>
-#include <utility>
+		void open();
+		void close();
 
-#define NOMINMAX
-#include <Windows.h>
+		void start();
+		void stop();
 
+		void frame();
 
-#include <Ogre.h>
-#include <OIS.h>
+		void addFeatureServer(const Ptr<FeatureServer>& server);
+		void removeFeatureServer(const Ptr<FeatureServer>& server);
 
-#endif
+		bool isQuitRequested() const;
+		void requestQuit();
+
+	private:
+		bool m_quitRequested;
+		bool m_isOpen;
+		bool m_isStarted;
+
+		Ptr<mada::MasterTime> m_masterTime;
+
+		typedef std::vector<Ptr<FeatureServer> > FeatureServerVector;
+		FeatureServerVector m_featureServers;
+	};
+}

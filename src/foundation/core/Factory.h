@@ -1,3 +1,5 @@
+#pragma once
+
 /*
 	This file is part of Kraft der Mada.
 	Copyright (c) 2009 Daniel Wickert
@@ -16,27 +18,27 @@
     along with Kraft der Mada. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef __MADA_stdinc_h__
-#define __MADA_stdinc_h__
+namespace mada
+{
+	class RefCounted;
+	class Rtti;
 
-#include <list>
-#include <map>
-#include <set>
-#include <string>
-#include <vector>
+	class Factory
+	{
+	public:
+		static Factory* instance();
 
-#include <iostream>
-#include <sstream>
+		void registerClass(const Rtti* rtti);
+		bool isClassRegistered(const String& className) const;
+		const Rtti* getClassRtti(const String& className) const;
+		RefCounted* createClassInstance(const String& className) const;
 
-#include <algorithm>
-#include <functional>
-#include <utility>
+	private:
+		static Factory* ms_instance;
+		typedef std::map<String, const Rtti*> RttiMap;
+		RttiMap m_rttis;
 
-#define NOMINMAX
-#include <Windows.h>
-
-
-#include <Ogre.h>
-#include <OIS.h>
-
-#endif
+		Factory();
+		~Factory();
+	};
+}

@@ -16,27 +16,50 @@
     along with Kraft der Mada. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef __MADA_stdinc_h__
-#define __MADA_stdinc_h__
+#include "stdmadainc.h"
 
-#include <list>
-#include <map>
-#include <set>
-#include <string>
-#include <vector>
+#include "game/GameState.h"
 
-#include <iostream>
-#include <sstream>
+namespace mada
+{
+	__mada_implement_root_class(GameState);
 
-#include <algorithm>
-#include <functional>
-#include <utility>
+	GameState::GameState() : m_name()
+	{
+	}
 
-#define NOMINMAX
-#include <Windows.h>
+	GameState::~GameState()
+	{
+	}
 
+	void GameState::activate()
+	{
+	}
 
-#include <Ogre.h>
-#include <OIS.h>
+	void GameState::deactivate()
+	{
+	}
 
-#endif
+	void GameState::onRegister()
+	{
+	}
+
+	void GameState::onUnregister()
+	{
+	}
+
+	String GameState::update()
+	{
+		return getName();
+	}
+
+	String GameState::getName() const
+	{
+		return m_name;
+	}
+
+	void GameState::setName(const String& name)
+	{
+		m_name = name;
+	}
+}

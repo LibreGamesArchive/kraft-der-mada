@@ -1,3 +1,5 @@
+#pragma once
+
 /*
 	This file is part of Kraft der Mada.
 	Copyright (c) 2009 Daniel Wickert
@@ -16,36 +18,38 @@
     along with Kraft der Mada. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef __MADA_MADA_GAME_OBJECT_H__
-#define __MADA_MADA_GAME_OBJECT_H__
+#include "core/RefCounted.h"
+#include "messaging/Message.h"
+#include "messaging/MessageHandler.h"
 
-#include "MadaPrerequisites.h"
+#include <set>
+#include <vector>
 
 namespace mada
 {
-	class GameObject
+	class MessagePort : public RefCounted
 	{
+		__mada_declare_class(MessagePort);
 	public:
-		GameObject(const String& id);
-		~GameObject();
+		MessagePort();
+		~MessagePort();
 
-		Ogre::Vector3 getPosition() const;
-		Ogre::Quaternion getOrientation() const;
+		virtual void setupAcceptedMessages();
 
-		void setPosition(const Ogre::Vector3&);
-		void setOrientation(const Ogre::Quaternion&);
+		void attachHandler(const Ptr<MessageHandler>& handler);
+		void removeHandler(const Ptr<MessageHandler>& handler);
 
-		GoComponent* getComponent(const String& familyId) const;
-		void setComponent(GoComponent*);
+		void removeAllHandlers();
+
+		virtual void send(const Ptr<Message>& msg);
+		bool acceptsMessage(const MessageId& msgId) const;
+
+	protected:
+		void registerMessage(const MessageId& msgId);
+		virtual void handleMessage(const Ptr<Message>& msg);
 
 	private:
-		typedef std::map<String, GoComponent*> ComponentMap;
-
-		String mId;
-		ComponentMap mComponents;
-		Ogre::Vector3 mPosition;
-		Ogre::Quaternion mOrientation;
+		std::vector<Ptr<MessageHandler> > m_handlers;
+		std::set<const MessageId*> m_acceptedMessageIds;
 	};
 }
-
-#endif
