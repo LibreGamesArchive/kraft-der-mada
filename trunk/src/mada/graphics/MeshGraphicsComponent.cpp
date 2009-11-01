@@ -1,3 +1,5 @@
+#pragma once
+
 /*
 	This file is part of Kraft der Mada.
 	Copyright (c) 2009 Daniel Wickert
@@ -15,28 +17,19 @@
     You should have received a copy of the GNU General Public License
     along with Kraft der Mada. If not, see <http://www.gnu.org/licenses/>.
 */
+#include "stdmadainc.h"
 
-#ifndef __MADA_stdinc_h__
-#define __MADA_stdinc_h__
+#include "graphics/MeshGraphicsComponent.h"
 
-#include <list>
-#include <map>
-#include <set>
-#include <string>
-#include <vector>
+namespace mada
+{
+	__mada_implement_class(MeshGraphicsComponent, Component);
 
-#include <iostream>
-#include <sstream>
+	MeshGraphicsComponent::MeshGraphicsComponent()
+	{
+	}
 
-#include <algorithm>
-#include <functional>
-#include <utility>
-
-#define NOMINMAX
-#include <Windows.h>
-
-
-#include <Ogre.h>
-#include <OIS.h>
-
-#endif
+	MeshGraphicsComponent::~MeshGraphicsComponent()
+	{
+	}
+}

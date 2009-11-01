@@ -1,3 +1,5 @@
+#pragma once
+
 /*
 	This file is part of Kraft der Mada.
 	Copyright (c) 2009 Daniel Wickert
@@ -16,27 +18,29 @@
     along with Kraft der Mada. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef __MADA_stdinc_h__
-#define __MADA_stdinc_h__
+#include "core/RefCounted.h"
 
-#include <list>
-#include <map>
-#include <set>
-#include <string>
-#include <vector>
+namespace mada
+{
+	class FeatureServer : public RefCounted
+	{
+		__mada_declare_class(FeatureServer);
+	public:
+		FeatureServer();
+		~FeatureServer();
 
-#include <iostream>
-#include <sstream>
+		virtual void onActivate();
+		virtual void onDeactivate();
 
-#include <algorithm>
-#include <functional>
-#include <utility>
+		virtual void onLoad();
+		virtual void onStart();
+		virtual void onSave();
 
-#define NOMINMAX
-#include <Windows.h>
+		virtual void onBeginFrame();
+		virtual void onFrame();
+		virtual void onEndFrame();
 
+	private:
 
-#include <Ogre.h>
-#include <OIS.h>
-
-#endif
+	};
+}

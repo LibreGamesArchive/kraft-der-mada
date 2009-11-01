@@ -1,3 +1,5 @@
+#pragma once
+
 /*
 	This file is part of Kraft der Mada.
 	Copyright (c) 2009 Daniel Wickert
@@ -16,27 +18,28 @@
     along with Kraft der Mada. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef __MADA_stdinc_h__
-#define __MADA_stdinc_h__
+#include "core/RefCounted.h"
+#include "core/SingletonMacros.h"
 
-#include <list>
-#include <map>
-#include <set>
-#include <string>
-#include <vector>
+#include "game/FeatureServer.h"
 
-#include <iostream>
-#include <sstream>
+namespace mada
+{
+	class GraphicsFeatureServer : public FeatureServer
+	{
+		__mada_declare_class(GraphicsFeatureServer);
+		__mada_declare_singleton(GraphicsFeatureServer);
+	public:
+		GraphicsFeatureServer();
+		~GraphicsFeatureServer();
 
-#include <algorithm>
-#include <functional>
-#include <utility>
+		virtual void onActivate();
+		virtual void onDeactivate();
 
-#define NOMINMAX
-#include <Windows.h>
+		virtual void onEndFrame();
 
-
-#include <Ogre.h>
-#include <OIS.h>
-
-#endif
+	private:
+		Ogre::Root* m_root;
+		Ogre::RenderWindow* m_renderWindow;
+	};
+}

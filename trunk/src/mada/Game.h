@@ -1,3 +1,5 @@
+#pragma once
+
 /*
 	This file is part of Kraft der Mada.
 	Copyright (c) 2009 Daniel Wickert
@@ -16,27 +18,31 @@
     along with Kraft der Mada. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef __MADA_stdinc_h__
-#define __MADA_stdinc_h__
+#include "core/RefCounted.h"
+#include "core/SingletonMacros.h"
 
-#include <list>
-#include <map>
-#include <set>
-#include <string>
-#include <vector>
+#include "GameServer.h"
 
-#include <iostream>
-#include <sstream>
+#include "game/GameState.h"
+#include "game/core/GameStateManager.h"
 
-#include <algorithm>
-#include <functional>
-#include <utility>
+namespace mada
+{
+	class Game : public RefCounted
+	{
+		__mada_declare_class(Game);
+		__mada_declare_singleton(Game);
+	public:
+		Game();
+		~Game();
 
-#define NOMINMAX
-#include <Windows.h>
+		virtual void open();
+		virtual void run(const String& startGameState);
+		virtual void close();
 
-
-#include <Ogre.h>
-#include <OIS.h>
-
-#endif
+	private:
+		Ptr<GameServer> m_gameServer;
+		Ptr<GameStateManager> m_gameStateManager;
+		Ptr<GameState> m_gameState;
+	};
+}

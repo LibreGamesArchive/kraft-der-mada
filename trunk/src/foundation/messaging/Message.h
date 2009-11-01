@@ -1,3 +1,5 @@
+#pragma once
+
 /*
 	This file is part of Kraft der Mada.
 	Copyright (c) 2009 Daniel Wickert
@@ -16,36 +18,46 @@
     along with Kraft der Mada. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef __MADA_MADA_GAME_OBJECT_H__
-#define __MADA_MADA_GAME_OBJECT_H__
-
-#include "MadaPrerequisites.h"
+#include "core/RefCounted.h"
 
 namespace mada
 {
-	class GameObject
+	struct MessageId
 	{
+		MessageId() {}
+		bool operator==(const MessageId& other) const
+		{
+			return this == &other;
+		}
+	};
+
+#	define __mada_declare_message_id \
+	private: \
+	public: \
+		static MessageId m_id; \
+		virtual const MessageId& getId() const; \
+	private:
+
+#	define __mada_implement_message_id(Type) \
+	MessageId Type::m_id; \
+	const MessageId& Type::getId() const { return m_id; }
+
+	class Message : public RefCounted
+	{
+		__mada_declare_class(Message);
+		__mada_declare_message_id;
 	public:
-		GameObject(const String& id);
-		~GameObject();
+		Message();
+		~Message();
 
-		Ogre::Vector3 getPosition() const;
-		Ogre::Quaternion getOrientation() const;
+		bool hasId(const MessageId& id) const;
+		/// Debug-String der Message. z.B. zum Loggen.
+		virtual String toString() const;
 
-		void setPosition(const Ogre::Vector3&);
-		void setOrientation(const Ogre::Quaternion&);
-
-		GoComponent* getComponent(const String& familyId) const;
-		void setComponent(GoComponent*);
+		bool isHandled() const;
+		void setHandled(bool handled);
 
 	private:
-		typedef std::map<String, GoComponent*> ComponentMap;
-
-		String mId;
-		ComponentMap mComponents;
-		Ogre::Vector3 mPosition;
-		Ogre::Quaternion mOrientation;
+		bool m_isHandled;
 	};
 }
-
-#endif

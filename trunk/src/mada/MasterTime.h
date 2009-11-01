@@ -1,3 +1,5 @@
+#pragma once
+
 /*
 	This file is part of Kraft der Mada.
 	Copyright (c) 2009 Daniel Wickert
@@ -16,27 +18,38 @@
     along with Kraft der Mada. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef __MADA_stdinc_h__
-#define __MADA_stdinc_h__
+#include "core/RefCounted.h"
+#include "core/SingletonMacros.h"
 
-#include <list>
-#include <map>
-#include <set>
-#include <string>
-#include <vector>
+#include "timing/Timer.h"
 
-#include <iostream>
-#include <sstream>
+namespace mada
+{
+	class MasterTime : public RefCounted
+	{
+		__mada_declare_class(MasterTime);
+		__mada_declare_singleton(MasterTime);
+	public:
+		MasterTime();
+		~MasterTime();
 
-#include <algorithm>
-#include <functional>
-#include <utility>
+		void start();
+		void stop();
 
-#define NOMINMAX
-#include <Windows.h>
+		/// Samples time from underlying timer, this is the reference time given by this class' getters.
+		void update();
 
+		Time getFrameTime();
+		Time getTime();
 
-#include <Ogre.h>
-#include <OIS.h>
+		Ticks getFrameTicks();
+		Ticks getTicks();
+	private:
+		Ptr<Timer> m_timer;
 
-#endif
+		Time m_time;
+		Time m_frameTime;
+		Ticks m_ticks;
+		Ticks m_frameTicks;
+	};
+}

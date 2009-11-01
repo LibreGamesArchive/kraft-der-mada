@@ -1,3 +1,4 @@
+#pragma once
 /*
 	This file is part of Kraft der Mada.
 	Copyright (c) 2009 Daniel Wickert
@@ -16,27 +17,28 @@
     along with Kraft der Mada. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef __MADA_stdinc_h__
-#define __MADA_stdinc_h__
+#include "core/RefCounted.h"
 
-#include <list>
-#include <map>
-#include <set>
-#include <string>
-#include <vector>
+namespace mada
+{
+	class Timer : public RefCounted
+	{
+		__mada_declare_class(Timer);
 
-#include <iostream>
-#include <sstream>
+	public:
+		Timer();
 
-#include <algorithm>
-#include <functional>
-#include <utility>
+		void start();
+		void stop();
+		void reset();
+		bool isRunning() const;
 
-#define NOMINMAX
-#include <Windows.h>
+		Time getTime() const;
+		Ticks getTicks() const;
 
-
-#include <Ogre.h>
-#include <OIS.h>
-
-#endif
+	private:
+		bool m_isRunning;
+		Ticks m_startTime;
+		Ticks m_stopTime;
+	};
+}

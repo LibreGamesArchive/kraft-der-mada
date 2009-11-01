@@ -1,3 +1,4 @@
+#pragma once
 /*
 	This file is part of Kraft der Mada.
 	Copyright (c) 2009 Daniel Wickert
@@ -16,27 +17,20 @@
     along with Kraft der Mada. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef __MADA_stdinc_h__
-#define __MADA_stdinc_h__
+#include "core/SysUtils.h"
 
-#include <list>
-#include <map>
-#include <set>
-#include <string>
-#include <vector>
+#if MADA_DEBUG
 
-#include <iostream>
-#include <sstream>
-
-#include <algorithm>
-#include <functional>
-#include <utility>
-
-#define NOMINMAX
-#include <Windows.h>
+#define mada_assert(X) \
+	if (!(X)) \
+	{\
+		SysUtils::showMessageBox(#X, "Assert failed"); \
+		SysUtils::abort();\
+	}
 
 
-#include <Ogre.h>
-#include <OIS.h>
+#else
+
+#define mada_assert(X)
 
 #endif

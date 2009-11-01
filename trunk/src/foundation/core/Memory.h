@@ -1,3 +1,4 @@
+#pragma once
 /*
 	This file is part of Kraft der Mada.
 	Copyright (c) 2009 Daniel Wickert
@@ -16,27 +17,18 @@
     along with Kraft der Mada. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef __MADA_stdinc_h__
-#define __MADA_stdinc_h__
+#if MADA_DEBUG
 
-#include <list>
-#include <map>
-#include <set>
-#include <string>
-#include <vector>
+#define mada_new(type) new type
+#define mada_new_array(type, size) new type[size]
+#define mada_delete(ptr) delete ptr
+#define mada_delete_array(type, size) new type[size]
 
-#include <iostream>
-#include <sstream>
+#else
 
-#include <algorithm>
-#include <functional>
-#include <utility>
-
-#define NOMINMAX
-#include <Windows.h>
-
-
-#include <Ogre.h>
-#include <OIS.h>
+#define mada_new(type) new type
+#define mada_new_array(type, size) new type[size]
+#define mada_delete(ptr) delete ptr
+#define mada_delete_array(type, size) new type[size]
 
 #endif

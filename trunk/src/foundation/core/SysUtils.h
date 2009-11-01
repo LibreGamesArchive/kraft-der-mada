@@ -1,3 +1,4 @@
+#pragma once
 /*
 	This file is part of Kraft der Mada.
 	Copyright (c) 2009 Daniel Wickert
@@ -16,27 +17,9 @@
     along with Kraft der Mada. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef __MADA_stdinc_h__
-#define __MADA_stdinc_h__
-
-#include <list>
-#include <map>
-#include <set>
-#include <string>
-#include <vector>
-
-#include <iostream>
-#include <sstream>
-
-#include <algorithm>
-#include <functional>
-#include <utility>
-
-#define NOMINMAX
-#include <Windows.h>
-
-
-#include <Ogre.h>
-#include <OIS.h>
-
+#include "core/Config.h"
+#if WIN32
+#include "core/win32/Win32SysUtils.h"
+#else
+#error "SysUtils.h not implemented on this platform"
 #endif

@@ -1,3 +1,5 @@
+#pragma once
+
 /*
 	This file is part of Kraft der Mada.
 	Copyright (c) 2009 Daniel Wickert
@@ -16,36 +18,37 @@
     along with Kraft der Mada. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef __MADA_MADA_GAME_OBJECT_H__
-#define __MADA_MADA_GAME_OBJECT_H__
-
-#include "MadaPrerequisites.h"
-
 namespace mada
 {
-	class GameObject
+	class RefCounted;
+
+	class Rtti
 	{
 	public:
-		GameObject(const String& id);
-		~GameObject();
+		typedef RefCounted* (*Creator)();
 
-		Ogre::Vector3 getPosition() const;
-		Ogre::Quaternion getOrientation() const;
+		Rtti(const char* className, const Rtti* parentClass, Creator creator, size_t instanceSize);
 
-		void setPosition(const Ogre::Vector3&);
-		void setOrientation(const Ogre::Quaternion&);
+		bool operator==(const Rtti& other) const;
+		bool operator!=(const Rtti& other) const;
 
-		GoComponent* getComponent(const String& familyId) const;
-		void setComponent(GoComponent*);
+		RefCounted* createInstance() const;
+		void* allocInstanceMemory() const;
+		void freeInstanceMemory(void* ptr) const;
+
+		String getName() const;
+		size_t getInstanceSize() const;
+		const Rtti* getParent() const;
+
+		bool isDerivedFrom(const Rtti& other) const;
+		bool isDerivedFrom(const String& className) const;
 
 	private:
-		typedef std::map<String, GoComponent*> ComponentMap;
-
-		String mId;
-		ComponentMap mComponents;
-		Ogre::Vector3 mPosition;
-		Ogre::Quaternion mOrientation;
+		const String m_className;
+		const Rtti* m_parent;
+		const Creator m_creator;
+		const size_t m_instanceSize;
 	};
-}
 
-#endif
+#include "core/RttiMacros.h"
+}

@@ -1,3 +1,5 @@
+#pragma once
+
 /*
 	This file is part of Kraft der Mada.
 	Copyright (c) 2009 Daniel Wickert
@@ -16,27 +18,28 @@
     along with Kraft der Mada. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef __MADA_stdinc_h__
-#define __MADA_stdinc_h__
+#include "core/SingletonMacros.h"
 
-#include <list>
-#include <map>
-#include <set>
-#include <string>
-#include <vector>
+#include "game/Manager.h"
+#include "game/GameState.h"
 
-#include <iostream>
-#include <sstream>
+namespace mada
+{
+	class GameStateManager : public Manager
+	{
+		__mada_declare_class(GameStateManager);
+		__mada_declare_singleton(GameStateManager);
+	public:
+		GameStateManager();
+		~GameStateManager();
 
-#include <algorithm>
-#include <functional>
-#include <utility>
+		void registerGameState(const Ptr<GameState>& state);
+		void unregisterGameState(const Ptr<GameState>& state);
 
-#define NOMINMAX
-#include <Windows.h>
+		Ptr<GameState> getGameState(const String& name) const;
 
-
-#include <Ogre.h>
-#include <OIS.h>
-
-#endif
+	private:
+		typedef std::map<String, Ptr<GameState> > GameStateMap;
+		GameStateMap m_gameStates;
+	};
+}
