@@ -17,9 +17,38 @@
     along with Kraft der Mada. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "core/Config.h"
-#if WIN32
-#include "timing/win32/Win32Timer.h"
-#else
-#include "timing/linux/LinuxTimer.h"
-#endif
+#include "core/RefCounted.h"
+#include <sys/time.h>
+
+namespace mada
+{
+	struct timezone {
+             int     tz_minuteswest; /* of Greenwich */
+             int     tz_dsttime;     /* type of dst correction to apply */
+    	};
+
+
+	class Timer : public RefCounted
+	{
+		__mada_declare_class(Timer);
+
+	public:
+		Timer();
+
+		void start();
+		void stop();
+		void reset();
+		bool isRunning() const;
+
+		Time getTime() const;
+		Ticks getTicks() const;
+
+	private:
+		bool m_isRunning;
+		Ticks m_startTime;
+		Ticks m_stopTime;
+
+		timeval _tstart, _tend;
+		timezone tz;
+	};
+}

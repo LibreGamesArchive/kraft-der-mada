@@ -24,7 +24,11 @@
 #include "game/GameState.h"
 #include "game/core/GameStateManager.h"
 
+#if WIN32
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE prevInstance, LPSTR lpCmdLine, int nShowCmd)
+#else
+int main()
+#endif
 {
 	// Note: Before anything else, lots of static initialisers are called.
 	// All RTTI objects are created before main() is entered.

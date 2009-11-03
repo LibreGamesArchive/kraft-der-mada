@@ -17,10 +17,10 @@
 */
 #include "stdmadainc.h"
 
-#include "Core/Factory.h"
+#include "core/Factory.h"
 
-#include "Core/RefCounted.h"
-#include "Core/Rtti.h"
+#include "core/RefCounted.h"
+#include "core/Rtti.h"
 
 namespace mada
 {

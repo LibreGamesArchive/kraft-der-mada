@@ -16,10 +16,53 @@
     You should have received a copy of the GNU General Public License
     along with Kraft der Mada. If not, see <http://www.gnu.org/licenses/>.
 */
+#include "stdmadainc.h"
 
-#include "core/Config.h"
-#if WIN32
-#include "timing/win32/Win32Timer.h"
-#else
 #include "timing/linux/LinuxTimer.h"
-#endif
+#include "core/Debug.h"
+
+namespace mada
+{
+
+	__mada_implement_root_class(Timer)
+
+	Timer::Timer() : m_isRunning(false), m_startTime(0), m_stopTime(0)
+	{
+	}
+
+	void Timer::start()
+	{
+		mada_assert(!m_isRunning);
+		reset();
+	}
+
+	void Timer::stop()
+	{
+		mada_assert(m_isRunning);
+		//stop timer
+	}
+
+	void Timer::reset()
+	{
+		//reset timer
+		m_stopTime = m_startTime;
+	}
+
+	bool Timer::isRunning() const
+	{
+		return m_isRunning;
+	}
+
+	double Timer::getTime() const
+	{
+		Ticks frequency;
+		//return time
+		return 0;
+	}
+
+	long long Timer::getTicks() const
+	{
+		Ticks frequency;
+		return 0;
+	}
+}
