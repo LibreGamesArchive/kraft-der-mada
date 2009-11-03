@@ -21,7 +21,7 @@
 #if WIN32
 #include "core/win32/Precompiled.h"
 #else
-#error "precompiled.h not implemented on this platform"
+#include "core/linux/Precompiled.h"
 #endif
 //------------------------------------------------------------------------------
 

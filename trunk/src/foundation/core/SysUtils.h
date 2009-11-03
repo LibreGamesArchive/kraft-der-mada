@@ -21,5 +21,5 @@
 #if WIN32
 #include "core/win32/Win32SysUtils.h"
 #else
-#error "SysUtils.h not implemented on this platform"
+#include "core/linux/LinuxSysUtils.h"
 #endif

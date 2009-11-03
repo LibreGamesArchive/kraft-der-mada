@@ -1,4 +1,5 @@
 #pragma once
+
 /*
 	This file is part of Kraft der Mada.
 	Copyright (c) 2009 Daniel Wickert
@@ -16,10 +17,22 @@
     You should have received a copy of the GNU General Public License
     along with Kraft der Mada. If not, see <http://www.gnu.org/licenses/>.
 */
+//------------------------------------------------------------------------------
+/**
+    @file core/win32/precompiled.h
+    
+    Contains precompiled headers on the Win32 platform.
+    
+    (C) 2007 Radon Labs GmbH
+*/
 
-#include "core/Config.h"
-#if WIN32
-#include "timing/win32/Win32Timer.h"
-#else
-#include "timing/linux/LinuxTimer.h"
-#endif
+// c++stdlib headers
+#include <algorithm>
+#include <map>
+#include <string>
+#include <vector>
+
+// Ogre
+#include <Ogre.h>
+
+//------------------------------------------------------------------------------
