@@ -1,0 +1,2 @@
+testlevel chunks are just resized versions of the cube.mesh that comes with Ogre.
+rock.png is a renamed felsen2_kana.png from Rastullahs Lockenpracht content directory.
