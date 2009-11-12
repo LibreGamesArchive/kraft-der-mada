@@ -4,8 +4,15 @@ Microsoft Visual Studio Solution File, Format Version 10.00
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "foundation", "foundation\foundation.vcproj", "{3AEAAFE2-ADA9-4B63-B34E-4D594B8D9F51}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "mada", "mada\mada.vcproj", "{25159517-0A01-42F6-A03C-8C057B98F2E9}"
+	ProjectSection(ProjectDependencies) = postProject
+		{3AEAAFE2-ADA9-4B63-B34E-4D594B8D9F51} = {3AEAAFE2-ADA9-4B63-B34E-4D594B8D9F51}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "lightgame", "lightgame\lightgame.vcproj", "{94216DB1-3792-4C53-AA8A-7CCC881853AE}"
+	ProjectSection(ProjectDependencies) = postProject
+		{25159517-0A01-42F6-A03C-8C057B98F2E9} = {25159517-0A01-42F6-A03C-8C057B98F2E9}
+		{3AEAAFE2-ADA9-4B63-B34E-4D594B8D9F51} = {3AEAAFE2-ADA9-4B63-B34E-4D594B8D9F51}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
