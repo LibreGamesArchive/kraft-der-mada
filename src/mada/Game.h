@@ -31,16 +31,15 @@ namespace mada
 	class Game : public RefCounted
 	{
 		__mada_declare_class(Game);
-		__mada_declare_singleton(Game);
 	public:
 		Game();
 		~Game();
 
 		virtual void open();
-		virtual void run(const String& startGameState);
+		virtual void run();
 		virtual void close();
 
-	private:
+	protected:
 		Ptr<GameServer> m_gameServer;
 		Ptr<GameStateManager> m_gameStateManager;
 		Ptr<GameState> m_gameState;

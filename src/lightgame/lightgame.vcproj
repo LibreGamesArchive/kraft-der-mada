@@ -18,7 +18,7 @@
 	<Configurations>
 		<Configuration
 			Name="Debug|Win32"
-			OutputDirectory="$(SolutionDir)\..\bin\$(ConfigurationName)"
+			OutputDirectory="$(SolutionDir)\..\lightgame\"
 			IntermediateDirectory="$(SolutionDir)\..\obj\$(ProjectName)\$(ConfigurationName)"
 			ConfigurationType="1"
 			CharacterSet="1"
@@ -92,7 +92,7 @@
 		</Configuration>
 		<Configuration
 			Name="Release|Win32"
-			OutputDirectory="$(SolutionDir)\..\bin\$(ConfigurationName)"
+			OutputDirectory="$(SolutionDir)\..\lightgame\"
 			IntermediateDirectory="$(SolutionDir)\..\obj\$(ProjectName)\$(ConfigurationName)"
 			ConfigurationType="1"
 			CharacterSet="1"
@@ -171,6 +171,14 @@
 	<References>
 	</References>
 	<Files>
+		<File
+			RelativePath=".\LightGame.cpp"
+			>
+		</File>
+		<File
+			RelativePath=".\LightGame.h"
+			>
+		</File>
 		<File
 			RelativePath=".\main.cpp"
 			>

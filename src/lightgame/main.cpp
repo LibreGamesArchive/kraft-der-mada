@@ -20,9 +20,7 @@
 
 #include "core/Ptr.h"
 
-#include "Game.h"
-#include "game/GameState.h"
-#include "game/core/GameStateManager.h"
+#include "LightGame.h"
 
 #if WIN32
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE prevInstance, LPSTR lpCmdLine, int nShowCmd)
@@ -37,15 +35,9 @@ int main()
 
 	try
 	{
-		mada::Ptr<mada::Game> game = mada::Game::create();
+		mada::Ptr<mada::Game> game = mada::LightGame::create();
 		game->open();
-
-		/// \todo This is better handled in a game specific Game subclass.
-		mada::Ptr<mada::GameState> startState = mada::GameState::create();
-		startState->setName("START");
-		mada::GameStateManager::getInstance()->registerGameState(startState);
-
-		game->run("START");
+		game->run();
 		game->close();
 	}
 	catch (std::exception& e)

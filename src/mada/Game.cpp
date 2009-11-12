@@ -27,12 +27,9 @@
 namespace mada
 {
 	__mada_implement_root_class(Game);
-	__mada_implement_singleton(Game);
 
 	Game::Game() : m_gameServer(), m_gameStateManager(), m_gameState()
 	{
-		__mada_construct_singleton;
-
 		m_gameServer = GameServer::create();
 		m_gameStateManager = GameStateManager::create();
 
@@ -44,8 +41,6 @@ namespace mada
 		m_gameState = NULL;
 		m_gameStateManager = NULL;
 		m_gameServer = NULL;
-
-		__mada_destruct_singleton;
 	}
 
 	void Game::open()
@@ -53,10 +48,8 @@ namespace mada
 		m_gameServer->open();
 	}
 
-	void Game::run(const String& startGameState)
+	void Game::run()
 	{
-		m_gameState = GameStateManager::getInstance()->getGameState(startGameState);
-		m_gameState->activate();
 		m_gameServer->start();
 		while (!m_gameServer->isQuitRequested())
 		{
