@@ -18,9 +18,6 @@
     along with Kraft der Mada. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "core/RefCounted.h"
-#include "core/SingletonMacros.h"
-
 #include "timing/Timer.h"
 
 namespace mada

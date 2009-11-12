@@ -20,7 +20,6 @@
 #include "core/Rtti.h"
 
 #include "core/Factory.h"
-#include "core/RefCounted.h"
 
 namespace mada
 {
