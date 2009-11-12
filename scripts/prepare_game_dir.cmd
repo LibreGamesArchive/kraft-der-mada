@@ -10,7 +10,6 @@ mkdir lightgame\media
 xcopy data lightgame\data /E/Y
 xcopy media lightgame\media /E/Y
 
-copy bin\%BUILD%\lightgame.exe lightgame
 copy scripts\plugins_%BUILD%.cfg lightgame\plugins.cfg
 
 if /i %BUILD% == Debug goto :debug
