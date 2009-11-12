@@ -19,7 +19,6 @@
 */
 
 #include "core/Factory.h"
-#include "core/Ptr.h"
 #include "core/Rtti.h"
 
 namespace mada

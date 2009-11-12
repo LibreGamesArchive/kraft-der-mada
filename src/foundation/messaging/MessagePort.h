@@ -18,7 +18,6 @@
     along with Kraft der Mada. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "core/RefCounted.h"
 #include "messaging/Message.h"
 #include "messaging/MessageHandler.h"
 

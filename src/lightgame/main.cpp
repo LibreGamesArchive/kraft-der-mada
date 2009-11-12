@@ -18,8 +18,6 @@
 
 #include "stdmadainc.h"
 
-#include "core/Ptr.h"
-
 #include "LightGame.h"
 
 #if WIN32

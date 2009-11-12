@@ -19,7 +19,6 @@
 #include "stdmadainc.h"
 
 #include "timing/win32/Win32Timer.h"
-#include "core/Debug.h"
 
 namespace mada
 {

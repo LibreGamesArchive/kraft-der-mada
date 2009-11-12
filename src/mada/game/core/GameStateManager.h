@@ -18,8 +18,6 @@
     along with Kraft der Mada. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "core/SingletonMacros.h"
-
 #include "game/Manager.h"
 #include "game/GameState.h"
 
