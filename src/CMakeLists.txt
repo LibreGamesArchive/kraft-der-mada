@@ -33,10 +33,13 @@ mada/graphics/GraphicsFeatureServer.cpp
 mada/graphics/MeshGraphicsComponent.cpp
 )
 
+SET(Mada_LIGHTGAME_SRCS
+lightgame/main.cpp
+lightgame/LightGame.cpp
+)
 
-SET(Mada_APP_SRCS main.cpp)
 
-ADD_EXECUTABLE(mada_app ${Mada_APP_SRCS} ${Mada_FOUNDATION_SRCS} ${Mada_MADA_SRCS})
+ADD_EXECUTABLE(mada_app ${Mada_LIGHTGAME_SRCS} ${Mada_FOUNDATION_SRCS} ${Mada_MADA_SRCS})
 
 TARGET_LINK_LIBRARIES(mada_app ${OGRE_LIBRARIES})
 

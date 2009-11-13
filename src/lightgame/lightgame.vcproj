@@ -65,7 +65,7 @@
 				Name="VCLinkerTool"
 				AdditionalDependencies="foundation.lib mada.lib OgreMain_d.lib"
 				LinkIncremental="2"
-				AdditionalLibraryDirectories="&quot;..\..\dependencies\ogre\build\lib\$(ConfigurationName)&quot;;&quot;..\..\lib\$(ConfigurationName)&quot;"
+				AdditionalLibraryDirectories="&quot;..\..\dependencies\ogre\build\lib\$(ConfigurationName)&quot;;&quot;..\..\lib\$(ConfigurationName)&quot;;..\..\dependencies\ogre\lib"
 				GenerateDebugInformation="true"
 				SubSystem="2"
 				TargetMachine="1"
