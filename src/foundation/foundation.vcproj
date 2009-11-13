@@ -240,58 +240,62 @@
 		<Filter
 			Name="db"
 			>
-			<File
-				RelativePath=".\db\CppSQLite3.cpp"
+			<Filter
+				Name="sqlite"
 				>
-				<FileConfiguration
-					Name="Debug|Win32"
+				<File
+					RelativePath=".\db\sqlite\CppSQLite3.cpp"
 					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release|Win32"
+					<FileConfiguration
+						Name="Debug|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							UsePrecompiledHeader="0"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Release|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							UsePrecompiledHeader="0"
+						/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath=".\db\sqlite\CppSQLite3.h"
 					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"
-					/>
-				</FileConfiguration>
-			</File>
-			<File
-				RelativePath=".\db\CppSQLite3.h"
-				>
-			</File>
-			<File
-				RelativePath=".\db\sqlite3.c"
-				>
-				<FileConfiguration
-					Name="Debug|Win32"
+				</File>
+				<File
+					RelativePath=".\db\sqlite\sqlite3.c"
 					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release|Win32"
+					<FileConfiguration
+						Name="Debug|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							UsePrecompiledHeader="0"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Release|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							UsePrecompiledHeader="0"
+						/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath=".\db\sqlite\sqlite3.h"
 					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"
-					/>
-				</FileConfiguration>
-			</File>
-			<File
-				RelativePath=".\db\sqlite3.h"
-				>
-			</File>
-			<File
-				RelativePath=".\db\sqlite3ext.h"
-				>
-			</File>
+				</File>
+				<File
+					RelativePath=".\db\sqlite\sqlite3ext.h"
+					>
+				</File>
+			</Filter>
 		</Filter>
 		<Filter
 			Name="messaging"
