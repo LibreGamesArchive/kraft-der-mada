@@ -11,8 +11,8 @@ foundation/core/Factory.cpp
 foundation/core/RefCounted.cpp
 foundation/core/Rtti.cpp
 foundation/core/linux/LinuxSysUtils.cpp
-foundation/db/CppSQLite3.cpp
-foundation/db/sqlite3.c
+foundation/db/sqlite/CppSQLite3.cpp
+foundation/db/sqlite/sqlite3.c
 foundation/messaging/Message.cpp
 foundation/messaging/MessagePort.cpp
 foundation/timing/linux/LinuxTimer.cpp
