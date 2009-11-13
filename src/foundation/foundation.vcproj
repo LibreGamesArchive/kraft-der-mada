@@ -240,6 +240,10 @@
 		<Filter
 			Name="db"
 			>
+			<File
+				RelativePath=".\db\Database.h"
+				>
+			</File>
 			<Filter
 				Name="sqlite"
 				>
