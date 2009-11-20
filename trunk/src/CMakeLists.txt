@@ -11,6 +11,8 @@ foundation/core/Factory.cpp
 foundation/core/RefCounted.cpp
 foundation/core/Rtti.cpp
 foundation/core/linux/LinuxSysUtils.cpp
+foundation/properties/PropertyDefinitionBase.cpp
+foundation/properties/PropertyId.cpp
 foundation/db/sqlite/CppSQLite3.cpp
 foundation/db/sqlite/sqlite3.c
 foundation/messaging/Message.cpp
@@ -28,6 +30,7 @@ mada/game/GameObject.cpp
 mada/game/GameState.cpp
 mada/game/Manager.cpp
 mada/game/core/CoreFeatureServer.cpp
+mada/game/core/CoreProperties.cpp
 mada/game/core/GameStateManager.cpp
 mada/graphics/GraphicsFeatureServer.cpp
 mada/graphics/MeshGraphicsComponent.cpp
