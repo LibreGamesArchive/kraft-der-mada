@@ -57,6 +57,9 @@
 #include <string>
 #include <vector>
 
+// boost headers
+#include <boost/variant.hpp>
+
 // Ogre
 #include <Ogre.h>
 

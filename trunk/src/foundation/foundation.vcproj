@@ -47,7 +47,7 @@
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
-				UsePrecompiledHeader="1"
+				UsePrecompiledHeader="2"
 				PrecompiledHeaderThrough="stdmadainc.h"
 				WarningLevel="3"
 				DebugInformationFormat="4"
@@ -244,6 +244,10 @@
 				RelativePath=".\db\Database.h"
 				>
 			</File>
+			<File
+				RelativePath=".\db\Table.h"
+				>
+			</File>
 			<Filter
 				Name="sqlite"
 				>
@@ -344,6 +348,38 @@
 					>
 				</File>
 			</Filter>
+		</Filter>
+		<Filter
+			Name="properties"
+			>
+			<File
+				RelativePath=".\properties\AccessMode.h"
+				>
+			</File>
+			<File
+				RelativePath=".\properties\PropertyDefinition.h"
+				>
+			</File>
+			<File
+				RelativePath=".\properties\PropertyDefinitionBase.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\properties\PropertyDefinitionBase.h"
+				>
+			</File>
+			<File
+				RelativePath=".\properties\PropertyId.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\properties\PropertyId.h"
+				>
+			</File>
+			<File
+				RelativePath=".\properties\ValueType.h"
+				>
+			</File>
 		</Filter>
 		<File
 			RelativePath=".\stdmadainc.h"
