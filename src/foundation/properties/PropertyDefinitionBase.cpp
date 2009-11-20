@@ -21,7 +21,7 @@
 
 namespace mada
 {
-	PropertyDefinitionBase::Registry PropertyDefinitionBase::ms_registry;
+	PropertyDefinitionBase::Registry* PropertyDefinitionBase::ms_registry = NULL;
 
 	PropertyDefinitionBase::PropertyDefinitionBase(const String& name, AccessMode mode, bool defaultValue) :
 		m_name(name), m_accessMode(mode), m_defaultValue(defaultValue), m_valueType(BoolType)
@@ -81,8 +81,8 @@ namespace mada
 
 	PropertyDefinitionBase* PropertyDefinitionBase::findByName(const String& name)
 	{
-		Registry::const_iterator it = ms_registry.find(name);
-		if (it != ms_registry.end())
+		Registry::const_iterator it = ms_registry->find(name);
+		if (it != ms_registry->end())
 		{
 			return it->second;
 		}
@@ -94,7 +94,16 @@ namespace mada
 
 	void PropertyDefinitionBase::registerSelf()
 	{
-		mada_assert(ms_registry.find(m_name) == ms_registry.end());
-		ms_registry.insert(Registry::value_type(m_name, this));
+		checkAndInitRegistry();
+		mada_assert(ms_registry->find(m_name) == ms_registry->end());
+		ms_registry->insert(Registry::value_type(m_name, this));
+	}
+
+	void PropertyDefinitionBase::checkAndInitRegistry()
+	{
+		if (ms_registry == NULL)
+		{
+			ms_registry = mada_new(Registry());
+		}
 	}
 }

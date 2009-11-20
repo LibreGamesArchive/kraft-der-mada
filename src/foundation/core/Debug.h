@@ -24,7 +24,12 @@
 #define mada_assert(X) \
 	if (!(X)) \
 	{\
-		SysUtils::showMessageBox(#X, "Assert failed"); \
+		String msg = #X; \
+		msg += "in line "; \
+		msg += Ogre::StringConverter::toString(__LINE__); \
+		msg += " of file "; \
+		msg += __FILE__; \
+		SysUtils::showMessageBox(msg.c_str(), "Assert failed"); \
 		SysUtils::abort();\
 	}
 
