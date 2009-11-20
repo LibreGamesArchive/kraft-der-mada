@@ -38,6 +38,8 @@ namespace mada
 
 	  This class must not be subclass of RefCounted, because instances are defined statically and static
 	  initialisation order is undefined.
+
+	  /todo properly clean-up resources allocated by PropertyDefinitionBase#checkAndInitRegistry.
 	 */
 	class PropertyDefinitionBase
 	{
@@ -66,6 +68,8 @@ namespace mada
 		const ValueType m_valueType;
 
 		typedef std::map<String, PropertyDefinitionBase*> Registry;
-		static Registry ms_registry;
+		static Registry* ms_registry;
+
+		static void checkAndInitRegistry();
 	};
 }
