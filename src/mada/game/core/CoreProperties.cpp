@@ -1,5 +1,3 @@
-#pragma once
-
 /*
 	This file is part of Kraft der Mada.
 	Copyright (c) 2009 Daniel Wickert
@@ -17,14 +15,16 @@
     You should have received a copy of the GNU General Public License
     along with Kraft der Mada. If not, see <http://www.gnu.org/licenses/>.
 */
-#include "properties/PropertyDefinition.h"
+#include "stdmadainc.h"
+
+#include "game/core/CoreProperties.h"
+
 namespace mada
 {
-	class Component : public RefCounted
-	{
-		__mada_declare_class(Component);
-	public:
-		Component();
-		~Component();
-	};
+	__mada_define_bool_property_default(TestBoolProperty, ReadOnly, true);
+	__mada_define_int_property_default(TestIntProperty, ReadOnly, 1);
+	__mada_define_float_property_default(TestFloatProperty, ReadOnly, 1.0f);
+	__mada_define_string_property_default(TestStringProperty, ReadOnly, "test");
+	__mada_define_vector_property_default(TestVectorProperty, ReadOnly, Ogre::Vector3::UNIT_SCALE);
+	__mada_define_quaternion_property_default(TestQuaternionProperty, ReadOnly, Ogre::Quaternion::ZERO);
 }

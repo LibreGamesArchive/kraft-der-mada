@@ -17,14 +17,19 @@
     You should have received a copy of the GNU General Public License
     along with Kraft der Mada. If not, see <http://www.gnu.org/licenses/>.
 */
-#include "properties/PropertyDefinition.h"
+
 namespace mada
 {
-	class Component : public RefCounted
+	enum ValueType
 	{
-		__mada_declare_class(Component);
-	public:
-		Component();
-		~Component();
+		BoolType,
+		IntType,
+		FloatType,
+		StringType,
+		Vector3Type,
+		QuaternionType,
+		BlobType
 	};
+
+	typedef boost::variant<bool, int, float, String, Ogre::Vector3, Ogre::Quaternion> Variant;
 }

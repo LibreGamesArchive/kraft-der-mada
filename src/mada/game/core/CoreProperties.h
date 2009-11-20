@@ -17,14 +17,15 @@
     You should have received a copy of the GNU General Public License
     along with Kraft der Mada. If not, see <http://www.gnu.org/licenses/>.
 */
+
 #include "properties/PropertyDefinition.h"
+
 namespace mada
 {
-	class Component : public RefCounted
-	{
-		__mada_declare_class(Component);
-	public:
-		Component();
-		~Component();
-	};
+	__mada_declare_bool_property(TestBoolProperty);
+	__mada_declare_int_property(TestIntProperty);
+	__mada_declare_float_property(TestFloatProperty);
+	__mada_declare_string_property(TestStringProperty);
+	__mada_declare_vector_property(TestVectorProperty);
+	__mada_declare_quaternion_property(TestQuaternionProperty);
 }
