@@ -20,7 +20,7 @@
 
 #include "GameServer.h"
 
-#include "game/GameState.h"
+#include "game/base/GameState.h"
 #include "game/core/GameStateManager.h"
 
 namespace mada

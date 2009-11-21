@@ -30,7 +30,7 @@ namespace mada
 	__mada_declare_vector3_property(TestVectorProperty);
 	__mada_declare_quaternion_property(TestQuaternionProperty);
 
-	// Properties used by the engine on the top-level.
+	// Properties used by GameObjects on the top-level.
 	__mada_declare_string_property(id);
 	__mada_declare_string_property(level);
 	__mada_declare_string_property(layer);

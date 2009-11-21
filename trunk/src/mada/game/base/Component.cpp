@@ -18,49 +18,17 @@
 
 #include "stdmadainc.h"
 
-#include "game/FeatureServer.h"
+#include "game/base/Component.h"
 
 namespace mada
 {
-	__mada_implement_root_class(FeatureServer);
+	__mada_implement_root_class(Component);
 
-	FeatureServer::FeatureServer()
+	Component::Component()
 	{
 	}
 
-	FeatureServer::~FeatureServer()
-	{
-	}
-
-	void FeatureServer::onActivate()
-	{
-	}
-
-	void FeatureServer::onDeactivate()
-	{
-	}
-
-	void FeatureServer::onLoad()
-	{
-	}
-
-	void FeatureServer::onStart()
-	{
-	}
-
-	void FeatureServer::onSave()
-	{
-	}
-
-	void FeatureServer::onBeginFrame()
-	{
-	}
-
-	void FeatureServer::onFrame()
-	{
-	}
-
-	void FeatureServer::onEndFrame()
+	Component::~Component()
 	{
 	}
 }

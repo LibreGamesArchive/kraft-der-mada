@@ -18,7 +18,7 @@
     along with Kraft der Mada. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "game/FeatureServer.h"
+#include "game/base/FeatureServer.h"
 
 namespace mada
 {

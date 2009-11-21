@@ -18,48 +18,17 @@
 
 #include "stdmadainc.h"
 
-#include "game/GameState.h"
+#include "game/base/Manager.h"
 
 namespace mada
 {
-	__mada_implement_root_class(GameState);
+	__mada_implement_root_class(Manager);
 
-	GameState::GameState() : m_name()
+	Manager::Manager()
 	{
 	}
 
-	GameState::~GameState()
+	Manager::~Manager()
 	{
-	}
-
-	void GameState::activate()
-	{
-	}
-
-	void GameState::deactivate()
-	{
-	}
-
-	void GameState::onRegister()
-	{
-	}
-
-	void GameState::onUnregister()
-	{
-	}
-
-	String GameState::update()
-	{
-		return getName();
-	}
-
-	String GameState::getName() const
-	{
-		return m_name;
-	}
-
-	void GameState::setName(const String& name)
-	{
-		m_name = name;
 	}
 }
