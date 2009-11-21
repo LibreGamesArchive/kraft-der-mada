@@ -61,16 +61,16 @@ namespace mada
 #define __mada_define_string_property_default(name, accessmode, defaultValue) \
 	const PropertyDefinition<String> name(#name, accessmode, defaultValue);
 
-#define __mada_declare_vector_property(name) extern const PropertyDefinition<Ogre::Vector3> name;
+#define __mada_declare_vector_property(name) extern const PropertyDefinition<Vector3> name;
 #define __mada_define_vector_property(name, accessMode) \
-	const PropertyDefinition<Ogre::Vector3> name(#name, accessMode, Ogre::Vector3::ZERO);
+	const PropertyDefinition<Vector3> name(#name, accessMode, Vector3::ZERO);
 #define __mada_define_vector_property_default(name, accessmode, defaultValue) \
-	const PropertyDefinition<Ogre::Vector3> name(#name, accessmode, defaultValue);
+	const PropertyDefinition<Vector3> name(#name, accessmode, defaultValue);
 
-#define __mada_declare_quaternion_property(name) extern const PropertyDefinition<Ogre::Quaternion> name;
+#define __mada_declare_quaternion_property(name) extern const PropertyDefinition<Quaternion> name;
 #define __mada_define_quaternion_property(name, accessMode) \
-	const PropertyDefinition<Ogre::Quaternion> name(#name, accessMode, Ogre::Quaternion::IDENTITY);
+	const PropertyDefinition<Quaternion> name(#name, accessMode, Quaternion::IDENTITY);
 #define __mada_define_quaternion_property_default(name, accessmode, defaultValue) \
-	const PropertyDefinition<Ogre::Quaternion> name(#name, accessmode, defaultValue);
+	const PropertyDefinition<Quaternion> name(#name, accessmode, defaultValue);
 
 }

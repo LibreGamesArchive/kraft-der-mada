@@ -48,8 +48,8 @@ namespace mada
 		explicit PropertyDefinitionBase(const String& name, AccessMode mode, int defaultValue);
 		explicit PropertyDefinitionBase(const String& name, AccessMode mode, float defaultValue);
 		explicit PropertyDefinitionBase(const String& name, AccessMode mode, const String& defaultValue);
-		explicit PropertyDefinitionBase(const String& name, AccessMode mode, const Ogre::Vector3& defaultValue);
-		explicit PropertyDefinitionBase(const String& name, AccessMode mode, const Ogre::Quaternion& defaultValue);
+		explicit PropertyDefinitionBase(const String& name, AccessMode mode, const Vector3& defaultValue);
+		explicit PropertyDefinitionBase(const String& name, AccessMode mode, const Quaternion& defaultValue);
 
 		const String& getName() const;
 		AccessMode getAccesssMode() const;

@@ -29,6 +29,10 @@ namespace mada
 	{
 	}
 
+	PropertyId::PropertyId(const PropertyDefinitionBase& def) : m_definition(&def)
+	{
+	}
+
 	PropertyId::PropertyId(const PropertyDefinitionBase* def) : m_definition(def)
 	{
 	}
@@ -73,52 +77,67 @@ namespace mada
 
 	const String& PropertyId::getName() const
 	{
+		mada_assert(isValid());
 		return m_definition->getName();
 	}
 
 	ValueType PropertyId::getValueType() const
 	{
+		mada_assert(isValid());
 		return m_definition->getValueType();
 	}
 
 	AccessMode PropertyId::getAccessMode() const
 	{
+		mada_assert(isValid());
 		return m_definition->getAccesssMode();
+	}
+
+	Variant PropertyId::getDefaultValue() const
+	{
+		mada_assert(isValid());
+		return m_definition->getDefaultValue();
 	}
 
 	bool PropertyId::getBoolDefaultValue() const
 	{
+		mada_assert(isValid());
 		mada_assert(getValueType() == BoolType);
 		return boost::get<bool>(m_definition->getDefaultValue());
 	}
 
 	int PropertyId::getIntDefaultValue() const
 	{
+		mada_assert(isValid());
 		mada_assert(getValueType() == IntType);
 		return boost::get<int>(m_definition->getDefaultValue());
 	}
 
 	float PropertyId::getFloatDefaultValue() const
 	{
+		mada_assert(isValid());
 		mada_assert(getValueType() == FloatType);
 		return boost::get<float>(m_definition->getDefaultValue());
 	}
 
 	String PropertyId::getStringDefaultValue() const
 	{
+		mada_assert(isValid());
 		mada_assert(getValueType() == StringType);
 		return boost::get<String>(m_definition->getDefaultValue());
 	}
 
-	Ogre::Vector3 PropertyId::getVector3DefaultValue() const
+	Vector3 PropertyId::getVector3DefaultValue() const
 	{
+		mada_assert(isValid());
 		mada_assert(getValueType() == Vector3Type);
-		return boost::get<Ogre::Vector3>(m_definition->getDefaultValue());
+		return boost::get<Vector3>(m_definition->getDefaultValue());
 	}
 
-	Ogre::Quaternion PropertyId::getQuaternionDefaultValue() const
+	Quaternion PropertyId::getQuaternionDefaultValue() const
 	{
+		mada_assert(isValid());
 		mada_assert(getValueType() == QuaternionType);
-		return boost::get<Ogre::Quaternion>(m_definition->getDefaultValue());
+		return boost::get<Quaternion>(m_definition->getDefaultValue());
 	}
 }

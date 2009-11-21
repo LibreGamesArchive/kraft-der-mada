@@ -357,6 +357,14 @@
 				>
 			</File>
 			<File
+				RelativePath=".\properties\Property.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\properties\Property.h"
+				>
+			</File>
+			<File
 				RelativePath=".\properties\PropertyDefinition.h"
 				>
 			</File>
