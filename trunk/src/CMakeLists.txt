@@ -11,6 +11,7 @@ foundation/core/Factory.cpp
 foundation/core/RefCounted.cpp
 foundation/core/Rtti.cpp
 foundation/core/linux/LinuxSysUtils.cpp
+foundation/properties/Property.cpp
 foundation/properties/PropertyDefinitionBase.cpp
 foundation/properties/PropertyId.cpp
 foundation/db/sqlite/CppSQLite3.cpp
@@ -24,11 +25,11 @@ SET(Mada_MADA_SRCS
 mada/Game.cpp
 mada/GameServer.cpp
 mada/MasterTime.cpp
-mada/game/Component.cpp
-mada/game/FeatureServer.cpp
-mada/game/GameObject.cpp
-mada/game/GameState.cpp
-mada/game/Manager.cpp
+mada/game/base/Component.cpp
+mada/game/base/FeatureServer.cpp
+mada/game/base/GameObject.cpp
+mada/game/base/GameState.cpp
+mada/game/base/Manager.cpp
 mada/game/core/CoreFeatureServer.cpp
 mada/game/core/CoreProperties.cpp
 mada/game/core/GameStateManager.cpp
