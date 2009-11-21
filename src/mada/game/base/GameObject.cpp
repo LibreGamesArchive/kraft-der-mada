@@ -18,17 +18,17 @@
 
 #include "stdmadainc.h"
 
-#include "game/Component.h"
+#include "game/base/GameObject.h"
 
 namespace mada
 {
-	__mada_implement_root_class(Component);
+	__mada_implement_root_class(GameObject);
 
-	Component::Component()
+	GameObject::GameObject()
 	{
 	}
 
-	Component::~Component()
+	GameObject::~GameObject()
 	{
 	}
 }

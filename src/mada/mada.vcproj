@@ -152,46 +152,6 @@
 		<Filter
 			Name="game"
 			>
-			<File
-				RelativePath=".\game\Component.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\game\Component.h"
-				>
-			</File>
-			<File
-				RelativePath=".\game\FeatureServer.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\game\FeatureServer.h"
-				>
-			</File>
-			<File
-				RelativePath=".\game\GameObject.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\game\GameObject.h"
-				>
-			</File>
-			<File
-				RelativePath=".\game\GameState.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\game\GameState.h"
-				>
-			</File>
-			<File
-				RelativePath=".\game\Manager.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\game\Manager.h"
-				>
-			</File>
 			<Filter
 				Name="core"
 				>
@@ -221,6 +181,50 @@
 				</File>
 				<File
 					RelativePath=".\game\core\TimeManager.h"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="base"
+				>
+				<File
+					RelativePath=".\game\base\Component.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\game\base\Component.h"
+					>
+				</File>
+				<File
+					RelativePath=".\game\base\FeatureServer.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\game\base\FeatureServer.h"
+					>
+				</File>
+				<File
+					RelativePath=".\game\base\GameObject.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\game\base\GameObject.h"
+					>
+				</File>
+				<File
+					RelativePath=".\game\base\GameState.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\game\base\GameState.h"
+					>
+				</File>
+				<File
+					RelativePath=".\game\base\Manager.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\game\base\Manager.h"
 					>
 				</File>
 			</Filter>

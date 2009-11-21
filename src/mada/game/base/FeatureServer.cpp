@@ -18,17 +18,49 @@
 
 #include "stdmadainc.h"
 
-#include "game/Manager.h"
+#include "game/base/FeatureServer.h"
 
 namespace mada
 {
-	__mada_implement_root_class(Manager);
+	__mada_implement_root_class(FeatureServer);
 
-	Manager::Manager()
+	FeatureServer::FeatureServer()
 	{
 	}
 
-	Manager::~Manager()
+	FeatureServer::~FeatureServer()
+	{
+	}
+
+	void FeatureServer::onActivate()
+	{
+	}
+
+	void FeatureServer::onDeactivate()
+	{
+	}
+
+	void FeatureServer::onLoad()
+	{
+	}
+
+	void FeatureServer::onStart()
+	{
+	}
+
+	void FeatureServer::onSave()
+	{
+	}
+
+	void FeatureServer::onBeginFrame()
+	{
+	}
+
+	void FeatureServer::onFrame()
+	{
+	}
+
+	void FeatureServer::onEndFrame()
 	{
 	}
 }
