@@ -22,10 +22,18 @@
 
 namespace mada
 {
+	// Properties as a sanity check. If these stop compiling something got messed up
 	__mada_declare_bool_property(TestBoolProperty);
 	__mada_declare_int_property(TestIntProperty);
 	__mada_declare_float_property(TestFloatProperty);
 	__mada_declare_string_property(TestStringProperty);
-	__mada_declare_vector_property(TestVectorProperty);
+	__mada_declare_vector3_property(TestVectorProperty);
 	__mada_declare_quaternion_property(TestQuaternionProperty);
+
+	// Properties used by the engine on the top-level.
+	__mada_declare_string_property(id);
+	__mada_declare_string_property(level);
+	__mada_declare_string_property(layer);
+	__mada_declare_vector3_property(position);
+	__mada_declare_quaternion_property(orientation);
 }

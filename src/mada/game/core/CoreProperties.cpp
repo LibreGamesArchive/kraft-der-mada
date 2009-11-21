@@ -25,6 +25,13 @@ namespace mada
 	__mada_define_int_property_default(TestIntProperty, ReadOnly, 1);
 	__mada_define_float_property_default(TestFloatProperty, ReadOnly, 1.0f);
 	__mada_define_string_property_default(TestStringProperty, ReadOnly, "test");
-	__mada_define_vector_property_default(TestVectorProperty, ReadOnly, Vector3::UNIT_SCALE);
+	__mada_define_vector3_property_default(TestVectorProperty, ReadOnly, Vector3::UNIT_SCALE);
 	__mada_define_quaternion_property_default(TestQuaternionProperty, ReadOnly, Quaternion::ZERO);
+
+
+	__mada_define_string_property(id, ReadWrite);
+	__mada_define_string_property(level, ReadOnly);
+	__mada_define_string_property(layer, ReadOnly);
+	__mada_define_vector3_property(position, ReadWrite);
+	__mada_define_quaternion_property(orientation, ReadWrite);
 }
