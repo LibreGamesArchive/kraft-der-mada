@@ -34,6 +34,7 @@ namespace mada
 	public:
 		PropertyId();
 		PropertyId(const PropertyId& other);
+		PropertyId(const PropertyDefinitionBase& def);
 		PropertyId(const PropertyDefinitionBase* def);
 		PropertyId(const String& name);
 
@@ -51,12 +52,13 @@ namespace mada
 		ValueType getValueType() const;
 		AccessMode getAccessMode() const;
 
+		Variant getDefaultValue() const;
 		bool getBoolDefaultValue() const;
 		int getIntDefaultValue() const;
 		float getFloatDefaultValue() const;
 		String getStringDefaultValue() const;
-		Ogre::Vector3 getVector3DefaultValue() const;
-		Ogre::Quaternion getQuaternionDefaultValue() const;
+		Vector3 getVector3DefaultValue() const;
+		Quaternion getQuaternionDefaultValue() const;
 
 	protected:
 		const PropertyDefinitionBase* m_definition;

@@ -31,5 +31,5 @@ namespace mada
 		BlobType
 	};
 
-	typedef boost::variant<bool, int, float, String, Ogre::Vector3, Ogre::Quaternion> Variant;
+	typedef boost::variant<bool, int, float, String, Vector3, Quaternion> Variant;
 }

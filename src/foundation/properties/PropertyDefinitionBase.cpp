@@ -47,13 +47,13 @@ namespace mada
 		registerSelf();
 	}
 
-	PropertyDefinitionBase::PropertyDefinitionBase(const String& name, AccessMode mode, const Ogre::Vector3& defaultValue) :
+	PropertyDefinitionBase::PropertyDefinitionBase(const String& name, AccessMode mode, const Vector3& defaultValue) :
 		m_name(name), m_accessMode(mode), m_defaultValue(defaultValue), m_valueType(Vector3Type)
 	{
 		registerSelf();
 	}
 
-	PropertyDefinitionBase::PropertyDefinitionBase(const String& name, AccessMode mode, const Ogre::Quaternion& defaultValue) :
+	PropertyDefinitionBase::PropertyDefinitionBase(const String& name, AccessMode mode, const Quaternion& defaultValue) :
 		m_name(name), m_accessMode(mode), m_defaultValue(defaultValue), m_valueType(QuaternionType)
 	{
 		registerSelf();
