@@ -26,5 +26,20 @@ namespace mada
 	public:
 		Manager();
 		~Manager();
+
+		virtual void onActivate();
+		virtual void onDeactivate();
+
+		bool isActive() const;
+
+		virtual void onLoad();
+		virtual void onSave();
+
+		virtual void onBeginFrame();
+		virtual void onFrame();
+		virtual void onEndFrame();
+
+	private:
+		bool m_isActive;
 	};
 }
