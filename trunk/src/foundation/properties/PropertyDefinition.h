@@ -31,16 +31,7 @@ namespace mada
 		{
 		}
 	};
-	//enum ValueType
-	//{
-	//	BoolType,
-	//	IntType,
-	//	FloatType,
-	//	StringType,
-	//	Vector3Type,
-	//	QuaternionType,
-	//	BlobType
-	//};
+
 #define __mada_declare_bool_property(name) extern const PropertyDefinition<bool> name;
 #define __mada_define_bool_property(name, accessMode) const PropertyDefinition<bool> name(#name, accessMode, false);
 #define __mada_define_bool_property_default(name, accessmode, defaultValue) \
