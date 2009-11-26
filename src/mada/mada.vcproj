@@ -156,6 +156,10 @@
 				Name="core"
 				>
 				<File
+					RelativePath=".\game\core\CategoryManager.h"
+					>
+				</File>
+				<File
 					RelativePath=".\game\core\CoreFeatureServer.cpp"
 					>
 				</File>
