@@ -63,4 +63,6 @@ namespace mada
 	protected:
 		const PropertyDefinitionBase* m_definition;
 	};
+
+	typedef std::vector<PropertyId> PropertyIdVector;
 }
