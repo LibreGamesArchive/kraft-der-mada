@@ -24,11 +24,48 @@ namespace mada
 {
 	__mada_implement_root_class(Manager);
 
-	Manager::Manager()
+	Manager::Manager() : m_isActive(false)
 	{
 	}
 
 	Manager::~Manager()
+	{
+	}
+
+	void Manager::onActivate()
+	{
+		mada_assert(!m_isActive);
+		m_isActive = true;
+	}
+
+	void Manager::onDeactivate()
+	{
+		mada_assert(m_isActive);
+		m_isActive = false;
+	}
+
+	bool Manager::isActive() const
+	{
+		return m_isActive;
+	}
+
+	void Manager::onLoad()
+	{
+	}
+
+	void Manager::onSave()
+	{
+	}
+
+	void Manager::onBeginFrame()
+	{
+	}
+
+	void Manager::onFrame()
+	{
+	}
+
+	void Manager::onEndFrame()
 	{
 	}
 }
