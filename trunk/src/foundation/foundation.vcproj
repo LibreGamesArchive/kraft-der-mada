@@ -241,7 +241,27 @@
 			Name="db"
 			>
 			<File
+				RelativePath=".\db\Command.h"
+				>
+			</File>
+			<File
+				RelativePath=".\db\Database.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\db\Database.h"
+				>
+			</File>
+			<File
+				RelativePath=".\db\DatabaseServer.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\db\DatabaseServer.h"
+				>
+			</File>
+			<File
+				RelativePath=".\db\ResultSet.h"
 				>
 			</File>
 			<File
