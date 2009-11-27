@@ -14,6 +14,8 @@ foundation/core/linux/LinuxSysUtils.cpp
 foundation/properties/Property.cpp
 foundation/properties/PropertyDefinitionBase.cpp
 foundation/properties/PropertyId.cpp
+foundation/db/Database.cpp
+foundation/db/DatabaseServer.cpp
 foundation/db/sqlite/CppSQLite3.cpp
 foundation/db/sqlite/sqlite3.c
 foundation/messaging/Message.cpp
@@ -43,10 +45,10 @@ lightgame/LightGame.cpp
 )
 
 
-ADD_EXECUTABLE(mada_app ${Mada_LIGHTGAME_SRCS} ${Mada_FOUNDATION_SRCS} ${Mada_MADA_SRCS})
+ADD_EXECUTABLE(lightgame ${Mada_LIGHTGAME_SRCS} ${Mada_FOUNDATION_SRCS} ${Mada_MADA_SRCS})
 
-TARGET_LINK_LIBRARIES(mada_app ${OGRE_LIBRARIES})
+TARGET_LINK_LIBRARIES(lightgame ${OGRE_LIBRARIES})
 
 
-INSTALL(TARGETS mada_app RUNTIME DESTINATION ${CMAKE_INSTALL_PREFIX}/${BINDIR})
+INSTALL(TARGETS lightgame RUNTIME DESTINATION ${CMAKE_INSTALL_PREFIX}/${BINDIR})
 
