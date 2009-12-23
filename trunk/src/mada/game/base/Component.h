@@ -17,14 +17,22 @@
     You should have received a copy of the GNU General Public License
     along with Kraft der Mada. If not, see <http://www.gnu.org/licenses/>.
 */
-#include "properties/PropertyDefinition.h"
+
 namespace mada
 {
+	class GameObject;
+
 	class Component : public RefCounted
 	{
 		__mada_declare_class(Component);
 	public:
 		Component();
 		~Component();
+
+		const Ptr<GameObject>& getGameObject() const;
+		void setGameObject(const Ptr<GameObject>& go);
+
+	private:
+		Ptr<GameObject> m_gameObject;
 	};
 }

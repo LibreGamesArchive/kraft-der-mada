@@ -22,18 +22,27 @@
 
 namespace mada
 {
-	// Properties as a sanity check. If these stop compiling something got messed up
-	__mada_declare_bool_property(TestBoolProperty);
-	__mada_declare_int_property(TestIntProperty);
-	__mada_declare_float_property(TestFloatProperty);
-	__mada_declare_string_property(TestStringProperty);
-	__mada_declare_vector3_property(TestVectorProperty);
-	__mada_declare_quaternion_property(TestQuaternionProperty);
+	namespace prop
+	{
+		// Properties as a sanity check. If these stop compiling something got messed up
+		__mada_declare_bool_property(TestBoolProperty);
+		__mada_declare_int_property(TestIntProperty);
+		__mada_declare_float_property(TestFloatProperty);
+		__mada_declare_string_property(TestStringProperty);
+		__mada_declare_vector3_property(TestVectorProperty);
+		__mada_declare_quaternion_property(TestQuaternionProperty);
 
-	// Properties used by GameObjects on the top-level.
-	__mada_declare_string_property(id);
-	__mada_declare_string_property(level);
-	__mada_declare_string_property(layer);
-	__mada_declare_vector3_property(position);
-	__mada_declare_quaternion_property(orientation);
+		// Properties used by GameObjects on the top-level.
+		__mada_declare_string_property(_id);
+		__mada_declare_string_property(_level);
+		__mada_declare_string_property(_layer);
+		__mada_declare_vector3_property(_position);
+		__mada_declare_quaternion_property(_orientation);
+
+		// Properties used by CategoryManager
+		__mada_declare_string_property(_category_name);
+		__mada_declare_string_property(_component_name);
+		__mada_declare_string_property(_template_table_name);
+		__mada_declare_string_property(_instance_table_name);
+	}
 }

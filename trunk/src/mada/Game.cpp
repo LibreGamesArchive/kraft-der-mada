@@ -22,7 +22,9 @@
 #include "GameServer.h"
 #include "MasterTime.h"
 
+#include "game/core/CoreFeatureServer.h"
 #include "graphics/GraphicsFeatureServer.h"
+#include "physics/PhysicsFeatureServer.h"
 
 namespace mada
 {
@@ -33,7 +35,9 @@ namespace mada
 		m_gameServer = GameServer::create();
 		m_gameStateManager = GameStateManager::create();
 
+		m_gameServer->addFeatureServer(CoreFeatureServer::create());
 		m_gameServer->addFeatureServer(GraphicsFeatureServer::create());
+		m_gameServer->addFeatureServer(PhysicsFeatureServer::create());
 	}
 
 	Game::~Game()

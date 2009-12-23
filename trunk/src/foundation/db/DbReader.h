@@ -1,3 +1,5 @@
+#pragma once
+
 /*
 	This file is part of Kraft der Mada.
 	Copyright (c) 2009 Daniel Wickert
@@ -16,30 +18,34 @@
     along with Kraft der Mada. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "stdmadainc.h"
-
-#include "game/base/Component.h"
-#include "game/base/GameObject.h"
-
 namespace mada
 {
-	__mada_implement_root_class(Component);
+	class Database;
 
-	Component::Component()
-	{
-	}
+	class Property;
+	class PropertyTable;
 
-	Component::~Component()
+	class DbReader : public RefCounted
 	{
-	}
+		__mada_declare_class(DbReader);
 
-	const Ptr<GameObject>& Component::getGameObject() const
-	{
-		return m_gameObject;
-	}
+	public:
+		DbReader();
+		~DbReader();
 
-	void Component::setGameObject(const Ptr<GameObject>& go)
-	{
-		m_gameObject = go;
-	}
+		void setDatabase(const Ptr<Database>& db);
+		const Ptr<Database>& getDatabase() const;
+
+		void setTableName(const String& name);
+		String getTableName() const;
+
+		void addFilter(const Property& prop);
+
+		Ptr<PropertyTable> read();
+
+	private:
+		Ptr<Database> m_db;
+		String m_tableName;
+		std::vector<Property> m_filters;
+	};
 }

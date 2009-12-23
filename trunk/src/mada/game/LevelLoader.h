@@ -1,3 +1,5 @@
+#pragma once
+
 /*
 	This file is part of Kraft der Mada.
 	Copyright (c) 2009 Daniel Wickert
@@ -16,30 +18,27 @@
     along with Kraft der Mada. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "stdmadainc.h"
-
 #include "game/base/Component.h"
-#include "game/base/GameObject.h"
 
 namespace mada
 {
-	__mada_implement_root_class(Component);
-
-	Component::Component()
+	class LevelLoader : public RefCounted
 	{
-	}
+		__mada_declare_class(LevelLoader);
+	public:
+		LevelLoader();
+		~LevelLoader();
 
-	Component::~Component()
-	{
-	}
+		void setCategory(const String& category);
+		String getCategory() const;
 
-	const Ptr<GameObject>& Component::getGameObject() const
-	{
-		return m_gameObject;
-	}
+		void attachComponent(const Ptr<Component>& component);
+		void detachComponent(const Ptr<Component>& component);
 
-	void Component::setGameObject(const Ptr<GameObject>& go)
-	{
-		m_gameObject = go;
-	}
+	private:
+		int m_id;
+		String m_category;
+		typedef std::set<Ptr<Component> > ComponentVector;
+		ComponentVector m_components;
+	};
 }

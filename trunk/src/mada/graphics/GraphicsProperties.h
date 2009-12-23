@@ -1,3 +1,5 @@
+#pragma once
+
 /*
 	This file is part of Kraft der Mada.
 	Copyright (c) 2009 Daniel Wickert
@@ -16,30 +18,12 @@
     along with Kraft der Mada. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "stdmadainc.h"
-
-#include "game/base/Component.h"
-#include "game/base/GameObject.h"
+#include "properties/PropertyDefinition.h"
 
 namespace mada
 {
-	__mada_implement_root_class(Component);
-
-	Component::Component()
+	namespace prop
 	{
-	}
-
-	Component::~Component()
-	{
-	}
-
-	const Ptr<GameObject>& Component::getGameObject() const
-	{
-		return m_gameObject;
-	}
-
-	void Component::setGameObject(const Ptr<GameObject>& go)
-	{
-		m_gameObject = go;
+		__mada_declare_string_property(_graphics_object);
 	}
 }

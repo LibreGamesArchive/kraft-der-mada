@@ -241,6 +241,14 @@
 			Name="db"
 			>
 			<File
+				RelativePath=".\db\Column.h"
+				>
+			</File>
+			<File
+				RelativePath=".\db\Command.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\db\Command.h"
 				>
 			</File>
@@ -261,7 +269,19 @@
 				>
 			</File>
 			<File
-				RelativePath=".\db\ResultSet.h"
+				RelativePath=".\db\DbError.h"
+				>
+			</File>
+			<File
+				RelativePath=".\db\DbReader.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\db\DbReader.h"
+				>
+			</File>
+			<File
+				RelativePath=".\db\DbUtils.h"
 				>
 			</File>
 			<File
@@ -402,6 +422,14 @@
 			</File>
 			<File
 				RelativePath=".\properties\PropertyId.h"
+				>
+			</File>
+			<File
+				RelativePath=".\properties\PropertyTable.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\properties\PropertyTable.h"
 				>
 			</File>
 			<File

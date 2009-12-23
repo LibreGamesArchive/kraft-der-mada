@@ -50,6 +50,7 @@ namespace mada
 		bool isValid() const;
 		const String& getName() const;
 		ValueType getValueType() const;
+		int getValueTypeSize() const;
 		AccessMode getAccessMode() const;
 
 		Variant getDefaultValue() const;

@@ -15,31 +15,14 @@
     You should have received a copy of the GNU General Public License
     along with Kraft der Mada. If not, see <http://www.gnu.org/licenses/>.
 */
-
 #include "stdmadainc.h"
 
-#include "game/base/Component.h"
-#include "game/base/GameObject.h"
+#include "physics/PhysicsProperties.h"
 
 namespace mada
 {
-	__mada_implement_root_class(Component);
-
-	Component::Component()
+	namespace prop
 	{
-	}
-
-	Component::~Component()
-	{
-	}
-
-	const Ptr<GameObject>& Component::getGameObject() const
-	{
-		return m_gameObject;
-	}
-
-	void Component::setGameObject(const Ptr<GameObject>& go)
-	{
-		m_gameObject = go;
+		__mada_define_string_property(_physics_object, ReadWrite);
 	}
 }

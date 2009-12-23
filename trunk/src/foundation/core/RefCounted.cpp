@@ -34,19 +34,6 @@ namespace mada
 		return m_refCount;
 	}
 
-	void RefCounted::addRef()
-	{
-		++m_refCount;
-	}
-
-	void RefCounted::release()
-	{
-		if (0 == --m_refCount)
-		{
-			mada_delete(this);
-		}
-	}
-
 	///\todo implement
 	String RefCounted::getClassName() const
 	{

@@ -53,8 +53,8 @@ namespace mada
 
 	void Database::open()
 	{
+		mada_assert(!isOpen());
 		mada_assert(!m_path.empty());
-		mada_assert(m_db == NULL);
 
 		int flags = 0;
 		if (m_mode == ReadOnly)
@@ -82,7 +82,8 @@ namespace mada
 
 	void Database::close()
 	{
-		mada_assert(m_db != NULL);
+		mada_assert(isOpen());
+
 		int resultCode = sqlite3_close(m_db);
 		if (resultCode == SQLITE_BUSY)
 		{
@@ -97,14 +98,39 @@ namespace mada
 		m_db = NULL;
 	}
 
+	bool Database::isOpen() const
+	{
+		return m_db != NULL;
+	}
+
 	void Database::createTable(const String& tableName, const PropertyIdVector& propertyIds, bool dropExisting)
 	{
+		mada_assert(isOpen());
 		mada_assert(!tableName.empty());
 		mada_assert(!propertyIds.empty());
+
+		if (dropExisting)
+		{
+			dropTable(tableName);
+		}
+
+		// Build create table cmd.
+
+		String cmd = "create table " + tableName;
 	}
 
 	void Database::dropTable(const String& tableName)
 	{
+		mada_assert(isOpen());
+		mada_assert(!tableName.empty());
+
+		String cmd = "drop table if exists " + tableName;
+		if (sqlite3_exec(m_db, cmd.c_str(), NULL, NULL, NULL) != SQLITE_OK)
+		{
+			String msg = "db error in Database::dropTable (sqlite3_exec): ";
+			msg += sqlite3_errmsg(m_db);
+			SysUtils::error(msg.c_str());
+		}
 	}
 
 	Ptr<Table> Database::getTable(const String& tableName) const

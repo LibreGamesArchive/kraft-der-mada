@@ -18,13 +18,57 @@
     along with Kraft der Mada. If not, see <http://www.gnu.org/licenses/>.
 */
 
+#include "game/base/Component.h"
+
 namespace mada
 {
+	class PropertyTable;
+
 	class GameObject : public RefCounted
 	{
 		__mada_declare_class(GameObject);
 	public:
 		GameObject();
 		~GameObject();
+
+		// Callbacks
+
+		/// Called after the GO has been loaded.
+		void onLoad();
+		/// Called before the GO is going to be saved
+		void onSave();
+
+		/// Called after GO has been put into scene
+		void onActivate();
+		/// Called before GO is removed from scene
+		void onDeactivate();
+		/// Called when GO starts to live.
+		void onStart();
+
+		void onBeginFrame();
+		void onFrame();
+		void onEndFrame();
+
+		String getId() const;
+
+		void setCategory(const String& category);
+		String getCategory() const;
+
+		void setPropertyTable(Ptr<PropertyTable> propertyTable);
+		const Ptr<PropertyTable>& getPropertyTable() const;
+
+		void setPropertyTableRow(int row);
+		int getPropertyTableRow() const;
+
+		void attachComponent(const Ptr<Component>& component);
+		void detachComponent(const Ptr<Component>& component);
+
+	private:
+		String m_category;
+		typedef std::set<Ptr<Component> > ComponentVector;
+		ComponentVector m_components;
+
+		int m_row;
+		Ptr<PropertyTable> m_propertyTable;
 	};
 }

@@ -21,6 +21,7 @@ namespace mada
 {
 
 typedef std::string String;
+typedef std::vector<String> StringVector;
 typedef Ogre::Vector3 Vector3;
 typedef Ogre::Quaternion Quaternion;
 typedef double Time;

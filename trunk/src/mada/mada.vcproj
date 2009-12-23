@@ -156,6 +156,10 @@
 				Name="core"
 				>
 				<File
+					RelativePath=".\game\core\CategoryManager.cpp"
+					>
+				</File>
+				<File
 					RelativePath=".\game\core\CategoryManager.h"
 					>
 				</File>
@@ -173,6 +177,14 @@
 				</File>
 				<File
 					RelativePath=".\game\core\CoreProperties.h"
+					>
+				</File>
+				<File
+					RelativePath=".\game\core\GameObjectManager.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\game\core\GameObjectManager.h"
 					>
 				</File>
 				<File
@@ -245,11 +257,39 @@
 				>
 			</File>
 			<File
+				RelativePath=".\graphics\GraphicsProperties.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\graphics\GraphicsProperties.h"
+				>
+			</File>
+			<File
 				RelativePath=".\graphics\MeshGraphicsComponent.cpp"
 				>
 			</File>
 			<File
 				RelativePath=".\graphics\MeshGraphicsComponent.h"
+				>
+			</File>
+		</Filter>
+		<Filter
+			Name="physics"
+			>
+			<File
+				RelativePath=".\physics\PhysicsFeatureServer.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\physics\PhysicsFeatureServer.h"
+				>
+			</File>
+			<File
+				RelativePath=".\physics\PhysicsProperties.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\physics\PhysicsProperties.h"
 				>
 			</File>
 		</Filter>

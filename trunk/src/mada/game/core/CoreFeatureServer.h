@@ -22,6 +22,10 @@
 
 namespace mada
 {
+	class DatabaseServer;
+	class CategoryManager;
+	class GameObjectManager;
+
 	class CoreFeatureServer : public FeatureServer
 	{
 		__mada_declare_class(CoreFeatureServer);
@@ -30,11 +34,12 @@ namespace mada
 		CoreFeatureServer();
 		~CoreFeatureServer();
 
-		virtual void onActivate();
-		virtual void onDeactivate();
-
-		virtual void onEndFrame();
+		void onActivate();
+		void onDeactivate();
 
 	private:
+		Ptr<DatabaseServer> m_databaseServer;
+		Ptr<CategoryManager> m_categoryManager;
+		Ptr<GameObjectManager> m_gameObjectManager;
 	};
 }

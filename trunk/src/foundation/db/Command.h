@@ -22,6 +22,11 @@
 
 namespace mada
 {
+	class Property;
+	class PropertyTable;
+
+	class Database;
+
 	class Command : public RefCounted
 	{
 		__mada_declare_class(Command);
@@ -30,15 +35,32 @@ namespace mada
 		Command();
 		~Command();
 
-		void prepare(const Ptr<Database>& db, const String& cmd);
+		void setDatabase(const Ptr<Database>& db);
+		const Ptr<Database>& getDatabase() const;
+
+		void prepare(const String& cmd);
+
+		/// Executes an SQL statement without catching results.
+		/// Can be used for Insert/Update/Delete or DDL statements.
+		/// Results are discarded.
 		void execute();
-		Ptr<ResultSet> executeQuery();
+
+		Ptr<PropertyTable> executeQuery();
+
+		/// Clears currently prepared or executing SQL statement from this Command object.
+		/// The database stays valid.
 		void clear();
+
+		/// Resets the prepared or executing SQL statement. Bound properties are removed,
+		/// but new properties can be bound and the Command can be executed again.
+		void reset();
+
 		bool isValid() const;
 
-		void bindProperty(const Property& p);
-
 	private:
-		sqlite3_stmt m_statement;
+		sqlite3_stmt* m_statement;
+		Ptr<Database> m_db;
+
+		void addRow(Ptr<PropertyTable> table);
 	};
 }

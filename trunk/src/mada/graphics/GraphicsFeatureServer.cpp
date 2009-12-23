@@ -20,6 +20,9 @@
 
 #include "graphics/GraphicsFeatureServer.h"
 
+#include "graphics/GraphicsProperties.h"
+#include "properties/PropertyId.h"
+
 #include "GameServer.h"
 
 namespace mada
@@ -30,6 +33,9 @@ namespace mada
 	GraphicsFeatureServer::GraphicsFeatureServer() : m_root(NULL), m_renderWindow(NULL)
 	{
 		__mada_construct_singleton;
+
+		// Init properties
+		PropertyId graphicsObjectId = prop::_graphics_object;
 	}
 
 	GraphicsFeatureServer::~GraphicsFeatureServer()

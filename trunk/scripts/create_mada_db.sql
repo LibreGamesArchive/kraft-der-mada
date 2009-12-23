@@ -1,19 +1,34 @@
 drop table if exists _categories;
 create table _categories
 (
-   _name text primary key,
+   _category_name text primary key,
    _template_table_name text,
    _instance_table_name text
 );
 
 insert into _categories
-      (_name,         _template_table_name,    _instance_table_name)
-values('environment', null,                    '_instance_environment');
+      (_category_name, _template_table_name,    _instance_table_name)
+values('environment',  null,                    '_instance_environment');
 
 insert into _categories
-      (_name,         _template_table_name,    _instance_table_name)
-values('person',      '_template_person', '_instance_person');
+      (_category_name, _template_table_name,    _instance_table_name)
+values('person',       '_template_person', '_instance_person');
 
+
+drop table if exists _categories_components;
+create table _categories_components
+(
+   _category_name text,
+   _component_name text,
+   primary key (_category_name, _component_name)
+);
+
+insert into _categories_components
+      (_category_name, _component_name)
+values('environment', 'MeshGraphicsComponent');
+insert into _categories_components
+      (_category_name, _component_name)
+values('person', 'MeshGraphicsComponent');
 
 drop table if exists _instance_environment;
 create table _instance_environment
@@ -29,19 +44,19 @@ create table _instance_environment
 
 insert into _instance_environment
       (_id,                 _level,      _layer, _position, _graphics_object, _physics_object)
-values('testlevel_chunk1', 'testlevel', 'base', '0/-0.5/0', 'testlevel_chunk1.mesh', 'testlevel_chunk1.mesh');
+values('testlevel_chunk1', 'testlevel', 'base', '0 -0.5 0', 'testlevel_chunk1.mesh', 'testlevel_chunk1.mesh');
 
 insert into _instance_environment
       (_id,                 _level,      _layer, _position, _graphics_object, _physics_object)
-values('testlevel_chunk2', 'testlevel', 'base', '-6/0.5/0', 'testlevel_chunk2.mesh', 'testlevel_chunk2.mesh');
+values('testlevel_chunk2', 'testlevel', 'base', '-6 0.5 0', 'testlevel_chunk2.mesh', 'testlevel_chunk2.mesh');
 
 insert into _instance_environment
       (_id,                 _level,      _layer, _position, _graphics_object, _physics_object)
-values('testlevel_chunk3', 'testlevel', 'base', '-7.5/4/0', 'testlevel_chunk3.mesh', 'testlevel_chunk3.mesh');
+values('testlevel_chunk3', 'testlevel', 'base', '-7.5 4 0', 'testlevel_chunk3.mesh', 'testlevel_chunk3.mesh');
 
 insert into _instance_environment
       (_id,                 _level,      _layer, _position, _graphics_object, _physics_object)
-values('testlevel_chunk4', 'testlevel', 'base', '4.5/3.5/0', 'testlevel_chunk4.mesh', 'testlevel_chunk4.mesh');
+values('testlevel_chunk4', 'testlevel', 'base', '4.5 3.5 0', 'testlevel_chunk4.mesh', 'testlevel_chunk4.mesh');
 
 
 drop table if exists _template_person;

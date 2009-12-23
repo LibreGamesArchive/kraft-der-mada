@@ -41,4 +41,18 @@ namespace mada
 	private:
 		int m_refCount;
 	};
+
+	inline void RefCounted::addRef()
+	{
+		++m_refCount;
+	}
+
+	inline void RefCounted::release()
+	{
+		if (0 == --m_refCount)
+		{
+			mada_delete(this);
+		}
+	}
+
 }

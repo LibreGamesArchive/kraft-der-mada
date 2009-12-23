@@ -21,17 +21,25 @@
 
 namespace mada
 {
-	__mada_define_bool_property_default(TestBoolProperty, ReadOnly, true);
-	__mada_define_int_property_default(TestIntProperty, ReadOnly, 1);
-	__mada_define_float_property_default(TestFloatProperty, ReadOnly, 1.0f);
-	__mada_define_string_property_default(TestStringProperty, ReadOnly, "test");
-	__mada_define_vector3_property_default(TestVectorProperty, ReadOnly, Vector3::UNIT_SCALE);
-	__mada_define_quaternion_property_default(TestQuaternionProperty, ReadOnly, Quaternion::ZERO);
+	namespace prop
+	{
+		__mada_define_bool_property_default(TestBoolProperty, ReadOnly, true);
+		__mada_define_int_property_default(TestIntProperty, ReadOnly, 1);
+		__mada_define_float_property_default(TestFloatProperty, ReadOnly, 1.0f);
+		__mada_define_string_property_default(TestStringProperty, ReadOnly, "test");
+		__mada_define_vector3_property_default(TestVectorProperty, ReadOnly, Vector3::UNIT_SCALE);
+		__mada_define_quaternion_property_default(TestQuaternionProperty, ReadOnly, Quaternion::ZERO);
 
 
-	__mada_define_string_property(id, ReadWrite);
-	__mada_define_string_property(level, ReadOnly);
-	__mada_define_string_property(layer, ReadOnly);
-	__mada_define_vector3_property(position, ReadWrite);
-	__mada_define_quaternion_property(orientation, ReadWrite);
+		__mada_define_string_property(_id, ReadOnly);
+		__mada_define_string_property(_level, ReadOnly);
+		__mada_define_string_property(_layer, ReadOnly);
+		__mada_define_vector3_property(_position, ReadWrite);
+		__mada_define_quaternion_property(_orientation, ReadWrite);
+
+		__mada_define_string_property(_category_name, ReadOnly);
+		__mada_define_string_property(_component_name, ReadOnly);
+		__mada_define_string_property(_template_table_name, ReadOnly);
+		__mada_define_string_property(_instance_table_name, ReadOnly);
+	}
 }

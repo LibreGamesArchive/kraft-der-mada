@@ -79,6 +79,29 @@ namespace mada
 		return m_valueType;
 	}
 
+	int PropertyDefinitionBase::getValueTypeSize() const
+	{
+		switch (m_valueType)
+		{
+		case BoolType:
+			return sizeof(bool);
+		case IntType:
+			return sizeof(int);
+		case FloatType:
+			return sizeof(float);
+		case StringType:
+			return sizeof(String);
+		case Vector3Type:
+			return sizeof(Vector3);
+		case QuaternionType:
+			return sizeof(Quaternion);
+		}
+
+		mada_assert(false && "Unknown value type");
+		// Prevent compiler warning
+		return 0;
+	}
+
 	PropertyDefinitionBase* PropertyDefinitionBase::findByName(const String& name)
 	{
 		Registry::const_iterator it = ms_registry->find(name);

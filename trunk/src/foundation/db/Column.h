@@ -1,3 +1,5 @@
+#pragma once
+
 /*
 	This file is part of Kraft der Mada.
 	Copyright (c) 2009 Daniel Wickert
@@ -16,30 +18,29 @@
     along with Kraft der Mada. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "stdmadainc.h"
+#include "db/sqlite/sqlite3.h"
 
-#include "game/base/Component.h"
-#include "game/base/GameObject.h"
+#include "properties/ValueType.h"
 
 namespace mada
 {
-	__mada_implement_root_class(Component);
-
-	Component::Component()
+	class Column : public RefCounted
 	{
-	}
+		__mada_declare_class(Column);
 
-	Component::~Component()
-	{
-	}
+	public:
+		Column();
+		~Column();
 
-	const Ptr<GameObject>& Component::getGameObject() const
-	{
-		return m_gameObject;
-	}
+		const PropertyId& getPropertyId() const;
+		void setPropertyId(const PropertyId& id);
 
-	void Component::setGameObject(const Ptr<GameObject>& go)
-	{
-		m_gameObject = go;
-	}
+		/// SQLite type
+		int getType() const;
+		void setType(int type);
+
+	private:
+		String m_name;
+		ValueType m_type;
+	};
 }
