@@ -20,6 +20,8 @@
 
 namespace mada
 {
+	__mada_implement_root_class(RefCounted);
+
 	RefCounted::RefCounted() : m_refCount(0)
 	{
 	}

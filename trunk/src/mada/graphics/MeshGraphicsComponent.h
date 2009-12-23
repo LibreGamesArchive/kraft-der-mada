@@ -29,4 +29,5 @@ namespace mada
 		MeshGraphicsComponent();
 		~MeshGraphicsComponent();
 	};
+	__mada_register_type(MeshGraphicsComponent);
 }

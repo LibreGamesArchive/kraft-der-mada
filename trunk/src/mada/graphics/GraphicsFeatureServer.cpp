@@ -21,6 +21,7 @@
 #include "graphics/GraphicsFeatureServer.h"
 
 #include "graphics/GraphicsProperties.h"
+#include "graphics/MeshGraphicsComponent.h"
 #include "properties/PropertyId.h"
 
 #include "GameServer.h"

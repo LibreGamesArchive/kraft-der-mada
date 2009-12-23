@@ -35,4 +35,6 @@ namespace mada
 	private:
 		Ptr<GameObject> m_gameObject;
 	};
+
+	__mada_register_type(Component);
 }
