@@ -137,7 +137,13 @@ namespace mada
 				go->setPropertyTable(table);
 				go->setPropertyTableRow(i);
 
-				///\todo Attach components
+				// Attach components
+				StringMultiMapRange range = m_categoryComponents.equal_range((*it).name);
+				for (StringMultiMap::const_iterator it = range.first, end = range.second; it != end; ++it)
+				{
+					Ptr<Component> component = (Component*) Factory::instance()->createClassInstance(it->second);
+					go->attachComponent(component);
+				}
 
 				GameObjectManager::getInstance()->addGameObject(go);
 			}

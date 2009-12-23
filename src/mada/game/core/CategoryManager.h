@@ -44,9 +44,12 @@ namespace mada
 			String templateTableName;
 			String instanceTableName;
 		};
+		typedef std::multimap<String, String> StringMultiMap;
+		typedef std::pair<StringMultiMap::const_iterator, StringMultiMap::const_iterator> StringMultiMapRange;
+
 		std::vector<Category> m_categories;
 		StringVector m_categoryNames;
-		std::multimap<String, String> m_categoryComponents;
+		StringMultiMap m_categoryComponents;
 
 		void loadCategories();
 		void loadCategoryComponents();

@@ -25,6 +25,7 @@ namespace mada
 {
 	class RefCounted
 	{
+		__mada_declare_class(RefCounted);
 	public:
 		RefCounted();
 		int getRefCount() const;

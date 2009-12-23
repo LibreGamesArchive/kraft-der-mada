@@ -31,7 +31,7 @@ public: \
     static Rtti RTTI; \
     static RefCounted* factoryCreator(); \
     static Type* create(); \
-    static void registerWithFactory(); \
+    static bool registerWithFactory(); \
     virtual const Rtti* getRtti() const; \
 private:
 
@@ -50,9 +50,10 @@ private:
     { \
         return new Type(); \
     }\
-    void Type::registerWithFactory() \
+    bool Type::registerWithFactory() \
     { \
 		Factory::instance()->registerClass(&Type::RTTI); \
+		return true; \
     }
 
 #define __mada_implement_root_class(Type) \
@@ -63,7 +64,11 @@ private:
     { \
         return new Type(); \
     }\
-    void Type::registerWithFactory() \
+    bool Type::registerWithFactory() \
     { \
 		Factory::instance()->registerClass(&Type::RTTI); \
+		return true; \
     }
+
+#define __mada_register_type(Type) \
+    static const bool Type##_registered = Type::registerWithFactory();
