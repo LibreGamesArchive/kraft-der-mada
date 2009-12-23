@@ -48,12 +48,22 @@ namespace mada
 	{
 		mada_assert(!m_isOpen);
 
+		for (size_t i = 0, end = m_featureServers.size(); i < end; ++i)
+		{
+			m_featureServers[i]->onActivate();
+		}
+
 		m_isOpen = true;
 	}
 
 	void GameServer::close()
 	{
 		mada_assert(m_isOpen);
+
+		for (size_t i = 0, end = m_featureServers.size(); i < end; ++i)
+		{
+			m_featureServers[i]->onDeactivate();
+		}
 
 		m_isOpen = false;
 	}
@@ -65,25 +75,16 @@ namespace mada
 
 		MasterTime::getInstance()->start();
 
-		for (size_t i = 0, end = m_featureServers.size(); i < end; ++i)
-		{
-			m_featureServers[i]->onActivate();
-		}
-
 		m_isStarted = true;
 	}
 
 	void GameServer::stop()
 	{
 		mada_assert(m_isStarted);
-		m_isStarted = false;
-
-		for (size_t i = 0, end = m_featureServers.size(); i < end; ++i)
-		{
-			m_featureServers[i]->onDeactivate();
-		}
 
 		MasterTime::getInstance()->stop();
+
+		m_isStarted = false;
 	}
 
 	void GameServer::frame()

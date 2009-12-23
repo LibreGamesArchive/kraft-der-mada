@@ -31,12 +31,13 @@ namespace mada
 		Ptr(T* ptr);
 		Ptr(const Ptr<T>& ptr);
 		~Ptr();
-		void operator=(const Ptr<T>& other);
+		Ptr<T>& operator=(const Ptr<T>& other);
 		void operator=(T* other);
 		bool operator==(const Ptr<T>& other) const;
 		bool operator!=(const Ptr<T>& other) const;
 		bool operator==(const T* other) const;
 		bool operator!=(const T* other) const;
+		bool operator<(const Ptr<T>& other) const;
 		T* operator->() const;
 		T& operator*() const;
 		operator T*() const;
@@ -85,7 +86,7 @@ namespace mada
 	}
 
 	template<class T>
-	void Ptr<T>::operator=(const Ptr<T>& other)
+	Ptr<T>& Ptr<T>::operator=(const Ptr<T>& other)
 	{
 		if (m_ptr != other.m_ptr)
 		{
@@ -99,6 +100,8 @@ namespace mada
 				m_ptr->addRef();
 			}
 		}
+
+		return *this;
 	}
 
 	template<class T>
@@ -139,7 +142,13 @@ namespace mada
 	template<class T>
 	bool Ptr<T>::operator!=(const T* ptr) const
 	{
-		return m_ptr == ptr;
+		return m_ptr != ptr;
+	}
+
+	template<class T>
+	bool Ptr<T>::operator<(const Ptr<T>& other) const
+	{
+		return m_ptr < other.m_ptr;
 	}
 
 	template<class T>

@@ -20,6 +20,10 @@
 
 #include "game/base/GameObject.h"
 
+#include "properties/PropertyTable.h"
+
+#include "game/core/CoreProperties.h"
+
 namespace mada
 {
 	__mada_implement_root_class(GameObject);
@@ -30,5 +34,78 @@ namespace mada
 
 	GameObject::~GameObject()
 	{
+	}
+
+	void GameObject::onLoad()
+	{
+	}
+
+	void GameObject::onSave()
+	{
+	}
+
+	void GameObject::onActivate()
+	{
+	}
+
+	void GameObject::onDeactivate()
+	{
+	}
+
+	void GameObject::onStart()
+	{
+	}
+
+	void GameObject::onBeginFrame()
+	{
+	}
+
+	void GameObject::onFrame()
+	{
+	}
+
+	void GameObject::onEndFrame()
+	{
+	}
+
+	String GameObject::getId() const
+	{
+		return m_propertyTable->getStringValue(prop::_id, m_row);
+	}
+
+	void GameObject::attachComponent(const Ptr<Component>& component)
+	{
+		mada_assert(m_components.find(component) == m_components.end());
+
+		m_components.insert(component);
+		component->setGameObject(this);
+	}
+
+	void GameObject::detachComponent(const Ptr<Component>& component)
+	{
+		mada_assert(m_components.find(component) != m_components.end());
+
+		m_components.erase(component);
+		component->setGameObject(Ptr<GameObject>());
+	}
+
+	void GameObject::setPropertyTable(Ptr<PropertyTable> propertyTable)
+	{
+		m_propertyTable = propertyTable;
+	}
+
+	const Ptr<PropertyTable>& GameObject::getPropertyTable() const
+	{
+		return m_propertyTable;
+	}
+
+	void GameObject::setPropertyTableRow(int row)
+	{
+		m_row = row;
+	}
+
+	int GameObject::getPropertyTableRow() const
+	{
+		return m_row;
 	}
 }

@@ -65,3 +65,8 @@ void SysUtils::exit(int returnCode)
 
 	ExitProcess(returnCode);
 }
+
+void SysUtils::memset(void* ptr, unsigned char value, size_t length)
+{
+	::memset(ptr, value, length);
+}

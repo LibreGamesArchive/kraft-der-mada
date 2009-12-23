@@ -20,35 +20,50 @@
 
 #include "game/core/CoreFeatureServer.h"
 
-#include "GameServer.h"
+#include "db/DatabaseServer.h"
+#include "game/core/CategoryManager.h"
+#include "game/core/CoreProperties.h"
+#include "game/core/GameObjectManager.h"
 
 namespace mada
 {
 	__mada_implement_class(CoreFeatureServer, FeatureServer);
 	__mada_implement_singleton(CoreFeatureServer);
 
-	CoreFeatureServer::CoreFeatureServer()
+	CoreFeatureServer::CoreFeatureServer() : m_databaseServer(), m_categoryManager()
 	{
 		__mada_construct_singleton;
+
+		m_databaseServer = DatabaseServer::create();
+		m_categoryManager = CategoryManager::create();
+		m_gameObjectManager = GameObjectManager::create();
 	}
 
 	CoreFeatureServer::~CoreFeatureServer()
 	{
+		m_gameObjectManager = NULL;
+		m_categoryManager = NULL;
+		m_databaseServer = NULL;
+
 		__mada_destruct_singleton;
 	}
 
 	void CoreFeatureServer::onActivate()
 	{
 		FeatureServer::onActivate();
+
+		m_databaseServer->open();
+		m_databaseServer->openStaticDatabase("data/mada_static.db3");
+
+		m_categoryManager->onActivate();
 	}
 
 	void CoreFeatureServer::onDeactivate()
 	{
 		FeatureServer::onDeactivate();
-	}
 
-	void CoreFeatureServer::onEndFrame()
-	{
-		FeatureServer::onEndFrame();
+		m_categoryManager->onDeactivate();
+
+		m_databaseServer->close();
 	}
 }

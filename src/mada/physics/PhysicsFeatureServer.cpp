@@ -18,28 +18,28 @@
 
 #include "stdmadainc.h"
 
-#include "game/base/Component.h"
-#include "game/base/GameObject.h"
+#include "physics/PhysicsFeatureServer.h"
+
+#include "physics/PhysicsProperties.h"
+#include "properties/PropertyId.h"
+
+#include "GameServer.h"
 
 namespace mada
 {
-	__mada_implement_root_class(Component);
+	__mada_implement_class(PhysicsFeatureServer, FeatureServer);
+	__mada_implement_singleton(PhysicsFeatureServer);
 
-	Component::Component()
+	PhysicsFeatureServer::PhysicsFeatureServer()
 	{
+		__mada_construct_singleton;
+
+		// Init properties
+		PropertyId physicsObjectId = prop::_physics_object;
 	}
 
-	Component::~Component()
+	PhysicsFeatureServer::~PhysicsFeatureServer()
 	{
-	}
-
-	const Ptr<GameObject>& Component::getGameObject() const
-	{
-		return m_gameObject;
-	}
-
-	void Component::setGameObject(const Ptr<GameObject>& go)
-	{
-		m_gameObject = go;
+		__mada_destruct_singleton;
 	}
 }

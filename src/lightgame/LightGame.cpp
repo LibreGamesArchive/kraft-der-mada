@@ -20,6 +20,8 @@
 
 #include "LightGame.h"
 
+#include "game/core/CategoryManager.h"
+
 namespace mada
 {
 	__mada_implement_class(LightGame, Game);
@@ -42,6 +44,8 @@ namespace mada
 
 	void LightGame::run()
 	{
+		CategoryManager::getInstance()->loadLevel("testlevel");
+
 		m_gameState = mada::GameState::create();
 		mada::GameStateManager::getInstance()->registerGameState(m_gameState);
 

@@ -42,20 +42,25 @@ namespace mada
 
 		void open();
 		void close();
+		bool isOpen() const;
 
 		void createTable(const String& tableName, const PropertyIdVector& propertyIds, bool dropExisting);
 		void dropTable(const String& tableName);
 		Ptr<Table> getTable(const String& tableName) const;
+		bool tableExists(const String& tableName) const;
 
 		void beginTransaction();
 		void commitTransaction();
 		void rollbackTransaction();
 
-		sqlite3* _getDbHandle() const;
-
 	private:
+		friend class Command;
+		friend class ResultSet;
+
 		String m_path;
 		AccessMode m_mode;
 		sqlite3* m_db;
+
+		sqlite3* _getDbHandle() const;
 	};
 }

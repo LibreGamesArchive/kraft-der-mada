@@ -87,6 +87,12 @@ namespace mada
 		return m_definition->getValueType();
 	}
 
+	int PropertyId::getValueTypeSize() const
+	{
+		mada_assert(isValid());
+		return m_definition->getValueTypeSize();
+	}
+
 	AccessMode PropertyId::getAccessMode() const
 	{
 		mada_assert(isValid());

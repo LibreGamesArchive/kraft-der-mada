@@ -20,22 +20,37 @@
 
 #include "db/sqlite/sqlite3.h"
 
+#define mada_fail_on_db_error(DB, RESULTCODE) \
+	if ((RESULTCODE) != SQLITE_OK) \
+	{\
+		String msg = "In line "; \
+		msg += Ogre::StringConverter::toString(__LINE__); \
+		msg += " of file "; \
+		msg += __FILE__; \
+		msg += sqlite3_errmsg(DB); \
+		SysUtils::showMessageBox(msg.c_str(), "Db Error"); \
+		SysUtils::abort();\
+	}
+
+#define mada_throw_on_db_error(DB, RESULTCODE) \
+	if ((RESULTCODE) != SQLITE_OK) \
+	{\
+		String msg = "In line "; \
+		msg += Ogre::StringConverter::toString(__LINE__); \
+		msg += " of file "; \
+		msg += __FILE__; \
+		msg += sqlite3_errmsg(DB); \
+		throw DbException(msg); \
+	}
+
 namespace mada
 {
-	class ResultSet : public RefCounted
+	class DbException : public std::exception
 	{
-		__mada_declare_class(ResultSet);
-
 	public:
-		ResultSet();
-		~ResultSet();
-
-		bool isValid() const;
-
-		Property getField(const PropertyId& id);
-		bool next();
-
-	private:
-		sqlite3_stmt m_statement;
+		DbException(const String& msg) : std::exception(msg.c_str())
+		{
+		}
 	};
+
 }

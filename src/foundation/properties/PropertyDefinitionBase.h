@@ -55,6 +55,7 @@ namespace mada
 		AccessMode getAccesssMode() const;
 		const Variant& getDefaultValue() const;
 		ValueType getValueType() const;
+		int getValueTypeSize() const;
 
 		static PropertyDefinitionBase* findByName(const String& name);
 

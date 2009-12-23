@@ -18,37 +18,42 @@
     along with Kraft der Mada. If not, see <http://www.gnu.org/licenses/>.
 */
 
+#include "game/base/GameObject.h"
 #include "game/base/Manager.h"
 
 namespace mada
 {
-	class CategoryManager : public Manager
+	class GameObjectManager : public RefCounted
 	{
-		__mada_declare_class(CategoryManager);
-		__mada_declare_singleton(CategoryManager);
+		__mada_declare_class(GameObjectManager);
+		__mada_declare_singleton(GameObjectManager);
 	public:
-		CategoryManager();
-		~CategoryManager();
+		GameObjectManager();
+		~GameObjectManager();
 
 		void onActivate();
 		void onDeactivate();
 
-		const StringVector& getCategories() const;
+		void onLoad();
+		void onSave();
 
-		void loadLevel(const String& levelName);
+		void onBeginFrame();
+		void onFrame();
+		void onEndFrame();
+
+		/// true, if GameObject with given id exists, false else.
+		bool hasGameObject(const String& id) const;
+		/// Return GameObject with given ID. GameObject must exists.
+		Ptr<GameObject> getGameObject(const String& id) const;
+		/// Put GameObject into scene.
+		void addGameObject(const Ptr<GameObject>& go);
+		/// Remove GameObject from scene.
+		void removeGameObject(const Ptr<GameObject>& go);
+		/// Remove all GameObjects from scene.
+		void clear();
 
 	private:
-		struct Category
-		{
-			String name;
-			String templateTableName;
-			String instanceTableName;
-		};
-		std::vector<Category> m_categories;
-		StringVector m_categoryNames;
-		std::multimap<String, String> m_categoryComponents;
-
-		void loadCategories();
-		void loadCategoryComponents();
+		typedef std::map<String, Ptr<GameObject> > GameObjectMap;
+		GameObjectMap m_gameObjects;
 	};
 }

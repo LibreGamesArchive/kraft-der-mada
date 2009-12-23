@@ -24,11 +24,17 @@
 #define mada_delete(ptr) delete ptr
 #define mada_delete_array(type, size) new type[size]
 
+#define mada_malloc(size) malloc(size)
+#define mada_free(ptr) free(ptr)
+
 #else
 
 #define mada_new(type) new type
 #define mada_new_array(type, size) new type[size]
 #define mada_delete(ptr) delete ptr
 #define mada_delete_array(type, size) new type[size]
+
+#define mada_malloc(size) malloc(size)
+#define mada_free(ptr) free(ptr)
 
 #endif
