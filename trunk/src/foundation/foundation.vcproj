@@ -292,30 +292,6 @@
 				Name="sqlite"
 				>
 				<File
-					RelativePath=".\db\sqlite\CppSQLite3.cpp"
-					>
-					<FileConfiguration
-						Name="Debug|Win32"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-							UsePrecompiledHeader="0"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release|Win32"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-							UsePrecompiledHeader="0"
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath=".\db\sqlite\CppSQLite3.h"
-					>
-				</File>
-				<File
 					RelativePath=".\db\sqlite\sqlite3.c"
 					>
 					<FileConfiguration
