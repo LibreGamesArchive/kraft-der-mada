@@ -18,13 +18,18 @@
     along with Kraft der Mada. If not, see <http://www.gnu.org/licenses/>.
 */
 
+#include "messaging/MessageDispatcher.h"
+
 #include "game/base/Component.h"
+
+#include "properties/Property.h"
+#include "properties/PropertyId.h"
 
 namespace mada
 {
 	class PropertyTable;
 
-	class GameObject : public RefCounted
+	class GameObject : public MessageDispatcher
 	{
 		__mada_declare_class(GameObject);
 	public:
@@ -62,6 +67,14 @@ namespace mada
 
 		void attachComponent(const Ptr<Component>& component);
 		void detachComponent(const Ptr<Component>& component);
+
+		bool getBoolProperty(const PropertyId& id) const;
+		int getIntProperty(const PropertyId& id) const;
+		float getFloatProperty(const PropertyId& id) const;
+		String getStringProperty(const PropertyId& id) const;
+		Vector3 getVector3Property(const PropertyId& id) const;
+		Quaternion getQuaternionProperty(const PropertyId& id) const;
+		Property getProperty(const PropertyId& id) const;
 
 	private:
 		String m_category;

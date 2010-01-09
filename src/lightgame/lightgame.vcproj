@@ -40,7 +40,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalOptions="-Zm113"
+				AdditionalOptions="-Zm132"
 				Optimization="0"
 				AdditionalIncludeDirectories=".;..\foundation;..\mada;..\..\dependencies\ogre\OgreMain\include;..\..\dependencies\ogre\build\include;&quot;$(BOOST_ROOT)\include&quot;"
 				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS"
@@ -65,7 +65,7 @@
 				Name="VCLinkerTool"
 				AdditionalDependencies="foundation.lib mada.lib OgreMain_d.lib"
 				LinkIncremental="2"
-				AdditionalLibraryDirectories="&quot;..\..\dependencies\ogre\build\lib\$(ConfigurationName)&quot;;&quot;..\..\lib\$(ConfigurationName)&quot;;..\..\dependencies\ogre\lib"
+				AdditionalLibraryDirectories="&quot;..\..\dependencies\ogre\build\lib\$(ConfigurationName)&quot;;&quot;..\..\lib\$(ConfigurationName)&quot;;&quot;$(BOOST_ROOT)\lib&quot;"
 				GenerateDebugInformation="true"
 				SubSystem="2"
 				TargetMachine="1"
@@ -117,7 +117,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalOptions="-Zm113"
+				AdditionalOptions="-Zm132"
 				Optimization="2"
 				EnableIntrinsicFunctions="true"
 				AdditionalIncludeDirectories=".;..\foundation;..\mada;..\..\dependencies\ogre\OgreMain\include;..\..\dependencies\ogre\build\include;&quot;$(BOOST_ROOT)\include&quot;"
@@ -142,7 +142,7 @@
 				Name="VCLinkerTool"
 				AdditionalDependencies="foundation.lib mada.lib OgreMain.lib"
 				LinkIncremental="1"
-				AdditionalLibraryDirectories="&quot;..\..\dependencies\ogre\build\lib\$(ConfigurationName)&quot;;&quot;..\..\lib\$(ConfigurationName)&quot;"
+				AdditionalLibraryDirectories="&quot;..\..\dependencies\ogre\build\lib\$(ConfigurationName)&quot;;&quot;..\..\lib\$(ConfigurationName)&quot;;&quot;$(BOOST_ROOT)\lib&quot;"
 				GenerateDebugInformation="true"
 				SubSystem="2"
 				OptimizeReferences="2"

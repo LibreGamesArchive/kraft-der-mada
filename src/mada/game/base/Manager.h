@@ -18,9 +18,11 @@
     along with Kraft der Mada. If not, see <http://www.gnu.org/licenses/>.
 */
 
+#include "messaging/MessageDispatcher.h"
+
 namespace mada
 {
-	class Manager : public RefCounted
+	class Manager : public MessageDispatcher
 	{
 		__mada_declare_class(Manager);
 	public:

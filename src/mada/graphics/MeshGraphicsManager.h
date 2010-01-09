@@ -1,3 +1,5 @@
+#pragma once
+
 /*
 	This file is part of Kraft der Mada.
 	Copyright (c) 2009 Daniel Wickert
@@ -16,56 +18,35 @@
     along with Kraft der Mada. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "stdmadainc.h"
-
 #include "game/base/Manager.h"
 
 namespace mada
 {
-	__mada_implement_class(Manager, MessageDispatcher);
-
-	Manager::Manager() : m_isActive(false)
+	class MeshGraphicsManager : public Manager
 	{
-	}
+		__mada_declare_class(MeshGraphicsManager);
+		__mada_declare_singleton(MeshGraphicsManager);
+	public:
+		MeshGraphicsManager();
+		~MeshGraphicsManager();
 
-	Manager::~Manager()
-	{
-	}
+		//virtual void onActivate();
+		//virtual void onDeactivate();
 
-	void Manager::onActivate()
-	{
-		mada_assert(!m_isActive);
-		m_isActive = true;
-	}
+		//virtual void onLoad();
+		//virtual void onSave();
 
-	void Manager::onDeactivate()
-	{
-		mada_assert(m_isActive);
-		m_isActive = false;
-	}
+		//virtual void onBeginFrame();
+		//virtual void onFrame();
+		//virtual void onEndFrame();
 
-	bool Manager::isActive() const
-	{
-		return m_isActive;
-	}
+		Ogre::Entity* createEntity(const String& meshName);
+		void destroyEntity(Ogre::Entity* entity);
 
-	void Manager::onLoad()
-	{
-	}
+		Ogre::SceneNode* createSceneNode();
+		void destroySceneNode(Ogre::SceneNode* node);
 
-	void Manager::onSave()
-	{
-	}
-
-	void Manager::onBeginFrame()
-	{
-	}
-
-	void Manager::onFrame()
-	{
-	}
-
-	void Manager::onEndFrame()
-	{
-	}
+	private:
+		int m_nextEntityId;
+	};
 }

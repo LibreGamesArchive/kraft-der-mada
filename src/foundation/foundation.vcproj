@@ -40,7 +40,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalOptions="-Zm113"
+				AdditionalOptions="-Zm132"
 				Optimization="0"
 				AdditionalIncludeDirectories=".;..\..\dependencies\ogre\OgreMain\include;..\..\dependencies\ogre\build\include;&quot;$(BOOST_ROOT)\include&quot;"
 				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS"
@@ -105,7 +105,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalOptions="-Zm113"
+				AdditionalOptions="-Zm132"
 				Optimization="2"
 				EnableIntrinsicFunctions="true"
 				AdditionalIncludeDirectories=".;..\..\dependencies\ogre\OgreMain\include;..\..\dependencies\ogre\build\include;&quot;$(BOOST_ROOT)\include&quot;"
@@ -330,6 +330,14 @@
 			</File>
 			<File
 				RelativePath=".\messaging\Message.h"
+				>
+			</File>
+			<File
+				RelativePath=".\messaging\MessageDispatcher.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\messaging\MessageDispatcher.h"
 				>
 			</File>
 			<File

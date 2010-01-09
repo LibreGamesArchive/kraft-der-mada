@@ -22,6 +22,8 @@
 
 namespace mada
 {
+	class Manager;
+
 	class GraphicsFeatureServer : public FeatureServer
 	{
 		__mada_declare_class(GraphicsFeatureServer);
@@ -35,8 +37,15 @@ namespace mada
 
 		virtual void onEndFrame();
 
+		Ogre::SceneManager* _getSceneManager() const;
+
 	private:
 		Ogre::Root* m_root;
+		Ogre::SceneManager* m_sceneManager;
 		Ogre::RenderWindow* m_renderWindow;
+		Ogre::Viewport* m_viewport;
+		Ogre::Camera* m_camera;
+
+		std::vector<Ptr<Manager> > m_managers;
 	};
 }

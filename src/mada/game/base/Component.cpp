@@ -23,7 +23,7 @@
 
 namespace mada
 {
-	__mada_implement_root_class(Component);
+	__mada_implement_class(Component, MessagePort);
 
 	Component::Component()
 	{
@@ -41,5 +41,55 @@ namespace mada
 	void Component::setGameObject(const Ptr<GameObject>& go)
 	{
 		m_gameObject = go;
+	}
+
+	void Component::onLoad()
+	{
+		// Empty. Override in subclass if needed.
+	}
+
+	void Component::onSave()
+	{
+		// Empty. Override in subclass if needed.
+	}
+
+	void Component::onActivate()
+	{
+		// Empty. Override in subclass if needed.
+	}
+
+	void Component::onDeactivate()
+	{
+		// Empty. Override in subclass if needed.
+	}
+
+	void Component::onStart()
+	{
+		// Empty. Override in subclass if needed.
+	}
+
+	void Component::onAttach()
+	{
+		// Empty. Override in subclass if needed.
+	}
+
+	void Component::onDetach()
+	{
+		// Empty. Override in subclass if needed.
+	}
+
+	void Component::onBeginFrame()
+	{
+		// Empty. Override in subclass if needed.
+	}
+
+	void Component::onFrame()
+	{
+		// Empty. Override in subclass if needed.
+	}
+
+	void Component::onEndFrame()
+	{
+		// Empty. Override in subclass if needed.
 	}
 }

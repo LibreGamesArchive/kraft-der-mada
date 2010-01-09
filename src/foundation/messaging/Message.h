@@ -27,6 +27,11 @@ namespace mada
 		{
 			return this == &other;
 		}
+
+		bool operator<(const MessageId& other) const
+		{
+			return this < &other;
+		}
 	};
 
 #	define __mada_declare_message_id \

@@ -19,15 +19,38 @@
 
 #include "graphics/MeshGraphicsComponent.h"
 
+#include "graphics/MeshGraphicsManager.h"
+#include "graphics/GraphicsProperties.h"
+
+#include "game/base/GameObject.h"
+
 namespace mada
 {
 	__mada_implement_class(MeshGraphicsComponent, Component);
 
-	MeshGraphicsComponent::MeshGraphicsComponent()
+	MeshGraphicsComponent::MeshGraphicsComponent() : m_entity(NULL), m_sceneNode(NULL)
 	{
 	}
 
 	MeshGraphicsComponent::~MeshGraphicsComponent()
 	{
+		mada_assert(m_entity == NULL);
+		mada_assert(m_sceneNode == NULL);
+	}
+
+	void MeshGraphicsComponent::onActivate()
+	{
+		mada_assert(m_entity == NULL);
+		mada_assert(m_sceneNode == NULL);
+
+		String meshName = getGameObject()->getStringProperty(prop::_graphics_object);
+
+		MeshGraphicsManager::getInstance()->createEntity(meshName);
+	}
+
+	void MeshGraphicsComponent::onDeactivate()
+	{
+		mada_assert(m_entity != NULL);
+		mada_assert(m_sceneNode != NULL);
 	}
 }

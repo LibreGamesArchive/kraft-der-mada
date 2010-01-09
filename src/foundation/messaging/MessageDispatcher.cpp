@@ -18,54 +18,18 @@
 
 #include "stdmadainc.h"
 
-#include "game/base/Manager.h"
+#include "messaging/MessageDispatcher.h"
 
 namespace mada
 {
-	__mada_implement_class(Manager, MessageDispatcher);
+	__mada_implement_class(MessageDispatcher, MessagePort);
 
-	Manager::Manager() : m_isActive(false)
+	MessageDispatcher::MessageDispatcher()
 	{
 	}
 
-	Manager::~Manager()
+	MessageDispatcher::~MessageDispatcher()
 	{
 	}
 
-	void Manager::onActivate()
-	{
-		mada_assert(!m_isActive);
-		m_isActive = true;
-	}
-
-	void Manager::onDeactivate()
-	{
-		mada_assert(m_isActive);
-		m_isActive = false;
-	}
-
-	bool Manager::isActive() const
-	{
-		return m_isActive;
-	}
-
-	void Manager::onLoad()
-	{
-	}
-
-	void Manager::onSave()
-	{
-	}
-
-	void Manager::onBeginFrame()
-	{
-	}
-
-	void Manager::onFrame()
-	{
-	}
-
-	void Manager::onEndFrame()
-	{
-	}
 }
