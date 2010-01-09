@@ -146,6 +146,7 @@ namespace mada
 				}
 
 				GameObjectManager::getInstance()->addGameObject(go);
+
 			}
 		}
 	}

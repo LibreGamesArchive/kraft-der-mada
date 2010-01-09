@@ -28,6 +28,13 @@ namespace mada
 	public:
 		MeshGraphicsComponent();
 		~MeshGraphicsComponent();
+
+		void onActivate();
+		void onDeactivate();
+
+	private:
+		Ogre::Entity* m_entity;
+		Ogre::SceneNode* m_sceneNode;
 	};
 	__mada_register_type(MeshGraphicsComponent);
 }

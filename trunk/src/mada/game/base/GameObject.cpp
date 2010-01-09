@@ -26,7 +26,7 @@
 
 namespace mada
 {
-	__mada_implement_root_class(GameObject);
+	__mada_implement_class(GameObject, MessageDispatcher);
 
 	GameObject::GameObject()
 	{
@@ -46,10 +46,18 @@ namespace mada
 
 	void GameObject::onActivate()
 	{
+		for (ComponentVector::iterator it = m_components.begin(), end = m_components.end(); it != end; ++it)
+		{
+			(*it)->onActivate();
+		}
 	}
 
 	void GameObject::onDeactivate()
 	{
+		for (ComponentVector::iterator it = m_components.begin(), end = m_components.end(); it != end; ++it)
+		{
+			(*it)->onDeactivate();
+		}
 	}
 
 	void GameObject::onStart()
@@ -79,11 +87,15 @@ namespace mada
 
 		m_components.insert(component);
 		component->setGameObject(this);
+
+		component->onAttach();
 	}
 
 	void GameObject::detachComponent(const Ptr<Component>& component)
 	{
 		mada_assert(m_components.find(component) != m_components.end());
+
+		component->onDetach();
 
 		m_components.erase(component);
 		component->setGameObject(Ptr<GameObject>());
@@ -107,5 +119,47 @@ namespace mada
 	int GameObject::getPropertyTableRow() const
 	{
 		return m_row;
+	}
+
+	bool GameObject::getBoolProperty(const PropertyId& id) const
+	{
+		mada_assert(id.isValid());
+		return m_propertyTable->getBoolValue(id, m_row);
+	}
+
+	int GameObject::getIntProperty(const PropertyId& id) const
+	{
+		mada_assert(id.isValid());
+		return m_propertyTable->getIntValue(id, m_row);
+	}
+
+	float GameObject::getFloatProperty(const PropertyId& id) const
+	{
+		mada_assert(id.isValid());
+		return m_propertyTable->getFloatValue(id, m_row);
+	}
+
+	String GameObject::getStringProperty(const PropertyId& id) const
+	{
+		mada_assert(id.isValid());
+		return m_propertyTable->getStringValue(id, m_row);
+	}
+
+	Vector3 GameObject::getVector3Property(const PropertyId& id) const
+	{
+		mada_assert(id.isValid());
+		return m_propertyTable->getVector3Value(id, m_row);
+	}
+
+	Quaternion GameObject::getQuaternionProperty(const PropertyId& id) const
+	{
+		mada_assert(id.isValid());
+		return m_propertyTable->getQuaternionValue(id, m_row);
+	}
+
+	Property GameObject::getProperty(const PropertyId& id) const
+	{
+		mada_assert(id.isValid());
+		return m_propertyTable->getValue(id, m_row);
 	}
 }

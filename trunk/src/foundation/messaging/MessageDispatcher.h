@@ -20,38 +20,41 @@
 
 #include "messaging/Message.h"
 #include "messaging/MessageHandler.h"
+#include "messaging/MessagePort.h"
 
 #include <set>
 #include <vector>
 
 namespace mada
 {
-	class MessagePort : public RefCounted
+	class MessageDispatcher : public MessagePort
 	{
-		__mada_declare_class(MessagePort);
+		__mada_declare_class(MessageDispatcher);
 	public:
-		MessagePort();
-		~MessagePort();
+		MessageDispatcher();
+		~MessageDispatcher();
 
-		virtual void setupAcceptedMessages();
+	//	void addPort(const Ptr<MessagePort>& port);
+	//	void removePort(const Ptr<MessagePort>& port);
+	//	bool hasPort(const Ptr<MessagePort>& port) const;
 
-		void attachHandler(const Ptr<MessageHandler>& handler);
-		void removeHandler(const Ptr<MessageHandler>& handler);
+	//	virtual void setupAcceptedMessages();
 
-		void removeAllHandlers();
+	//	void attachHandler(const Ptr<MessageHandler>& handler);
+	//	void removeHandler(const Ptr<MessageHandler>& handler);
 
-		virtual void send(const Ptr<Message>& msg);
+	//	void removeAllHandlers();
 
-		virtual void handleMessage(const Ptr<Message>& msg);
+	//	virtual void send(const Ptr<Message>& msg);
+	//	bool acceptsMessage(const MessageId& msgId) const;
 
-		bool acceptsMessage(const MessageId& msgId) const;
-
-	protected:
-		void registerMessage(const MessageId& msgId);
+	//protected:
+	//	void registerMessage(const MessageId& msgId);
+	//	virtual void handleMessage(const Ptr<Message>& msg);
 
 	private:
-		typedef std::vector<Ptr<MessageHandler> > HandlerVector;
-		HandlerVector m_handlers;
+		std::vector<Ptr<MessagePort> > m_ports;
+		std::vector<Ptr<MessageHandler> > m_handlers;
 		std::set<const MessageId> m_acceptedMessageIds;
 	};
 }

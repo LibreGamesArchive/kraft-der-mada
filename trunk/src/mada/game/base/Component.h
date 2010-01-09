@@ -18,11 +18,13 @@
     along with Kraft der Mada. If not, see <http://www.gnu.org/licenses/>.
 */
 
+#include "messaging/MessagePort.h"
+
 namespace mada
 {
 	class GameObject;
 
-	class Component : public RefCounted
+	class Component : public MessagePort
 	{
 		__mada_declare_class(Component);
 	public:
@@ -31,6 +33,31 @@ namespace mada
 
 		const Ptr<GameObject>& getGameObject() const;
 		void setGameObject(const Ptr<GameObject>& go);
+
+		/// Called by the GO after it has been loaded.
+		virtual void onLoad();
+		/// Called by the GO before it is going to be saved
+		virtual void onSave();
+
+		/// Called by the GO after it has been put into scene
+		virtual void onActivate();
+
+		/// Called by the GO before it is removed from scene
+		virtual void onDeactivate();
+
+		/// Called by the GO after it starts to live.
+		/// (Either after a load or after it has been created on runtime)
+		virtual void onStart();
+
+		/// Called by GO after Component has been attached to it.
+		virtual void onAttach();
+
+		/// Called by GO before Component is detached from a it.
+		virtual void onDetach();
+
+		virtual void onBeginFrame();
+		virtual void onFrame();
+		virtual void onEndFrame();
 
 	private:
 		Ptr<GameObject> m_gameObject;

@@ -22,6 +22,7 @@
 
 #include "graphics/GraphicsProperties.h"
 #include "graphics/MeshGraphicsComponent.h"
+#include "graphics/MeshGraphicsManager.h"
 #include "properties/PropertyId.h"
 
 #include "GameServer.h"
@@ -31,12 +32,20 @@ namespace mada
 	__mada_implement_class(GraphicsFeatureServer, FeatureServer);
 	__mada_implement_singleton(GraphicsFeatureServer);
 
-	GraphicsFeatureServer::GraphicsFeatureServer() : m_root(NULL), m_renderWindow(NULL)
+	GraphicsFeatureServer::GraphicsFeatureServer() :
+		m_root(NULL),
+		m_sceneManager(NULL),
+		m_renderWindow(NULL),
+		m_viewport(NULL),
+		m_camera(NULL),
+		m_managers()
 	{
 		__mada_construct_singleton;
 
 		// Init properties
 		PropertyId graphicsObjectId = prop::_graphics_object;
+
+		m_managers.push_back(Ptr<Manager>(MeshGraphicsManager::create()));
 	}
 
 	GraphicsFeatureServer::~GraphicsFeatureServer()
@@ -59,6 +68,18 @@ namespace mada
 			return;
 		}
 		m_renderWindow = m_root->initialise(true, "Mada Engine");
+
+		m_sceneManager = m_root->createSceneManager(Ogre::ST_GENERIC);
+		///\todo Replace setAmbient here with proper light handling.
+		m_sceneManager->setAmbientLight(Ogre::ColourValue::White);
+
+		m_camera = m_sceneManager->createCamera("__mada_standard_camera");
+		///\todo Have propert camera handling.
+		m_camera->setNearClipDistance(1);
+		m_camera->setFarClipDistance(1000);
+		m_camera->setPosition(0, 0, 100);
+		m_camera->lookAt(0, 0, 0);
+		m_viewport = m_renderWindow->addViewport(m_camera);
 	}
 
 	void GraphicsFeatureServer::onDeactivate()
@@ -66,7 +87,12 @@ namespace mada
 		FeatureServer::onDeactivate();
 
 		m_renderWindow = NULL;
+		m_sceneManager = NULL;
+		m_viewport = NULL;
+		m_camera = NULL;
+
 		delete m_root;
+		m_root = NULL;
 	}
 
 	void GraphicsFeatureServer::onEndFrame()
@@ -74,5 +100,10 @@ namespace mada
 		FeatureServer::onEndFrame();
 
 		m_root->renderOneFrame();
+	}
+
+	Ogre::SceneManager* GraphicsFeatureServer::_getSceneManager() const
+	{
+		return m_sceneManager;
 	}
 }

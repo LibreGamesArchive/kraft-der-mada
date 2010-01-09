@@ -40,31 +40,45 @@ namespace mada
 
 	void MessagePort::attachHandler(const Ptr<MessageHandler>& h)
 	{
+		mada_assert(h.isValid());
+		mada_assert(std::find(m_handlers.begin(), m_handlers.end(), h) == m_handlers.end());
+
 		m_handlers.push_back(h);
 	}
 
 	void MessagePort::removeHandler(const Ptr<MessageHandler>& h)
 	{
+		mada_assert(h.isValid());
+		mada_assert(std::find(m_handlers.begin(), m_handlers.end(), h) != m_handlers.end());
+
+		HandlerVector::iterator it = std::find(m_handlers.begin(), m_handlers.end(), h);
+
+		m_handlers.erase(it);
 	}
 
 	void MessagePort::removeAllHandlers()
 	{
+		m_handlers.clear();
 	}
 
 	void MessagePort::send(const Ptr<Message>& msg)
 	{
+		///\todo how to handle message passing as a whole.
 	}
 
 	bool MessagePort::acceptsMessage(const MessageId& msgId) const
 	{
-		return false;
+		return m_acceptedMessageIds.find(msgId) != m_acceptedMessageIds.end();
 	}
 
 	void MessagePort::registerMessage(const MessageId& msgId)
 	{
+		mada_assert(m_acceptedMessageIds.find(msgId) == m_acceptedMessageIds.end());
+		m_acceptedMessageIds.insert(msgId);
 	}
 
 	void MessagePort::handleMessage(const Ptr<Message>& msg)
 	{
+		// implement in sub class
 	}
 }

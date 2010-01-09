@@ -40,7 +40,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalOptions="-Zm113"
+				AdditionalOptions="-Zm132"
 				Optimization="0"
 				AdditionalIncludeDirectories=".;..\foundation;..\..\dependencies\ogre\OgreMain\include;..\..\dependencies\ogre\build\include;&quot;$(BOOST_ROOT)\include&quot;"
 				PreprocessorDefinitions="WIN32;_DEBUG;_LIB"
@@ -105,7 +105,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalOptions="-Zm113"
+				AdditionalOptions="-Zm132"
 				Optimization="2"
 				EnableIntrinsicFunctions="true"
 				AdditionalIncludeDirectories=".;..\foundation;..\..\dependencies\ogre\OgreMain\include;..\..\dependencies\ogre\build\include;&quot;$(BOOST_ROOT)\include&quot;"
@@ -270,6 +270,14 @@
 			</File>
 			<File
 				RelativePath=".\graphics\MeshGraphicsComponent.h"
+				>
+			</File>
+			<File
+				RelativePath=".\graphics\MeshGraphicsManager.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\graphics\MeshGraphicsManager.h"
 				>
 			</File>
 		</Filter>
