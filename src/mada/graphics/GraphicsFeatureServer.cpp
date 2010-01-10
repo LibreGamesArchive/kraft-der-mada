@@ -68,18 +68,26 @@ namespace mada
 			return;
 		}
 		m_renderWindow = m_root->initialise(true, "Mada Engine");
+		Ogre::WindowEventUtilities::addWindowEventListener(m_renderWindow, this);
+
+		///\todo Replace with proper directory handling.
+		/// Must be more generic and integrated with other directories (user dir, game dir, resource dir, etc.)
+		Ogre::ResourceGroupManager* resourceGroupManager = Ogre::ResourceGroupManager::getSingletonPtr();
+		resourceGroupManager->addResourceLocation("./media", "FileSystem");
+		resourceGroupManager->initialiseAllResourceGroups();
 
 		m_sceneManager = m_root->createSceneManager(Ogre::ST_GENERIC);
 		///\todo Replace setAmbient here with proper light handling.
-		m_sceneManager->setAmbientLight(Ogre::ColourValue::White);
+		m_sceneManager->setAmbientLight(Ogre::ColourValue(1.0f, 1.0f, 1.0f));
 
 		m_camera = m_sceneManager->createCamera("__mada_standard_camera");
 		///\todo Have propert camera handling.
-		m_camera->setNearClipDistance(1);
-		m_camera->setFarClipDistance(1000);
-		m_camera->setPosition(0, 0, 100);
+		m_camera->setNearClipDistance(10.0f);
+		m_camera->setFarClipDistance(10000.0f);
+		m_camera->setPosition(0, 0, 30);
 		m_camera->lookAt(0, 0, 0);
 		m_viewport = m_renderWindow->addViewport(m_camera);
+		m_viewport->setAutoUpdated(true);
 	}
 
 	void GraphicsFeatureServer::onDeactivate()
@@ -100,10 +108,16 @@ namespace mada
 		FeatureServer::onEndFrame();
 
 		m_root->renderOneFrame();
+		Ogre::WindowEventUtilities::messagePump();
 	}
 
 	Ogre::SceneManager* GraphicsFeatureServer::_getSceneManager() const
 	{
 		return m_sceneManager;
+	}
+
+	void GraphicsFeatureServer::windowClosed(Ogre::RenderWindow* window)
+	{
+		GameServer::getInstance()->requestQuit();
 	}
 }

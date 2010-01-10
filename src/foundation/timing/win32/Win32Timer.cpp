@@ -30,12 +30,14 @@ namespace mada
 	void Timer::start()
 	{
 		mada_assert(!m_isRunning);
+		m_isRunning = true;
 		reset();
 	}
 
 	void Timer::stop()
 	{
 		mada_assert(m_isRunning);
+		m_isRunning = false;
 		BOOL success = QueryPerformanceCounter(reinterpret_cast<LARGE_INTEGER*>(&m_stopTime));
 		if (!success)
 		{

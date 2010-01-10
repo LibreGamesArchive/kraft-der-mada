@@ -37,6 +37,14 @@ namespace mada
 		void onActivate();
 		void onDeactivate();
 
+		void loadLevel(const String& levelName);
+
+		void startNewGame();
+		void loadGame(const String& saveGameName);
+		void saveGame(const String& saveGameName);
+
+		String getStartLevelName();
+
 	private:
 		Ptr<DatabaseServer> m_databaseServer;
 		Ptr<CategoryManager> m_categoryManager;
