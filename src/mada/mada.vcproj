@@ -180,6 +180,14 @@
 					>
 				</File>
 				<File
+					RelativePath=".\game\core\GameObject.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\game\core\GameObject.h"
+					>
+				</File>
+				<File
 					RelativePath=".\game\core\GameObjectManager.cpp"
 					>
 				</File>
@@ -217,14 +225,6 @@
 				</File>
 				<File
 					RelativePath=".\game\base\FeatureServer.h"
-					>
-				</File>
-				<File
-					RelativePath=".\game\base\GameObject.cpp"
-					>
-				</File>
-				<File
-					RelativePath=".\game\base\GameObject.h"
 					>
 				</File>
 				<File

@@ -22,7 +22,7 @@
 #include "graphics/MeshGraphicsManager.h"
 #include "graphics/GraphicsProperties.h"
 
-#include "game/base/GameObject.h"
+#include "game/core/GameObject.h"
 
 namespace mada
 {
