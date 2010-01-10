@@ -18,7 +18,7 @@
 
 #include "stdmadainc.h"
 
-#include "game/base/GameObject.h"
+#include "game/core/GameObject.h"
 
 #include "properties/PropertyTable.h"
 

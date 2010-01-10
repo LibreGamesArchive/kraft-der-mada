@@ -18,7 +18,7 @@
     along with Kraft der Mada. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "game/base/GameObject.h"
+#include "game/core/GameObject.h"
 #include "game/base/Manager.h"
 
 namespace mada

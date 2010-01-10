@@ -25,7 +25,7 @@
 
 #include "properties/PropertyTable.h"
 
-#include "game/base/GameObject.h"
+#include "game/core/GameObject.h"
 #include "game/core/GameObjectManager.h"
 #include "game/core/CoreProperties.h"
 

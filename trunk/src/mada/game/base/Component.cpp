@@ -19,7 +19,7 @@
 #include "stdmadainc.h"
 
 #include "game/base/Component.h"
-#include "game/base/GameObject.h"
+#include "game/core/GameObject.h"
 
 namespace mada
 {
