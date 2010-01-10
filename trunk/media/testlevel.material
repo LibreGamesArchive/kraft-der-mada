@@ -1,0 +1,121 @@
+
+material NoMaterial
+{
+	technique
+	{
+		pass
+		{
+		}
+
+	}
+
+}
+
+
+
+material Env_Rock_ground_tile
+{
+	technique
+	{
+		pass
+		{
+			lighting off
+			ambient vertexcolour
+		
+			texture_unit
+			{
+				
+				texture Env_Rock_ground_tile.png
+			}
+		}
+
+	}
+
+}
+
+
+
+material Env_Village_crystal
+{
+	technique
+	{
+		pass
+		{
+			lighting off
+			ambient vertexcolour
+
+			texture_unit
+			{
+				texture Env_Village_crystal.png
+			}
+		}
+
+	}
+
+}
+
+
+
+material Env_Village_Building_01
+{
+	technique
+	{
+		pass
+		{
+			lighting off
+			ambient vertexcolour
+			alpha_rejection greater 128
+
+			texture_unit
+			{
+				texture Env_Village_Building_01.png
+			}
+		}
+
+	}
+
+}
+
+
+
+material Env_Rock_tile_02
+{
+	technique
+	{
+		pass
+		{
+			lighting off
+			ambient vertexcolour
+
+			texture_unit
+			{
+				texture Env_Rock_tile_02.png
+			}
+		}
+
+	}
+
+}
+
+
+
+material Env_Rock_tile
+{
+	technique
+	{
+		pass
+		{
+			lighting off
+			ambient vertexcolour
+
+			texture_unit
+			{
+				texture Env_Rock_tile.png
+			}
+		}
+
+	}
+
+}
+
+

@@ -84,7 +84,7 @@ namespace mada
 		///\todo Have propert camera handling.
 		m_camera->setNearClipDistance(10.0f);
 		m_camera->setFarClipDistance(10000.0f);
-		m_camera->setPosition(0, 0, 30);
+		m_camera->setPosition(0, 0, 15);
 		m_camera->lookAt(0, 0, 0);
 		m_viewport = m_renderWindow->addViewport(m_camera);
 		m_viewport->setAutoUpdated(true);
