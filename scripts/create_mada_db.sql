@@ -58,6 +58,9 @@ insert into _instance_environment
       (_id,                 _level,      _layer, _position, _graphics_object, _physics_object)
 values('testlevel_chunk4', 'testlevel', 'base', '4.5 3.5 0', 'testlevel_chunk4.mesh', 'testlevel_chunk4.mesh');
 
+insert into _instance_environment
+      (_id,                 _level,      _layer, _position, _graphics_object, _physics_object)
+values('testlevel', 'testlevel_pnyx', 'base', '0.0 0.0 0.0', 'testlevel.mesh', 'testlevel.mesh');
 
 drop table if exists _template_person;
 create table _template_person

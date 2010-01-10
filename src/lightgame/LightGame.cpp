@@ -46,7 +46,7 @@ namespace mada
 	{
 		// This code is completely intermediate.
 		// Just a hack to get things working at the start of the project.
-		CoreFeatureServer::getInstance()->loadLevel("testlevel");
+		CoreFeatureServer::getInstance()->loadLevel("testlevel_pnyx");
 
 		m_gameState = mada::GameState::create();
 		mada::GameStateManager::getInstance()->registerGameState(m_gameState);
