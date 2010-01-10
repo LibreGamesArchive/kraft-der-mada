@@ -20,7 +20,7 @@
 
 #include "LightGame.h"
 
-#include "game/core/CategoryManager.h"
+#include "game/core/CoreFeatureServer.h"
 
 namespace mada
 {
@@ -44,7 +44,9 @@ namespace mada
 
 	void LightGame::run()
 	{
-		CategoryManager::getInstance()->loadLevel("testlevel");
+		// This code is completely intermediate.
+		// Just a hack to get things working at the start of the project.
+		CoreFeatureServer::getInstance()->loadLevel("testlevel");
 
 		m_gameState = mada::GameState::create();
 		mada::GameStateManager::getInstance()->registerGameState(m_gameState);

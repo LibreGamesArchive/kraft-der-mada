@@ -24,7 +24,7 @@ namespace mada
 {
 	class Manager;
 
-	class GraphicsFeatureServer : public FeatureServer
+	class GraphicsFeatureServer : public FeatureServer, Ogre::WindowEventListener
 	{
 		__mada_declare_class(GraphicsFeatureServer);
 		__mada_declare_singleton(GraphicsFeatureServer);
@@ -38,6 +38,9 @@ namespace mada
 		virtual void onEndFrame();
 
 		Ogre::SceneManager* _getSceneManager() const;
+
+		// Ogre::WindowEventListener
+		void windowClosed(Ogre::RenderWindow* window);
 
 	private:
 		Ogre::Root* m_root;

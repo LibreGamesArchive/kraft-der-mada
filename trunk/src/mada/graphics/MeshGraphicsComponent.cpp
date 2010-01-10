@@ -23,6 +23,7 @@
 #include "graphics/GraphicsProperties.h"
 
 #include "game/core/GameObject.h"
+#include "game/core/CoreProperties.h"
 
 namespace mada
 {
@@ -45,7 +46,15 @@ namespace mada
 
 		String meshName = getGameObject()->getStringProperty(prop::_graphics_object);
 
-		MeshGraphicsManager::getInstance()->createEntity(meshName);
+		m_entity = MeshGraphicsManager::getInstance()->createEntity(meshName);
+		m_sceneNode = MeshGraphicsManager::getInstance()->createSceneNode();
+		m_sceneNode->attachObject(m_entity);
+
+		Vector3 pos = getGameObject()->getVector3Property(prop::_position);
+		Quaternion orientation = getGameObject()->getQuaternionProperty(prop::_orientation);
+
+		m_sceneNode->setPosition(pos);
+		m_sceneNode->setOrientation(orientation);
 	}
 
 	void MeshGraphicsComponent::onDeactivate()

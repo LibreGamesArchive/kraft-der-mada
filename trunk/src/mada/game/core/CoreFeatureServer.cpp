@@ -30,7 +30,7 @@ namespace mada
 	__mada_implement_class(CoreFeatureServer, FeatureServer);
 	__mada_implement_singleton(CoreFeatureServer);
 
-	CoreFeatureServer::CoreFeatureServer() : m_databaseServer(), m_categoryManager()
+	CoreFeatureServer::CoreFeatureServer() : m_databaseServer(), m_categoryManager(), m_gameObjectManager()
 	{
 		__mada_construct_singleton;
 
@@ -65,5 +65,31 @@ namespace mada
 		m_categoryManager->onDeactivate();
 
 		m_databaseServer->close();
+	}
+
+	void CoreFeatureServer::loadLevel(const String& levelName)
+	{
+		CategoryManager::getInstance()->loadLevel(levelName);
+	}
+
+	void CoreFeatureServer::startNewGame()
+	{
+		mada_assert(false && "Not yet implemented");
+	}
+
+	void CoreFeatureServer::loadGame(const String& saveGameName)
+	{
+		mada_assert(false && "Not yet implemented");
+	}
+
+	void CoreFeatureServer::saveGame(const String& saveGameName)
+	{
+		mada_assert(false && "Not yet implemented");
+	}
+
+	String CoreFeatureServer::getStartLevelName()
+	{
+		mada_assert(false && "Not yet implemented");
+		return "";
 	}
 }
