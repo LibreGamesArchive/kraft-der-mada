@@ -17,9 +17,9 @@
 */
 #include "stdmadainc.h"
 
-#include "graphics/MeshGraphicsManager.h"
+#include "graphicsfeature/MeshGraphicsManager.h"
 
-#include "graphics/GraphicsFeatureServer.h"
+#include "graphicsfeature/GraphicsFeatureServer.h"
 
 namespace mada
 {

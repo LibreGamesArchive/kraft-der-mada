@@ -23,8 +23,8 @@
 #include "MasterTime.h"
 
 #include "game/core/CoreFeatureServer.h"
-#include "graphics/GraphicsFeatureServer.h"
-#include "physics/PhysicsFeatureServer.h"
+#include "graphicsfeature/GraphicsFeatureServer.h"
+#include "physicsfeature/PhysicsFeatureServer.h"
 
 namespace mada
 {

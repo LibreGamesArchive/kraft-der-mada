@@ -17,7 +17,7 @@
 */
 #include "stdmadainc.h"
 
-#include "physics/PhysicsProperties.h"
+#include "physicsfeature/PhysicsProperties.h"
 
 namespace mada
 {

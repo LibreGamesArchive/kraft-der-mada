@@ -17,7 +17,7 @@
 */
 #include "stdmadainc.h"
 
-#include "graphics/GraphicsProperties.h"
+#include "graphicsfeature/GraphicsProperties.h"
 
 namespace mada
 {
