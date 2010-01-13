@@ -18,11 +18,11 @@
 
 #include "stdmadainc.h"
 
-#include "graphics/GraphicsFeatureServer.h"
+#include "graphicsfeature/GraphicsFeatureServer.h"
 
-#include "graphics/GraphicsProperties.h"
-#include "graphics/MeshGraphicsComponent.h"
-#include "graphics/MeshGraphicsManager.h"
+#include "graphicsfeature/GraphicsProperties.h"
+#include "graphicsfeature/MeshGraphicsComponent.h"
+#include "graphicsfeature/MeshGraphicsManager.h"
 #include "properties/PropertyId.h"
 
 #include "GameServer.h"

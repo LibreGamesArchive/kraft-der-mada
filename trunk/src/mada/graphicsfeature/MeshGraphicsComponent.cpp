@@ -17,10 +17,10 @@
 */
 #include "stdmadainc.h"
 
-#include "graphics/MeshGraphicsComponent.h"
+#include "graphicsfeature/MeshGraphicsComponent.h"
 
-#include "graphics/MeshGraphicsManager.h"
-#include "graphics/GraphicsProperties.h"
+#include "graphicsfeature/MeshGraphicsManager.h"
+#include "graphicsfeature/GraphicsProperties.h"
 
 #include "game/core/GameObject.h"
 #include "game/core/CoreProperties.h"

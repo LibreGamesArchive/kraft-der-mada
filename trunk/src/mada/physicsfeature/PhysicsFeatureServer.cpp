@@ -18,9 +18,9 @@
 
 #include "stdmadainc.h"
 
-#include "physics/PhysicsFeatureServer.h"
+#include "physicsfeature/PhysicsFeatureServer.h"
 
-#include "physics/PhysicsProperties.h"
+#include "physicsfeature/PhysicsProperties.h"
 #include "properties/PropertyId.h"
 
 #include "GameServer.h"

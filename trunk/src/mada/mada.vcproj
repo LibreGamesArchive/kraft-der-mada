@@ -246,58 +246,58 @@
 			</Filter>
 		</Filter>
 		<Filter
-			Name="graphics"
+			Name="graphicsfeature"
 			>
 			<File
-				RelativePath=".\graphics\GraphicsFeatureServer.cpp"
+				RelativePath=".\graphicsfeature\GraphicsFeatureServer.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\graphics\GraphicsFeatureServer.h"
+				RelativePath=".\graphicsfeature\GraphicsFeatureServer.h"
 				>
 			</File>
 			<File
-				RelativePath=".\graphics\GraphicsProperties.cpp"
+				RelativePath=".\graphicsfeature\GraphicsProperties.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\graphics\GraphicsProperties.h"
+				RelativePath=".\graphicsfeature\GraphicsProperties.h"
 				>
 			</File>
 			<File
-				RelativePath=".\graphics\MeshGraphicsComponent.cpp"
+				RelativePath=".\graphicsfeature\MeshGraphicsComponent.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\graphics\MeshGraphicsComponent.h"
+				RelativePath=".\graphicsfeature\MeshGraphicsComponent.h"
 				>
 			</File>
 			<File
-				RelativePath=".\graphics\MeshGraphicsManager.cpp"
+				RelativePath=".\graphicsfeature\MeshGraphicsManager.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\graphics\MeshGraphicsManager.h"
+				RelativePath=".\graphicsfeature\MeshGraphicsManager.h"
 				>
 			</File>
 		</Filter>
 		<Filter
-			Name="physics"
+			Name="physicsfeature"
 			>
 			<File
-				RelativePath=".\physics\PhysicsFeatureServer.cpp"
+				RelativePath=".\physicsfeature\PhysicsFeatureServer.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\physics\PhysicsFeatureServer.h"
+				RelativePath=".\physicsfeature\PhysicsFeatureServer.h"
 				>
 			</File>
 			<File
-				RelativePath=".\physics\PhysicsProperties.cpp"
+				RelativePath=".\physicsfeature\PhysicsProperties.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\physics\PhysicsProperties.h"
+				RelativePath=".\physicsfeature\PhysicsProperties.h"
 				>
 			</File>
 		</Filter>
