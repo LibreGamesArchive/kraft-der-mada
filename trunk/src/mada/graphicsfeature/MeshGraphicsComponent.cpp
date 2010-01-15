@@ -25,41 +25,42 @@
 #include "game/core/GameObject.h"
 #include "game/core/CoreProperties.h"
 
+#include "graphics/GraphicsEntity.h"
+#include "graphics/GraphicsServer.h"
+
 namespace mada
 {
 	__mada_implement_class(MeshGraphicsComponent, Component);
 
-	MeshGraphicsComponent::MeshGraphicsComponent() : m_entity(NULL), m_sceneNode(NULL)
+	MeshGraphicsComponent::MeshGraphicsComponent() : m_entity()
 	{
 	}
 
 	MeshGraphicsComponent::~MeshGraphicsComponent()
 	{
 		mada_assert(m_entity == NULL);
-		mada_assert(m_sceneNode == NULL);
 	}
 
 	void MeshGraphicsComponent::onActivate()
 	{
 		mada_assert(m_entity == NULL);
-		mada_assert(m_sceneNode == NULL);
 
 		String meshName = getGameObject()->getStringProperty(prop::_graphics_object);
 
-		m_entity = MeshGraphicsManager::getInstance()->createEntity(meshName);
-		m_sceneNode = MeshGraphicsManager::getInstance()->createSceneNode();
-		m_sceneNode->attachObject(m_entity);
+		m_entity = GraphicsEntity::create();
+		m_entity->setMeshName(meshName);
 
 		Vector3 pos = getGameObject()->getVector3Property(prop::_position);
 		Quaternion orientation = getGameObject()->getQuaternionProperty(prop::_orientation);
 
-		m_sceneNode->setPosition(pos);
-		m_sceneNode->setOrientation(orientation);
+		m_entity->setPosition(pos);
+		m_entity->setOrientation(orientation);
 	}
 
 	void MeshGraphicsComponent::onDeactivate()
 	{
 		mada_assert(m_entity != NULL);
-		mada_assert(m_sceneNode != NULL);
+
+		m_entity = NULL;
 	}
 }

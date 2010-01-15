@@ -18,24 +18,39 @@
     along with Kraft der Mada. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "game/base/Component.h"
-
 namespace mada
 {
-	class GraphicsEntity;
-
-	class MeshGraphicsComponent : public Component
+	class GraphicsServer : public RefCounted
 	{
-		__mada_declare_class(MeshGraphicsComponent);
+		__mada_declare_class(GraphicsServer);
+		__mada_declare_singleton(GraphicsServer);
 	public:
-		MeshGraphicsComponent();
-		~MeshGraphicsComponent();
+		GraphicsServer();
+		~GraphicsServer();
 
-		void onActivate();
-		void onDeactivate();
+		void open();
+		void close();
+		bool isOpen() const;
+
+		Ogre::Entity* createEntity(const String& meshName);
+		void destroyEntity(Ogre::Entity* entity);
+
+		Ogre::SceneNode* createSceneNode();
+		void destroySceneNode(Ogre::SceneNode* node);
+
+		void renderOneFrame();
+
+		Ogre::SceneManager* _getSceneManager() const;
+		Ogre::RenderWindow* _getMainWindow() const;
 
 	private:
-		Ptr<GraphicsEntity> m_entity;
+		bool m_isOpen;
+		Ogre::Root* m_root;
+		Ogre::SceneManager* m_sceneManager;
+		Ogre::RenderWindow* m_mainWindow;
+		Ogre::Viewport* m_viewport;
+		Ogre::Camera* m_camera;
+
+		int m_nextEntityId;
 	};
-	__mada_register_type(MeshGraphicsComponent);
 }

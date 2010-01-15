@@ -39,14 +39,5 @@ namespace mada
 		//virtual void onBeginFrame();
 		//virtual void onFrame();
 		//virtual void onEndFrame();
-
-		Ogre::Entity* createEntity(const String& meshName);
-		void destroyEntity(Ogre::Entity* entity);
-
-		Ogre::SceneNode* createSceneNode();
-		void destroySceneNode(Ogre::SceneNode* node);
-
-	private:
-		int m_nextEntityId;
 	};
 }
