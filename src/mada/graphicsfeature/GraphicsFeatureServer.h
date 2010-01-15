@@ -20,6 +20,8 @@
 
 #include "game/base/FeatureServer.h"
 
+#include "graphics/GraphicsServer.h"
+
 namespace mada
 {
 	class Manager;
@@ -37,18 +39,11 @@ namespace mada
 
 		virtual void onEndFrame();
 
-		Ogre::SceneManager* _getSceneManager() const;
-
 		// Ogre::WindowEventListener
 		void windowClosed(Ogre::RenderWindow* window);
 
 	private:
-		Ogre::Root* m_root;
-		Ogre::SceneManager* m_sceneManager;
-		Ogre::RenderWindow* m_renderWindow;
-		Ogre::Viewport* m_viewport;
-		Ogre::Camera* m_camera;
-
+		Ptr<GraphicsServer> m_graphicsServer;
 		std::vector<Ptr<Manager> > m_managers;
 	};
 }

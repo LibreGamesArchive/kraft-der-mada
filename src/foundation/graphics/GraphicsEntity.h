@@ -1,3 +1,5 @@
+#pragma once
+
 /*
 	This file is part of Kraft der Mada.
 	Copyright (c) 2009 Daniel Wickert
@@ -15,24 +17,32 @@
     You should have received a copy of the GNU General Public License
     along with Kraft der Mada. If not, see <http://www.gnu.org/licenses/>.
 */
-#include "stdmadainc.h"
-
-#include "graphicsfeature/MeshGraphicsManager.h"
-
-#include "graphicsfeature/GraphicsFeatureServer.h"
 
 namespace mada
 {
-	__mada_implement_class(MeshGraphicsManager, Manager);
-	__mada_implement_singleton(MeshGraphicsManager);
-
-	MeshGraphicsManager::MeshGraphicsManager()
+	class GraphicsEntity : public RefCounted
 	{
-		__mada_construct_singleton;
-	}
+		__mada_declare_class(GraphicsEntity);
+	public:
+		GraphicsEntity();
+		~GraphicsEntity();
 
-	MeshGraphicsManager::~MeshGraphicsManager()
-	{
-		__mada_destruct_singleton;
-	}
+		bool isValid() const;
+
+		Quaternion getOrientation() const;
+		void setOrientation(const Quaternion& orientation);
+
+		Vector3 getPosition() const;
+		void setPosition(const Vector3& position);
+
+		String getMeshName() const;
+		void setMeshName(const String& name);
+
+		bool isVisible() const;
+		void setVisible(bool visible);
+
+	private:
+		Ogre::Entity* m_entity;
+		Ogre::SceneNode* m_sceneNode;
+	};
 }

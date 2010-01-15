@@ -421,6 +421,26 @@
 				>
 			</File>
 		</Filter>
+		<Filter
+			Name="graphics"
+			>
+			<File
+				RelativePath=".\graphics\GraphicsEntity.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\graphics\GraphicsEntity.h"
+				>
+			</File>
+			<File
+				RelativePath=".\graphics\GraphicsServer.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\graphics\GraphicsServer.h"
+				>
+			</File>
+		</Filter>
 		<File
 			RelativePath=".\stdmadainc.h"
 			>
