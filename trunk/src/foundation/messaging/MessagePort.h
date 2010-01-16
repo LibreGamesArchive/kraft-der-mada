@@ -52,6 +52,6 @@ namespace mada
 	private:
 		typedef std::vector<Ptr<MessageHandler> > HandlerVector;
 		HandlerVector m_handlers;
-		std::set<const MessageId> m_acceptedMessageIds;
+		std::set<MessageId> m_acceptedMessageIds;
 	};
 }
