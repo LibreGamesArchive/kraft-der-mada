@@ -55,6 +55,6 @@ namespace mada
 	private:
 		std::vector<Ptr<MessagePort> > m_ports;
 		std::vector<Ptr<MessageHandler> > m_handlers;
-		std::set<const MessageId> m_acceptedMessageIds;
+		std::set<MessageId> m_acceptedMessageIds;
 	};
 }
