@@ -14,12 +14,17 @@ foundation/core/linux/LinuxSysUtils.cpp
 foundation/properties/Property.cpp
 foundation/properties/PropertyDefinitionBase.cpp
 foundation/properties/PropertyId.cpp
+foundation/properties/PropertyTable.cpp
+foundation/db/Command.cpp
 foundation/db/Database.cpp
 foundation/db/DatabaseServer.cpp
-foundation/db/sqlite/CppSQLite3.cpp
+foundation/db/DbReader.cpp
 foundation/db/sqlite/sqlite3.c
+foundation/graphics/GraphicsEntity.cpp
+foundation/graphics/GraphicsServer.cpp
 foundation/messaging/Message.cpp
 foundation/messaging/MessagePort.cpp
+foundation/messaging/MessageDispatcher.cpp
 foundation/timing/linux/LinuxTimer.cpp
 )
 
@@ -29,14 +34,20 @@ mada/GameServer.cpp
 mada/MasterTime.cpp
 mada/game/base/Component.cpp
 mada/game/base/FeatureServer.cpp
-mada/game/base/GameObject.cpp
+mada/game/core/GameObject.cpp
 mada/game/base/GameState.cpp
 mada/game/base/Manager.cpp
+mada/game/core/CategoryManager.cpp
 mada/game/core/CoreFeatureServer.cpp
 mada/game/core/CoreProperties.cpp
+mada/game/core/GameObjectManager.cpp
 mada/game/core/GameStateManager.cpp
-mada/graphics/GraphicsFeatureServer.cpp
-mada/graphics/MeshGraphicsComponent.cpp
+mada/graphicsfeature/GraphicsFeatureServer.cpp
+mada/graphicsfeature/GraphicsProperties.cpp
+mada/graphicsfeature/MeshGraphicsComponent.cpp
+mada/graphicsfeature/MeshGraphicsManager.cpp
+mada/physicsfeature/PhysicsFeatureServer.cpp
+mada/physicsfeature/PhysicsProperties.cpp
 )
 
 SET(Mada_LIGHTGAME_SRCS
@@ -45,10 +56,10 @@ lightgame/LightGame.cpp
 )
 
 
-ADD_EXECUTABLE(lightgame ${Mada_LIGHTGAME_SRCS} ${Mada_FOUNDATION_SRCS} ${Mada_MADA_SRCS})
+ADD_EXECUTABLE(light_game ${Mada_LIGHTGAME_SRCS} ${Mada_FOUNDATION_SRCS} ${Mada_MADA_SRCS})
 
-TARGET_LINK_LIBRARIES(lightgame ${OGRE_LIBRARIES})
+TARGET_LINK_LIBRARIES(light_game ${OGRE_LIBRARIES})
 
 
-INSTALL(TARGETS lightgame RUNTIME DESTINATION ${CMAKE_INSTALL_PREFIX}/${BINDIR})
+INSTALL(TARGETS light_game RUNTIME DESTINATION ${CMAKE_INSTALL_PREFIX}/${BINDIR})
 
