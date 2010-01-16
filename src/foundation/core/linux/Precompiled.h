@@ -29,6 +29,8 @@
 // c++stdlib headers
 #include <algorithm>
 #include <map>
+#include <set>
+#include <stdexcept>
 #include <string>
 #include <vector>
 

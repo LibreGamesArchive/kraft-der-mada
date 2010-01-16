@@ -47,6 +47,8 @@ public:
 	/** Exit program with given exit code. Properly deallocate resource allocated by SysUtils#init.*/
 	static void exit(int returnCode);
 
+	static void memset(void* ptr, unsigned char value, size_t length);
+
 private:
 	/// Flag to make sure initialisation is only done once.
 	static volatile bool ms_initialised;
