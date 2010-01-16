@@ -48,9 +48,8 @@ namespace mada
 	class DbException : public std::exception
 	{
 	public:
-		DbException(const String& msg) : std::exception(), m_msg(msg)
-		{
-		}
+		DbException(const String& msg) : std::exception(), m_msg(msg) {}
+		virtual ~DbException() throw() {}
 
 		virtual const char* what() const throw()
 		{
