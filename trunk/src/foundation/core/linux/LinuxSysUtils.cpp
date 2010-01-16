@@ -42,7 +42,8 @@ void SysUtils::sleep(unsigned long n)
 void SysUtils::abort()
 {
 #if MADA_DEBUG
-	_asm{int 3};
+//	_asm{int 3};
+    abort();
 #else
 	abort();
 #endif
@@ -66,4 +67,9 @@ void SysUtils::exit(int returnCode)
 	///@todo properly destroy stuff created in SysUtils#init.
 
 	exit(returnCode);
+}
+
+void SysUtils::memset(void* ptr, unsigned char value, size_t length)
+{
+	::memset(ptr, value, length);
 }
