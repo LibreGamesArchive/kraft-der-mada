@@ -238,21 +238,27 @@ namespace mada
 		switch (id.getValueType())
 		{
 		case BoolType:
+                        valuePtr = (char*) new(valuePtr) bool;
 			*((bool*)valuePtr) = prop.getBoolValue();
 			break;
 		case IntType:
+                        valuePtr = (char*) new(valuePtr) int;
 			*((int*)valuePtr) = prop.getIntValue();
 			break;
 		case FloatType:
+                        valuePtr = (char*) new(valuePtr) float;
 			*((float*)valuePtr) = prop.getFloatValue();
 			break;
 		case StringType:
+                        valuePtr = (char*) new(valuePtr) String();
 			*((String*)valuePtr) = prop.getStringValue();
 			break;
 		case Vector3Type:
+                        valuePtr = (char*) new(valuePtr) Vector3();
 			*((Vector3*)valuePtr) = prop.getVector3Value();
 			break;
 		case QuaternionType:
+                        valuePtr = (char*) new(valuePtr) Quaternion();
 			*((Quaternion*)valuePtr) = prop.getQuaternionValue();
 			break;
 		default:
@@ -272,6 +278,7 @@ namespace mada
 		char* valuePtr = (char*)m_rows[row];
 		valuePtr += m_columns[idx].offset;
 
+                valuePtr = (char*) new(valuePtr) bool;
 		*((bool*)valuePtr) = value;
 	}
 
@@ -286,6 +293,7 @@ namespace mada
 		char* valuePtr = (char*)m_rows[row];
 		valuePtr += m_columns[idx].offset;
 
+                valuePtr = (char*) new(valuePtr) int;
 		*((int*)valuePtr) = value;
 	}
 
@@ -300,6 +308,7 @@ namespace mada
 		char* valuePtr = (char*)m_rows[row];
 		valuePtr += m_columns[idx].offset;
 
+                valuePtr = (char*) new(valuePtr) float;
 		*((float*)valuePtr) = value;
 	}
 
@@ -314,6 +323,7 @@ namespace mada
 		char* valuePtr = (char*)m_rows[row];
 		valuePtr += m_columns[idx].offset;
 
+                valuePtr = (char*) new(valuePtr) String();
 		*((String*)valuePtr) = value;
 	}
 
@@ -328,6 +338,7 @@ namespace mada
 		char* valuePtr = (char*)m_rows[row];
 		valuePtr += m_columns[idx].offset;
 
+                valuePtr = (char*) new(valuePtr) Vector3();
 		*((Vector3*)valuePtr) = value;
 	}
 
@@ -342,6 +353,7 @@ namespace mada
 		char* valuePtr = (char*)m_rows[row];
 		valuePtr += m_columns[idx].offset;
 
+                valuePtr = (char*) new(valuePtr) Quaternion();
 		*((Quaternion*)valuePtr) = value;
 	}
 }

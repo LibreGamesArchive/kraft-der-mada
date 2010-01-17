@@ -54,12 +54,6 @@ void SysUtils::error(const char* message)
 	SysUtils::abort();
 }
 
-void SysUtils::win32Error()
-{
-	///@todo implement
-	SysUtils::error("TODO - implement win32Error to learn what really happened.");
-}
-
 void SysUtils::exit(int returnCode)
 {
 	///@todo dump memleaks

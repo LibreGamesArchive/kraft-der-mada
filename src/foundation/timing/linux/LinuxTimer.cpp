@@ -33,6 +33,7 @@ namespace mada
 	{
 		mada_assert(!m_isRunning);
 		reset();
+                m_isRunning = true;
 	}
 
 	void Timer::stop()
