@@ -41,9 +41,6 @@ public:
 	/** Show error message then abort. */
 	static void error(const char* message);
 
-	/** Call this if a Win32 call fails fataly. Show error from GetLastError */
-	static void win32Error();
-
 	/** Exit program with given exit code. Properly deallocate resource allocated by SysUtils#init.*/
 	static void exit(int returnCode);
 

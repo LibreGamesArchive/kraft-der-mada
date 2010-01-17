@@ -39,6 +39,7 @@
 		msg += Ogre::StringConverter::toString(__LINE__); \
 		msg += " of file "; \
 		msg += __FILE__; \
+                msg += " "; \
 		msg += sqlite3_errmsg(DB); \
 		throw DbException(msg); \
 	}
