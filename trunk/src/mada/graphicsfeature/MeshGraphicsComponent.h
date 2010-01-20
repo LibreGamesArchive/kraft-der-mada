@@ -37,7 +37,5 @@ namespace mada
 	private:
 		Ptr<GraphicsEntity> m_entity;
 	};
-        #ifdef WIN32
-        __mada_register_type(MeshGraphicsComponent);
-        #endif
+	__mada_register_type(MeshGraphicsComponent);
 }
