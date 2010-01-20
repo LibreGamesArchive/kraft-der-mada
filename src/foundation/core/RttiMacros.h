@@ -70,5 +70,9 @@ private:
 		return true; \
     }
 
-#define __mada_register_type(Type) \
-    static const bool Type##_registered = Type::registerWithFactory();
+#ifdef WIN32
+#	define __mada_register_type(Type) \
+		static const bool Type##_registered = Type::registerWithFactory();
+#else
+#	define __mada_register_type(Type)
+#endif

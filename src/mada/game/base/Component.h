@@ -62,7 +62,5 @@ namespace mada
 	private:
 		Ptr<GameObject> m_gameObject;
 	};
-        #ifdef WIN32
 	__mada_register_type(Component);
-        #endif
 }
