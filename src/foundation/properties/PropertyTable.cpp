@@ -238,28 +238,22 @@ namespace mada
 		switch (id.getValueType())
 		{
 		case BoolType:
-                        valuePtr = (char*) new(valuePtr) bool;
-			*((bool*)valuePtr) = prop.getBoolValue();
+			new (valuePtr) bool(prop.getBoolValue());
 			break;
 		case IntType:
-                        valuePtr = (char*) new(valuePtr) int;
-			*((int*)valuePtr) = prop.getIntValue();
+			new (valuePtr) int(prop.getIntValue());
 			break;
 		case FloatType:
-                        valuePtr = (char*) new(valuePtr) float;
-			*((float*)valuePtr) = prop.getFloatValue();
+			new (valuePtr) float(prop.getFloatValue());
 			break;
 		case StringType:
-                        valuePtr = (char*) new(valuePtr) String();
-			*((String*)valuePtr) = prop.getStringValue();
+			new (valuePtr) String(prop.getStringValue());
 			break;
 		case Vector3Type:
-                        valuePtr = (char*) new(valuePtr) Vector3();
-			*((Vector3*)valuePtr) = prop.getVector3Value();
+			new (valuePtr) Vector3(prop.getVector3Value());
 			break;
 		case QuaternionType:
-                        valuePtr = (char*) new(valuePtr) Quaternion();
-			*((Quaternion*)valuePtr) = prop.getQuaternionValue();
+			new (valuePtr) Quaternion(prop.getQuaternionValue());
 			break;
 		default:
 			mada_assert(false && "Unknown ValueType");
@@ -278,8 +272,7 @@ namespace mada
 		char* valuePtr = (char*)m_rows[row];
 		valuePtr += m_columns[idx].offset;
 
-                valuePtr = (char*) new(valuePtr) bool;
-		*((bool*)valuePtr) = value;
+		new (valuePtr) bool(value);
 	}
 
 	void PropertyTable::setIntValue(const PropertyId& id, int row, int value)
@@ -293,8 +286,7 @@ namespace mada
 		char* valuePtr = (char*)m_rows[row];
 		valuePtr += m_columns[idx].offset;
 
-                valuePtr = (char*) new(valuePtr) int;
-		*((int*)valuePtr) = value;
+		new (valuePtr) int(value);
 	}
 
 	void PropertyTable::setFloatValue(const PropertyId& id, int row, float value)
@@ -308,8 +300,7 @@ namespace mada
 		char* valuePtr = (char*)m_rows[row];
 		valuePtr += m_columns[idx].offset;
 
-                valuePtr = (char*) new(valuePtr) float;
-		*((float*)valuePtr) = value;
+		new (valuePtr) float(value);
 	}
 
 	void PropertyTable::setStringValue(const PropertyId& id, int row, const String& value)
@@ -323,8 +314,7 @@ namespace mada
 		char* valuePtr = (char*)m_rows[row];
 		valuePtr += m_columns[idx].offset;
 
-                valuePtr = (char*) new(valuePtr) String();
-		*((String*)valuePtr) = value;
+		new (valuePtr) String(value);
 	}
 
 	void PropertyTable::setVector3Value(const PropertyId& id, int row, const Vector3& value)
@@ -338,8 +328,7 @@ namespace mada
 		char* valuePtr = (char*)m_rows[row];
 		valuePtr += m_columns[idx].offset;
 
-                valuePtr = (char*) new(valuePtr) Vector3();
-		*((Vector3*)valuePtr) = value;
+		new (valuePtr) Vector3(value);
 	}
 
 	void PropertyTable::setQuaternionValue(const PropertyId& id, int row, const Quaternion& value)
@@ -353,7 +342,6 @@ namespace mada
 		char* valuePtr = (char*)m_rows[row];
 		valuePtr += m_columns[idx].offset;
 
-                valuePtr = (char*) new(valuePtr) Quaternion();
-		*((Quaternion*)valuePtr) = value;
+		new (valuePtr) Quaternion(value);
 	}
 }
