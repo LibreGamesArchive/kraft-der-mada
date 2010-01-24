@@ -33,11 +33,13 @@ namespace mada
 
     SoundServer::~SoundServer()
     {
-        close();
+	mada_assert(isOpen() /*SoundServer must be closed before destructor is called*/);
     }
 
     void SoundServer::open()
     {
+	mada_assert(!isOpen() /*SoundServer must be closed before open() is called*/);
+
         mDevice = alcOpenDevice(NULL);
 
         if(mDevice)
@@ -53,7 +55,7 @@ namespace mada
         m_isOpen = true;
     }
 
-    bool SoundServer::isOpen()
+    bool SoundServer::isOpen() const
     {
         return m_isOpen;
     }
@@ -61,6 +63,8 @@ namespace mada
 
     void SoundServer::close()
     {
+	mada_assert(isOpen() /*SoundServer must be opened before close() is called*/);
+
         if(m_isOpen)
         {
             alcMakeContextCurrent(NULL);

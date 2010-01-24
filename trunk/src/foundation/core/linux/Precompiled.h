@@ -37,6 +37,10 @@
 // Ogre
 #include <Ogre.h>
 
+
+// Alut
+#include <AL/alut.h>
+
 // boost
 #include <boost/variant.hpp>
 

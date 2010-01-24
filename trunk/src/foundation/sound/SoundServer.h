@@ -18,8 +18,6 @@
     along with Kraft der Mada. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include <AL/alut.h>
-
 
 namespace mada
 {
@@ -35,7 +33,7 @@ namespace mada
         void open();
         void close();
 
-        bool isOpen();
+        bool isOpen() const;
     protected:
         bool m_isOpen;
         ALCdevice* mDevice;
