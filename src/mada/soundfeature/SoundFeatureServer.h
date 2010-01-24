@@ -19,7 +19,7 @@
 */
 
 #include "game/base/FeatureServer.h"
-
+#include "sound/SoundServer.h"
 
 namespace mada
 {
