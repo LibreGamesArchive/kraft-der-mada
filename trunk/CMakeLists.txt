@@ -15,7 +15,7 @@ SET(MADA_MADA_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/src/mada ${CMAKE_SOURCE_DIR}/src/m
 SET(MADA_FOUNDATION_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/src/foundation ${CMAKE_SOURCE_DIR}/src/foundation/core ${CMAKE_SOURCE_DIR}/src/foundation/timing ${CMAKE_SOURCE_DIR}/src/foundation/db ${CMAKE_SOURCE_DIR}/src/foundation/messaging INTERNAL)
 
 # Check for required components
-FIND_PACKAGE(OGRE 1.6 REQUIRED)
+FIND_PACKAGE(OGRE 1.7 REQUIRED)
 #more packages required
 
 # Compile settings for build types

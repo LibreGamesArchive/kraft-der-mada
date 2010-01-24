@@ -25,6 +25,7 @@ foundation/graphics/GraphicsServer.cpp
 foundation/messaging/Message.cpp
 foundation/messaging/MessagePort.cpp
 foundation/messaging/MessageDispatcher.cpp
+foundation/sound/SoundServer.cpp
 foundation/timing/linux/LinuxTimer.cpp
 )
 
@@ -48,6 +49,8 @@ mada/graphicsfeature/MeshGraphicsComponent.cpp
 mada/graphicsfeature/MeshGraphicsManager.cpp
 mada/physicsfeature/PhysicsFeatureServer.cpp
 mada/physicsfeature/PhysicsProperties.cpp
+mada/soundfeature/SoundFeatureServer.cpp
+mada/soundfeature/SoundProperties.cpp
 )
 
 SET(Mada_LIGHTGAME_SRCS
@@ -58,7 +61,7 @@ lightgame/LightGame.cpp
 
 ADD_EXECUTABLE(light_game ${Mada_LIGHTGAME_SRCS} ${Mada_FOUNDATION_SRCS} ${Mada_MADA_SRCS})
 
-TARGET_LINK_LIBRARIES(light_game ${OGRE_LIBRARIES})
+TARGET_LINK_LIBRARIES(light_game ${OGRE_LIBRARIES} alut)
 
 
 INSTALL(TARGETS light_game RUNTIME DESTINATION ${CMAKE_INSTALL_PREFIX}/${BINDIR})
