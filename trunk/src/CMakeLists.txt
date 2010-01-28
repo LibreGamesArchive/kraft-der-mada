@@ -26,6 +26,7 @@ foundation/messaging/Message.cpp
 foundation/messaging/MessagePort.cpp
 foundation/messaging/MessageDispatcher.cpp
 foundation/sound/SoundServer.cpp
+foundation/sound/Sound.cpp
 foundation/timing/linux/LinuxTimer.cpp
 )
 
