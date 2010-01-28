@@ -23,49 +23,50 @@
 
 namespace mada
 {
-    __mada_implement_root_class(Sound);
+	__mada_implement_root_class(Sound);
 
-    Sound::Sound() : m_bIsPaused(false), m_bIsPlaying(false), m_bIsStopped(true)
-    {
+	Sound::Sound() : m_isPaused(false), m_isPlaying(false), m_isStopped(true)
+	{
+	}
 
-    }
+	Sound::~Sound()
+	{
+		mada_assert(m_isStopped);
+	}
 
-    Sound::~Sound()
-    {
-        
-    }
+	void Sound::play()
+	{
+		mada_assert(false && "not yet implemented");
 
-    bool Sound::play()
-    {
+		mada_assert(!isPlaying());
+	}
 
-    }
+	bool Sound::isPlaying() const
+	{
+		return m_isPlaying;
+	}
 
-    bool Sound::isPlaying() const
-    {
-    }
+	void Sound::pause()
+	{
+		mada_assert(false && "not yet implemented");
 
-    bool Sound::stop()
-    {
+		mada_assert(isPlaying());
+	}
 
-    }
+	bool Sound::isPaused() const
+	{
+		return m_isPaused;
+	}
 
-    bool Sound::pause()
-    {
+	void Sound::stop()
+	{
+		mada_assert(false && "not yet implemented");
 
-    }
+		mada_assert(isPlaying() || isPaused());
+	}
 
-    bool Sound::isPaused() const
-    {
-
-    }
-
-    void Sound::setGain(float gain)
-    {
-
-    }
-
-    float Sound::getGain() const
-    {
-
-    }
+	bool Sound::isStopped() const
+	{
+		return m_isStopped;
+	}
 }

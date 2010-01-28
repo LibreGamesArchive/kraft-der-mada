@@ -38,8 +38,9 @@ namespace mada
 		String getMeshName() const;
 		void setMeshName(const String& name);
 
-		bool isVisible() const;
-		void setVisible(bool visible);
+		bool isAttached() const;
+		void attach();
+		void detach();
 
 	private:
 		Ogre::Entity* m_entity;

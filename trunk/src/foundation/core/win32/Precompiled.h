@@ -60,10 +60,16 @@
 #include <vector>
 
 // boost headers
+#include <boost/bind.hpp>
+#include <boost/function.hpp>
 #include <boost/variant.hpp>
 
-// Ogre
+// Ogre headers
 #include <Ogre.h>
-#include <AL/alut.h>
 
+// bullet headers
+#include <btBulletDynamicsCommon.h>
+
+// OpenAL headers
+#include <alut.h>
 //------------------------------------------------------------------------------

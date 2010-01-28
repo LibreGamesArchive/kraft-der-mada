@@ -40,9 +40,9 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalOptions="-Zm132"
+				AdditionalOptions="-Zm192"
 				Optimization="0"
-				AdditionalIncludeDirectories=".;..\..\dependencies\ogre\OgreMain\include;..\..\dependencies\ogre\build\include;&quot;$(BOOST_ROOT)\include&quot;"
+				AdditionalIncludeDirectories=".;..\..\dependencies\bullet\src;..\..\dependencies\ogre\build\include;..\..\dependencies\ogre\OgreMain\include;..\..\dependencies\openal\include;&quot;$(BOOST_ROOT)\include&quot;"
 				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
@@ -63,6 +63,8 @@
 			/>
 			<Tool
 				Name="VCLibrarianTool"
+				AdditionalDependencies="libbulletdynamics_dll_d.lib libbulletcollision_dll_d.lib libbulletmath_dll_d.lib"
+				AdditionalLibraryDirectories="..\..\dependencies\bullet\lib"
 			/>
 			<Tool
 				Name="VCALinkTool"
@@ -84,7 +86,7 @@
 			Name="Release|Win32"
 			OutputDirectory="$(SolutionDir)\..\lib\$(ConfigurationName)"
 			IntermediateDirectory="$(SolutionDir)\..\obj\$(ProjectName)\$(ConfigurationName)"
-			ConfigurationType="1"
+			ConfigurationType="4"
 			CharacterSet="0"
 			WholeProgramOptimization="1"
 			>
@@ -105,10 +107,10 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalOptions="-Zm132"
+				AdditionalOptions="-Zm192"
 				Optimization="2"
 				EnableIntrinsicFunctions="true"
-				AdditionalIncludeDirectories=".;..\..\dependencies\ogre\OgreMain\include;..\..\dependencies\ogre\build\include;&quot;$(BOOST_ROOT)\include&quot;"
+				AdditionalIncludeDirectories=".;..\..\dependencies\bullet\src;..\..\dependencies\ogre\build\include;..\..\dependencies\ogre\OgreMain\include;..\..\dependencies\openal\include;&quot;$(BOOST_ROOT)\include&quot;"
 				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS"
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"
@@ -127,19 +129,12 @@
 				Name="VCPreLinkEventTool"
 			/>
 			<Tool
-				Name="VCLinkerTool"
-				LinkIncremental="1"
-				GenerateDebugInformation="true"
-				SubSystem="2"
-				OptimizeReferences="2"
-				EnableCOMDATFolding="2"
-				TargetMachine="1"
+				Name="VCLibrarianTool"
+				AdditionalDependencies="libbulletdynamics_dll.lib libbulletcollision_dll.lib libbulletmath_dll.lib"
+				AdditionalLibraryDirectories="..\..\dependencies\bullet\lib"
 			/>
 			<Tool
 				Name="VCALinkTool"
-			/>
-			<Tool
-				Name="VCManifestTool"
 			/>
 			<Tool
 				Name="VCXDCMakeTool"
@@ -149,9 +144,6 @@
 			/>
 			<Tool
 				Name="VCFxCopTool"
-			/>
-			<Tool
-				Name="VCAppVerifierTool"
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
@@ -438,6 +430,90 @@
 			</File>
 			<File
 				RelativePath=".\graphics\GraphicsServer.h"
+				>
+			</File>
+		</Filter>
+		<Filter
+			Name="physics"
+			>
+			<File
+				RelativePath=".\physics\CollisionShape.h"
+				>
+			</File>
+			<File
+				RelativePath=".\physics\CollisionShapeFactory.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\physics\CollisionShapeFactory.h"
+				>
+			</File>
+			<File
+				RelativePath=".\physics\MotionState.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\physics\MotionState.h"
+				>
+			</File>
+			<File
+				RelativePath=".\physics\PhysicsEntity.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\physics\PhysicsEntity.h"
+				>
+			</File>
+			<File
+				RelativePath=".\physics\PhysicsServer.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\physics\PhysicsServer.h"
+				>
+			</File>
+			<Filter
+				Name="btogre"
+				>
+				<File
+					RelativePath=".\physics\btogre\BtOgre.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\physics\btogre\BtOgreExtras.h"
+					>
+				</File>
+				<File
+					RelativePath=".\physics\btogre\BtOgreGP.h"
+					>
+				</File>
+				<File
+					RelativePath=".\physics\btogre\BtOgrePG.h"
+					>
+				</File>
+			</Filter>
+		</Filter>
+		<Filter
+			Name="sound"
+			>
+			<File
+				RelativePath=".\sound\Sound.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\sound\Sound.h"
+				>
+			</File>
+			<File
+				RelativePath=".\sound\SoundError.h"
+				>
+			</File>
+			<File
+				RelativePath=".\sound\SoundServer.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\sound\SoundServer.h"
 				>
 			</File>
 		</Filter>

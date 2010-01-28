@@ -20,56 +20,59 @@
 
 #include "sound/SoundServer.h"
 
+#include "sound/SoundError.h"
+
 namespace mada
 {
-    __mada_implement_root_class(SoundServer);
-    __mada_implement_singleton(SoundServer);
+	__mada_implement_root_class(SoundServer);
+	__mada_implement_singleton(SoundServer);
 
-    SoundServer::SoundServer() : m_isOpen(false)
-    {
+	SoundServer::SoundServer() : m_isOpen(false), m_device(NULL), m_context(NULL)
+	{
+		__mada_construct_singleton;
+	}
 
-    }
+	SoundServer::~SoundServer()
+	{
+		mada_assert(!isOpen());
 
-    SoundServer::~SoundServer()
-    {
-	mada_assert(isOpen() /*SoundServer must be closed before destructor is called*/);
-    }
+		__mada_destruct_singleton;
+	}
 
-    void SoundServer::open()
-    {
-	mada_assert(!isOpen() /*SoundServer must be closed before open() is called*/);
+	void SoundServer::open()
+	{
+		mada_assert(!isOpen());
 
-        mDevice = alcOpenDevice(NULL);
+		m_device = alcOpenDevice(NULL);
+		mada_throw_on_sound_error();
 
-        if(mDevice)
-        {
-            mContext = alcCreateContext(mDevice, NULL);
-            alcMakeContextCurrent(mContext);
-        }
+		m_context = alcCreateContext(m_device, NULL);
+		mada_fail_on_sound_error();
 
-        mEAXsupported = alIsExtensionPresent("EAX2.0");
+		alcMakeContextCurrent(m_context);
+		mada_fail_on_sound_error();
 
-        alGetError();
+		m_isOpen = true;
+	}
 
-        m_isOpen = true;
-    }
+	bool SoundServer::isOpen() const
+	{
+		return m_isOpen;
+	}
 
-    bool SoundServer::isOpen() const
-    {
-        return m_isOpen;
-    }
+	void SoundServer::close()
+	{
+		mada_assert(isOpen());
 
+		alcMakeContextCurrent(NULL);
+		mada_fail_on_sound_error();
 
-    void SoundServer::close()
-    {
-	mada_assert(isOpen() /*SoundServer must be opened before close() is called*/);
+		alcDestroyContext(m_context);
+		mada_fail_on_sound_error();
 
-        if(m_isOpen)
-        {
-            alcMakeContextCurrent(NULL);
-            alcDestroyContext(mContext);
-            alcCloseDevice(mDevice);
-            m_isOpen = false;
-        }
-    }
+		alcCloseDevice(m_device);
+		mada_fail_on_sound_error();
+
+		m_isOpen = false;
+	}
 }

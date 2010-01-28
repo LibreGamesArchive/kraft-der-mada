@@ -27,6 +27,7 @@ namespace mada
 	{
 		__mada_declare_class(SoundFeatureServer);
 		__mada_declare_singleton(SoundFeatureServer);
+
 	public:
 		SoundFeatureServer();
 		~SoundFeatureServer();

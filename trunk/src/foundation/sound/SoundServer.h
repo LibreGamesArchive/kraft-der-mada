@@ -21,55 +21,22 @@
 
 namespace mada
 {
+	class SoundServer : public RefCounted
+	{
+		__mada_declare_class(SoundServer);
+		__mada_declare_singleton(SoundServer);
 
-    /*! \brief SoundServer
-     *         Manages the OpenAl device and context.
-     *
-     *  Detailed description starts here.
-     */
+	public:
+		SoundServer();
+		~SoundServer();
 
+		void open();
+		void close();
+		bool isOpen() const;
 
-    class SoundServer : public RefCounted
-    {
-        __mada_declare_class(SoundServer);
-	__mada_declare_singleton(SoundServer);
-    public:
-
-        /**
-         * A constructor.
-         * A more elaborate description of the constructor.
-         */
-
-        SoundServer();
-
-        /**
-         * A destructor.
-         * A more elaborate description of the constructor.
-         */
-
-        ~SoundServer();
-
-        /**
-         * open()
-         */
-
-        void open();
-
-        /**
-         * close()
-         */
-
-        void close();
-
-        /**
-         * @return return true if SoundServer is opened
-         */
-        bool isOpen() const;
-    protected:
-        bool m_isOpen;
-        ALCdevice* mDevice;
-        ALCcontext* mContext;
-        bool mEAXsupported;
-    };
-
+	private:
+		bool m_isOpen;
+		ALCdevice* m_device;
+		ALCcontext* m_context;
+	};
 }
