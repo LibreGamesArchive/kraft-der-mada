@@ -24,6 +24,7 @@ typedef std::string String;
 typedef std::vector<String> StringVector;
 typedef Ogre::Vector3 Vector3;
 typedef Ogre::Quaternion Quaternion;
+typedef Ogre::AxisAlignedBox AxisAlignedBox;
 typedef double Time;
 typedef long long Ticks;
 

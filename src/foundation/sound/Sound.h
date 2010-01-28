@@ -18,53 +18,28 @@
     along with Kraft der Mada. If not, see <http://www.gnu.org/licenses/>.
 */
 
-
 namespace mada
 {
+	class Sound : public RefCounted
+	{
+		__mada_declare_class(Sound);
 
-    /*! \brief Sound
-     *         A sound which can be played
-     *
-     *  Detailed description starts here.
-     */
+	public:
+		Sound();
+		~Sound();
 
+		void play();
+		bool isPlaying() const;
 
-    class Sound : public RefCounted
-    {
-        __mada_declare_class(Sound);
-    public:
+		void pause();
+		bool isPaused() const;
 
-        /**
-         * A constructor.
-         * A more elaborate description of the constructor.
-         */
+		void stop();
+		bool isStopped() const;
 
-        Sound();
-
-        /**
-         * A destructor.
-         * A more elaborate description of the constructor.
-         */
-
-        ~Sound();
-
-        bool play ();
-        bool isPlaying () const;
-        bool pause ();
-        bool isPaused () const;
-        bool stop ();
-        bool isStopped () const;
-        bool isInitial () const;
-        void setGain(float gain);
-        float getGain() const;
-        void setLoop(bool loop);
-        bool getLoop() const;
-
-    protected:
-        float mGain;
-        bool m_bIsPlaying;
-        bool m_bIsStopped;
-        bool m_bIsPaused;
-    };
-
+	private:
+		bool m_isPlaying;
+		bool m_isStopped;
+		bool m_isPaused;
+	};
 }

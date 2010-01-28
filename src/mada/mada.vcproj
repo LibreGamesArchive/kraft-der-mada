@@ -40,9 +40,9 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalOptions="-Zm132"
+				AdditionalOptions="-Zm192"
 				Optimization="0"
-				AdditionalIncludeDirectories=".;..\foundation;..\..\dependencies\ogre\OgreMain\include;..\..\dependencies\ogre\build\include;&quot;$(BOOST_ROOT)\include&quot;"
+				AdditionalIncludeDirectories=".;..\foundation;..\..\dependencies\bullet\src;..\..\dependencies\ogre\build\include;..\..\dependencies\ogre\OgreMain\include;..\..\dependencies\openal\include;&quot;$(BOOST_ROOT)\include&quot;"
 				PreprocessorDefinitions="WIN32;_DEBUG;_LIB"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
@@ -105,10 +105,10 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalOptions="-Zm132"
+				AdditionalOptions="-Zm192"
 				Optimization="2"
 				EnableIntrinsicFunctions="true"
-				AdditionalIncludeDirectories=".;..\foundation;..\..\dependencies\ogre\OgreMain\include;..\..\dependencies\ogre\build\include;&quot;$(BOOST_ROOT)\include&quot;"
+				AdditionalIncludeDirectories=".;..\foundation;..\..\dependencies\bullet\src;..\..\dependencies\ogre\build\include;..\..\dependencies\ogre\OgreMain\include;..\..\dependencies\openal\include;&quot;$(BOOST_ROOT)\include&quot;"
 				PreprocessorDefinitions="WIN32;NDEBUG;_LIB"
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"
@@ -169,6 +169,14 @@
 				</File>
 				<File
 					RelativePath=".\game\core\CoreFeatureServer.h"
+					>
+				</File>
+				<File
+					RelativePath=".\game\core\CoreMessages.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\game\core\CoreMessages.h"
 					>
 				</File>
 				<File
@@ -285,6 +293,14 @@
 			Name="physicsfeature"
 			>
 			<File
+				RelativePath=".\physicsfeature\PhysicsComponent.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\physicsfeature\PhysicsComponent.h"
+				>
+			</File>
+			<File
 				RelativePath=".\physicsfeature\PhysicsFeatureServer.cpp"
 				>
 			</File>
@@ -298,6 +314,26 @@
 			</File>
 			<File
 				RelativePath=".\physicsfeature\PhysicsProperties.h"
+				>
+			</File>
+		</Filter>
+		<Filter
+			Name="soundfeature"
+			>
+			<File
+				RelativePath=".\soundfeature\SoundFeatureServer.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\soundfeature\SoundFeatureServer.h"
+				>
+			</File>
+			<File
+				RelativePath=".\soundfeature\SoundProperties.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\soundfeature\SoundProperties.h"
 				>
 			</File>
 		</Filter>

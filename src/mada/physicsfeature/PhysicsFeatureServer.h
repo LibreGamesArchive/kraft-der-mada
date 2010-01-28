@@ -22,6 +22,8 @@
 
 namespace mada
 {
+	class PhysicsServer;
+
 	class PhysicsFeatureServer : public FeatureServer
 	{
 		__mada_declare_class(PhysicsFeatureServer);
@@ -29,5 +31,13 @@ namespace mada
 	public:
 		PhysicsFeatureServer();
 		~PhysicsFeatureServer();
+
+		void onActivate();
+		void onDeactivate();
+
+		void onEndFrame();
+
+	private:
+		Ptr<PhysicsServer> m_physicsServer;
 	};
 }

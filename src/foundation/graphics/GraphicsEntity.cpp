@@ -31,6 +31,8 @@ namespace mada
 
 		GraphicsEntity::~GraphicsEntity()
 		{
+			mada_assert(!isAttached());
+
 			if (m_entity != NULL)
 			{
 				GraphicsServer::getInstance()->destroyEntity(m_entity);
@@ -105,13 +107,20 @@ namespace mada
 			m_sceneNode->attachObject(m_entity);
 		}
 
-		bool GraphicsEntity::isVisible() const
+		bool GraphicsEntity::isAttached() const
 		{
-			return m_entity->isVisible();
+			return m_sceneNode->isInSceneGraph();
 		}
 
-		void GraphicsEntity::setVisible(bool visible)
+		void GraphicsEntity::attach()
 		{
-			m_entity->setVisible(true);
+			mada_assert(!isAttached());
+			GraphicsServer::getInstance()->_getSceneManager()->getRootSceneNode()->addChild(m_sceneNode);
+		}
+
+		void GraphicsEntity::detach()
+		{
+			mada_assert(isAttached());
+			m_sceneNode->getParentSceneNode()->removeChild(m_sceneNode);
 		}
 }

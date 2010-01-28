@@ -21,6 +21,8 @@
 #include "physicsfeature/PhysicsFeatureServer.h"
 
 #include "physicsfeature/PhysicsProperties.h"
+
+#include "physics/PhysicsServer.h"
 #include "properties/PropertyId.h"
 
 #include "GameServer.h"
@@ -30,7 +32,7 @@ namespace mada
 	__mada_implement_class(PhysicsFeatureServer, FeatureServer);
 	__mada_implement_singleton(PhysicsFeatureServer);
 
-	PhysicsFeatureServer::PhysicsFeatureServer()
+	PhysicsFeatureServer::PhysicsFeatureServer() : m_physicsServer()
 	{
 		__mada_construct_singleton;
 
@@ -41,5 +43,23 @@ namespace mada
 	PhysicsFeatureServer::~PhysicsFeatureServer()
 	{
 		__mada_destruct_singleton;
+	}
+
+	void PhysicsFeatureServer::onActivate()
+	{
+		m_physicsServer = PhysicsServer::create();
+		m_physicsServer->open();
+	}
+
+	void PhysicsFeatureServer::onDeactivate()
+	{
+		m_physicsServer->close();
+		m_physicsServer = NULL;
+	}
+
+	void PhysicsFeatureServer::onEndFrame()
+	{
+		Time time = MasterTime::getInstance()->getFrameTime();
+		m_physicsServer->step(time);
 	}
 }

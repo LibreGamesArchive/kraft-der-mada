@@ -37,6 +37,8 @@ namespace mada
 
 	GraphicsServer::~GraphicsServer()
 	{
+		mada_assert(!isOpen());
+
 		__mada_destruct_singleton;
 	}
 
@@ -115,7 +117,7 @@ namespace mada
 	{
 		mada_assert(isOpen());
 
-		Ogre::SceneNode* node = m_sceneManager->getRootSceneNode()->createChildSceneNode();
+		Ogre::SceneNode* node = m_sceneManager->createSceneNode();
 		return node;
 	}
 

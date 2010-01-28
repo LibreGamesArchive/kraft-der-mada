@@ -50,6 +50,8 @@ namespace mada
 		m_entity = GraphicsEntity::create();
 		m_entity->setMeshName(meshName);
 
+		m_entity->attach();
+
 		Vector3 pos = getGameObject()->getVector3Property(prop::_position);
 		Quaternion orientation = getGameObject()->getQuaternionProperty(prop::_orientation);
 
@@ -61,6 +63,7 @@ namespace mada
 	{
 		mada_assert(m_entity != NULL);
 
+		m_entity->detach();
 		m_entity = NULL;
 	}
 }
