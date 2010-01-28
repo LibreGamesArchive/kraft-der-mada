@@ -22,17 +22,16 @@
 namespace mada
 {
 
-    /*! \brief SoundServer
-     *         Manages the OpenAl device and context.
+    /*! \brief Sound
+     *         A sound which can be played
      *
      *  Detailed description starts here.
      */
 
 
-    class SoundServer : public RefCounted
+    class Sound : public RefCounted
     {
-        __mada_declare_class(SoundServer);
-	__mada_declare_singleton(SoundServer);
+        __mada_declare_class(Sound);
     public:
 
         /**
@@ -40,36 +39,32 @@ namespace mada
          * A more elaborate description of the constructor.
          */
 
-        SoundServer();
+        Sound();
 
         /**
          * A destructor.
          * A more elaborate description of the constructor.
          */
 
-        ~SoundServer();
+        ~Sound();
 
-        /**
-         * open()
-         */
+        bool play ();
+        bool isPlaying () const;
+        bool pause ();
+        bool isPaused () const;
+        bool stop ();
+        bool isStopped () const;
+        bool isInitial () const;
+        void setGain(float gain);
+        float getGain() const;
+        void setLoop(bool loop);
+        bool getLoop() const;
 
-        void open();
-
-        /**
-         * close()
-         */
-
-        void close();
-
-        /**
-         * @return return true if SoundServer is opened
-         */
-        bool isOpen() const;
     protected:
-        bool m_isOpen;
-        ALCdevice* mDevice;
-        ALCcontext* mContext;
-        bool mEAXsupported;
+        float mGain;
+        bool m_bIsPlaying;
+        bool m_bIsStopped;
+        bool m_bIsPaused;
     };
 
 }

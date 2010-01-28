@@ -19,7 +19,6 @@
 #include "stdmadainc.h"
 
 #include "sound/SoundServer.h"
-#include "SoundServer.h"
 
 namespace mada
 {
