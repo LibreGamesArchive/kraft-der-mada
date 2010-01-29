@@ -41,6 +41,9 @@
 // Alut
 #include <AL/alut.h>
 
+// bullet headers
+#include <btBulletDynamicsCommon.h>
+
 // boost
 #include <boost/variant.hpp>
 
