@@ -19,7 +19,7 @@
 
 #include "physics/PhysicsEntity.h"
 
-#include "physics/btogre/btOgreExtras.h"
+#include "physics/btogre/BtOgreExtras.h"
 #include "physics/CollisionShapeFactory.h"
 #include "physics/PhysicsServer.h"
 

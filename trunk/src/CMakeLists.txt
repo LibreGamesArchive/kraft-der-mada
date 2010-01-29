@@ -25,6 +25,11 @@ foundation/graphics/GraphicsServer.cpp
 foundation/messaging/Message.cpp
 foundation/messaging/MessagePort.cpp
 foundation/messaging/MessageDispatcher.cpp
+foundation/physics/CollisionShapeFactory.cpp
+foundation/physics/MotionState.cpp
+foundation/physics/PhysicsEntity.cpp	
+foundation/physics/PhysicsServer.cpp	
+foundation/physics/btogre/BtOgre.cpp
 foundation/sound/SoundServer.cpp
 foundation/sound/Sound.cpp
 foundation/timing/linux/LinuxTimer.cpp
@@ -62,7 +67,7 @@ lightgame/LightGame.cpp
 
 ADD_EXECUTABLE(light_game ${Mada_LIGHTGAME_SRCS} ${Mada_FOUNDATION_SRCS} ${Mada_MADA_SRCS})
 
-TARGET_LINK_LIBRARIES(light_game ${OGRE_LIBRARIES} alut)
+TARGET_LINK_LIBRARIES(light_game ${OGRE_LIBRARIES} alut BulletDynamics  BulletCollision LinearMath)
 
 
 INSTALL(TARGETS light_game RUNTIME DESTINATION ${CMAKE_INSTALL_PREFIX}/${BINDIR})
