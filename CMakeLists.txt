@@ -16,6 +16,8 @@ SET(MADA_FOUNDATION_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/src/foundation ${CMAKE_SOURC
 
 # Check for required components
 FIND_PACKAGE(OGRE 1.7 REQUIRED)
+FIND_PACKAGE(BULLET REQUIRED)
+FIND_PACKAGE(ALUT REQUIRED)
 #more packages required
 
 # Compile settings for build types

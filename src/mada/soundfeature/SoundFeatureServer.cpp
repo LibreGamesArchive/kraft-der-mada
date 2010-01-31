@@ -23,6 +23,7 @@
 #include "properties/PropertyId.h"
 
 #include "GameServer.h"
+#include "SoundFeatureServer.h"
 
 namespace mada
 {
@@ -41,4 +42,16 @@ namespace mada
 	{
 		__mada_destruct_singleton;
 	}
+
+        void SoundFeatureServer::onActivate()
+        {
+            m_SoundServer = SoundServer::create();
+            m_SoundServer->open();
+        }
+
+        void SoundFeatureServer::onDeactivate()
+        {
+            m_SoundServer->close();
+            m_SoundServer = NULL;
+        }
 }

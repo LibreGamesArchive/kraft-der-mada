@@ -2,7 +2,7 @@
 
 /*
 	This file is part of Kraft der Mada.
-	Copyright (c) 2009 Timm Eversmeyer
+	Copyright (c) 2010 Timm Eversmeyer
 
     Kraft der Mada is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -18,25 +18,29 @@
     along with Kraft der Mada. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "game/base/FeatureServer.h"
-#include "sound/SoundServer.h"
+#include "sound/Sound.h"
 
 namespace mada
 {
-	class SoundFeatureServer : public FeatureServer
+	class SoundEntity : public RefCounted
 	{
-		__mada_declare_class(SoundFeatureServer);
-		__mada_declare_singleton(SoundFeatureServer);
+            __mada_declare_class(SoundEntity);
+        public:
+            SoundEntity();
+            ~SoundEntity();
 
-	public:
-		SoundFeatureServer();
-		~SoundFeatureServer();
+            void attach();
+            void deattach();
 
-                void onActivate();
-		void onDeactivate();
+            void setSound(Ptr<Sound> sound, AxisAlignedBox& aab);
+            void setSound(Ptr<Sound> sound, Ogre::MeshPtr mesh);
 
+            bool isAttached();
         protected:
-            Ptr<SoundServer> m_SoundServer;
-	};
+            Ogre::MeshPtr m_mesh;
+            AxisAlignedBox m_aabb;
+            bool m_isAttached;
 
+            Ptr<Sound> m_sound;
+	};
 }
