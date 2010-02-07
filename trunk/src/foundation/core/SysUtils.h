@@ -18,8 +18,10 @@
 */
 
 #include "core/Config.h"
-#if WIN32
+#if defined( __WIN32__ ) || defined( _WIN32 )
 #include "core/win32/Win32SysUtils.h"
-#else
+#elif defined( __APPLE_CC__) || defined( __SYMBIAN32__ )
+#error "SysUtils not implemented on this platform!"
+#else 
 #include "core/linux/LinuxSysUtils.h"
 #endif
