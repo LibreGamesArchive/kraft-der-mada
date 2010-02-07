@@ -30,9 +30,12 @@ foundation/physics/MotionState.cpp
 foundation/physics/PhysicsEntity.cpp	
 foundation/physics/PhysicsServer.cpp	
 foundation/physics/btogre/BtOgre.cpp
+foundation/sound/OggSoundFormat.cpp
 foundation/sound/Sound.cpp
 foundation/sound/SoundEntity.cpp
+foundation/sound/SoundFormat.cpp
 foundation/sound/SoundServer.cpp
+foundation/sound/WavSoundFormat.cpp
 foundation/timing/linux/LinuxTimer.cpp
 )
 
