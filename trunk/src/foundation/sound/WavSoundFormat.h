@@ -2,7 +2,7 @@
 
 /*
 	This file is part of Kraft der Mada.
-	Copyright (c) 2009 Timm Eversmeyer
+	Copyright (c) 2010 Timm Eversmeyer
 
     Kraft der Mada is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -22,43 +22,26 @@
 
 namespace mada
 {
-	class Sound : public RefCounted
-	{
-		__mada_declare_class(Sound);
+    class WavSoundFormat : public SoundFormat
+    {
+        __mada_declare_class(WavSoundFormat);
+    public:
+        WavSoundFormat();
+        ~WavSoundFormat();
 
-	public:
-		enum SoundState {IS_PLAYING, IS_PAUSED, IS_STOPPED};
-		enum SoundFileFormat {OGG, WAV};
+        void play();
+        void pause();
+        void stop();
 
-		Sound();
-		~Sound();
+        ALenum open(String fileName);
+        bool close();
 
-		void setFilename(String filename, SoundFileFormat format);
+    protected:
+        ALenum m_wavFormat;
 
-		bool open();
-		bool close();
+        ALsizei m_wavSize;
+        ALsizei m_wavFrequency;
 
-		void play();
-		bool isPlaying() const;
-
-		void pause();
-		bool isPaused() const;
-
-		void stop();
-		bool isStopped() const;
-
-                void setPosition(Vector3 pos);
-                Vector3 getPosition() const;
-
-		Sound::SoundState getSoundState() const;
-	private:		
-		SoundState m_soundState;
-		bool m_isOpen;
-
-		String m_filename;
-
-		Ptr<SoundFormat> m_soundFormat;
-
-                ALuint m_source;
-	};
+        void* m_wavData;
+    };
 }

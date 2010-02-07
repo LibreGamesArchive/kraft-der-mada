@@ -16,57 +16,129 @@
     along with Kraft der Mada. If not, see <http://www.gnu.org/licenses/>.
 */
 
+#include <AL/al.h>
+
 #include "stdmadainc.h"
 
 #include "sound/Sound.h"
-#include "Sound.h"
+#include "sound/WavSoundFormat.h"
+#include "sound/OggSoundFormat.h"
+#include "sound/SoundError.h"
 
 namespace mada
 {
 	__mada_implement_root_class(Sound);
 
-	Sound::Sound() : m_isPaused(false), m_isPlaying(false), m_isStopped(true)
+	Sound::Sound() : m_soundState(IS_STOPPED), m_isOpen(false)
 	{
+            alGenSources(1, &m_source);
 	}
 
 	Sound::~Sound()
 	{
-		mada_assert(m_isStopped);
+	    mada_assert(isStopped());
+            alDeleteSources(1, &m_source);
+		
+	}
+
+	void Sound::setFilename(String filename, SoundFileFormat format)
+	{
+	    mada_assert(!m_isOpen);
+
+	    m_filename = filename;
+
+	    switch(format)
+	    {
+		case OGG:
+		    m_soundFormat = OggSoundFormat::create();
+		    break;
+		case WAV:
+		    m_soundFormat = WavSoundFormat::create();
+		    break;
+		default:
+		    mada_assert(false && "SoundFileFormat not defined!");
+		    break;
+	    }
+	}
+
+	bool Sound::open()
+	{
+	    mada_assert(!m_isOpen);
+
+	    mada_assert(m_soundFormat.isValid());
+
+	    mada_fail_on_sound_error_code(m_soundFormat->open(m_filename));
+
+	    alSourcei(m_source, AL_BUFFER, m_soundFormat->getBufferHandle());
+
+	    mada_fail_on_sound_error();
+
+	    return true;
+	}
+
+	bool Sound::close()
+	{
+	    mada_assert(m_isOpen);
+
+	    mada_assert(m_soundFormat.isValid());
+
+	    return m_soundFormat->close();
 	}
 
 	void Sound::play()
 	{
-		mada_assert(false && "not yet implemented");
+	    mada_assert(!isPlaying());
 
-		mada_assert(!isPlaying());
+	    alSourcePlay(m_source);
+
+	    m_soundState = IS_PLAYING;
 	}
 
 	bool Sound::isPlaying() const
 	{
-		return m_isPlaying;
+		return m_soundState == IS_PLAYING;
 	}
 
 	void Sound::pause()
 	{
-		mada_assert(false && "not yet implemented");
-
-		mada_assert(isPlaying());
+	    mada_assert(isPlaying());
+	    
+	    alSourcePause(m_source);
+	    
+	    m_soundState = IS_PAUSED;
 	}
 
 	bool Sound::isPaused() const
 	{
-		return m_isPaused;
+	    return m_soundState == IS_PAUSED;
 	}
 
 	void Sound::stop()
 	{
-		mada_assert(false && "not yet implemented");
+	    mada_assert(isPlaying() || isPaused());
 
-		mada_assert(isPlaying() || isPaused());
+	    alSourceStop(m_source);
+
+	    m_soundState = IS_STOPPED;
 	}
 
 	bool Sound::isStopped() const
 	{
-		return m_isStopped;
+	    return m_soundState == IS_STOPPED;
+	}
+
+        void Sound::setPosition(Vector3 pos)
+        {
+            mada_assert(false && "not yet implemented");
+        }
+
+        Vector3 Sound::getPosition() const
+        {
+            mada_assert(false && "not yet implemented");
+        }
+
+	Sound::SoundState Sound::getSoundState() const
+	{
+	    return m_soundState;
 	}
 }
