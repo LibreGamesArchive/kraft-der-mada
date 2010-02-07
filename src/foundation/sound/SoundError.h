@@ -20,7 +20,38 @@
 
 #define mada_fail_on_sound_error() \
 	{\
-		int errCode = alGetError(); \
+		ALenum errCode = alGetError(); \
+		if (errCode != AL_NO_ERROR) \
+		{\
+			String msg = "In line "; \
+			msg += Ogre::StringConverter::toString(__LINE__); \
+			msg += " of file "; \
+			msg += __FILE__; \
+			switch (errCode) \
+			{\
+			case AL_INVALID_NAME: \
+				msg += " AL_INVALID_NAME "; \
+				break; \
+			case AL_INVALID_ENUM: \
+				msg += " AL_INVALID_ENUM "; \
+				break; \
+			case AL_INVALID_VALUE: \
+				msg += " AL_INVALID_VALUE "; \
+				break; \
+			case AL_INVALID_OPERATION: \
+				msg += " AL_INVALID_OPERATION "; \
+				break; \
+			default: \
+				msg += " unknown error code "; \
+				break; \
+			}\
+			SysUtils::showMessageBox(msg.c_str(), "Sound Error"); \
+			SysUtils::abort();\
+		}\
+	}
+
+#define mada_fail_on_sound_error_code(errCode) \
+	{\
 		if (errCode != AL_NO_ERROR) \
 		{\
 			String msg = "In line "; \

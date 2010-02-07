@@ -36,11 +36,28 @@ namespace mada
 
         }
 
-        void attach();
-            void deattach();
+        void SoundEntity::attach()
+        {
+            mada_assert(!m_isAttached)
+        }
+        
+        void SoundEntity::deattach()
+        {
 
-            void setSound(Ptr<Sound> sound, AxisAlignedBox& aab);
-            void setSound(Ptr<Sound> sound, Ogre::MeshPtr mesh);
+        }
 
-            bool isAttached();
+        void SoundEntity::setSound(Ptr<Sound> sound, AxisAlignedBox& aab)
+        {
+            mada_assert(!m_isAttached)
+        }
+
+        void SoundEntity::setSound(Ptr<Sound> sound, Ogre::MeshPtr mesh)
+        {
+            mada_assert(!m_isAttached)
+        }
+
+        bool SoundEntity::isAttached()
+        {
+            return m_isAttached;
+        }
 }
