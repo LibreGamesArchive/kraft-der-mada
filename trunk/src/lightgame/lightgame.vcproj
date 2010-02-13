@@ -120,6 +120,7 @@
 				AdditionalOptions="-Zm192"
 				Optimization="2"
 				EnableIntrinsicFunctions="true"
+				WholeProgramOptimization="false"
 				AdditionalIncludeDirectories=".;..\foundation;..\mada;..\..\dependencies\bullet\src;..\..\dependencies\ogre\build\include;..\..\dependencies\ogre\OgreMain\include;..\..\dependencies\openal\include;&quot;$(BOOST_ROOT)\include&quot;"
 				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS"
 				RuntimeLibrary="2"

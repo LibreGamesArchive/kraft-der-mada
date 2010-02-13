@@ -42,7 +42,7 @@ void SysUtils::abort()
 #if MADA_DEBUG
 	_asm{int 3};
 #else
-	abort();
+	::abort();
 #endif
 }
 
