@@ -110,6 +110,7 @@
 				AdditionalOptions="-Zm192"
 				Optimization="2"
 				EnableIntrinsicFunctions="true"
+				WholeProgramOptimization="false"
 				AdditionalIncludeDirectories=".;..\..\dependencies\bullet\src;..\..\dependencies\ogre\build\include;..\..\dependencies\ogre\OgreMain\include;..\..\dependencies\openal\include;&quot;$(BOOST_ROOT)\include&quot;"
 				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS"
 				RuntimeLibrary="2"
@@ -497,6 +498,14 @@
 			Name="sound"
 			>
 			<File
+				RelativePath=".\sound\OggSoundFormat.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\sound\OggSoundFormat.h"
+				>
+			</File>
+			<File
 				RelativePath=".\sound\Sound.cpp"
 				>
 			</File>
@@ -505,7 +514,23 @@
 				>
 			</File>
 			<File
+				RelativePath=".\sound\SoundEntity.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\sound\SoundEntity.h"
+				>
+			</File>
+			<File
 				RelativePath=".\sound\SoundError.h"
+				>
+			</File>
+			<File
+				RelativePath=".\sound\SoundFormat.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\sound\SoundFormat.h"
 				>
 			</File>
 			<File
@@ -514,6 +539,14 @@
 			</File>
 			<File
 				RelativePath=".\sound\SoundServer.h"
+				>
+			</File>
+			<File
+				RelativePath=".\sound\WavSoundFormat.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\sound\WavSoundFormat.h"
 				>
 			</File>
 		</Filter>

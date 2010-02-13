@@ -35,8 +35,8 @@ namespace mada
 
 		void setFilename(String filename, SoundFileFormat format);
 
-		bool open();
-		bool close();
+		void open();
+		void close();
 
 		void play();
 		bool isPlaying() const;

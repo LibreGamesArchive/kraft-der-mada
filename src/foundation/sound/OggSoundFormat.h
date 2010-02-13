@@ -22,6 +22,8 @@
 
 namespace mada
 {
+	class OggVorbis_File;
+
     class OggSoundFormat : public SoundFormat
     {
         __mada_declare_class(OggSoundFormat);
@@ -34,7 +36,8 @@ namespace mada
         void stop();
 
         ALenum open(String fileName);
-        bool close();
+        void close();
+
     protected:
         OggVorbis_File* m_oggVorbisFile;
     };

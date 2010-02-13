@@ -31,14 +31,13 @@ namespace mada
 
 	Sound::Sound() : m_soundState(IS_STOPPED), m_isOpen(false)
 	{
-            alGenSources(1, &m_source);
+		alGenSources(1, &m_source);
 	}
 
 	Sound::~Sound()
 	{
 	    mada_assert(isStopped());
-            alDeleteSources(1, &m_source);
-		
+		alDeleteSources(1, &m_source);
 	}
 
 	void Sound::setFilename(String filename, SoundFileFormat format)
@@ -61,7 +60,7 @@ namespace mada
 	    }
 	}
 
-	bool Sound::open()
+	void Sound::open()
 	{
 	    mada_assert(!m_isOpen);
 
@@ -72,17 +71,13 @@ namespace mada
 	    alSourcei(m_source, AL_BUFFER, m_soundFormat->getBufferHandle());
 
 	    mada_fail_on_sound_error();
-
-	    return true;
 	}
 
-	bool Sound::close()
+	void Sound::close()
 	{
 	    mada_assert(m_isOpen);
 
 	    mada_assert(m_soundFormat.isValid());
-
-	    return m_soundFormat->close();
 	}
 
 	void Sound::play()
@@ -127,15 +122,17 @@ namespace mada
 	    return m_soundState == IS_STOPPED;
 	}
 
-        void Sound::setPosition(Vector3 pos)
-        {
-            mada_assert(false && "not yet implemented");
-        }
+	void Sound::setPosition(Vector3 pos)
+	{
+		mada_assert(false && "not yet implemented");
+	}
 
-        Vector3 Sound::getPosition() const
-        {
-            mada_assert(false && "not yet implemented");
-        }
+	Vector3 Sound::getPosition() const
+	{
+		mada_assert(false && "not yet implemented");
+
+		return Vector3::ZERO;
+	}
 
 	Sound::SoundState Sound::getSoundState() const
 	{
