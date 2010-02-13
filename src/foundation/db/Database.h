@@ -18,8 +18,6 @@
     along with Kraft der Mada. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "db/Table.h"
-
 #include "db/sqlite/sqlite3.h"
 #include "properties/PropertyId.h"
 
@@ -46,7 +44,6 @@ namespace mada
 
 		void createTable(const String& tableName, const PropertyIdVector& propertyIds, bool dropExisting);
 		void dropTable(const String& tableName);
-		Ptr<Table> getTable(const String& tableName) const;
 		bool tableExists(const String& tableName) const;
 
 		void beginTransaction();
