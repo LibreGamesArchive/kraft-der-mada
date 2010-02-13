@@ -234,10 +234,6 @@
 			Name="db"
 			>
 			<File
-				RelativePath=".\db\Column.h"
-				>
-			</File>
-			<File
 				RelativePath=".\db\Command.cpp"
 				>
 			</File>
@@ -275,10 +271,6 @@
 			</File>
 			<File
 				RelativePath=".\db\DbUtils.h"
-				>
-			</File>
-			<File
-				RelativePath=".\db\Table.h"
 				>
 			</File>
 			<Filter

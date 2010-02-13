@@ -133,11 +133,6 @@ namespace mada
 		}
 	}
 
-	Ptr<Table> Database::getTable(const String& tableName) const
-	{
-		return Ptr<Table>();
-	}
-
 	void Database::beginTransaction()
 	{
 	}
