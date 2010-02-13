@@ -52,11 +52,10 @@ namespace mada
 
     ALenum OggSoundFormat::open(String fileName)
     {
-
+		return AL_INVALID_ENUM;
     }
 
-    bool OggSoundFormat::close()
+    void OggSoundFormat::close()
     {
-
     }
 }

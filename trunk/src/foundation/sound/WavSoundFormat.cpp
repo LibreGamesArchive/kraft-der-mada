@@ -15,11 +15,7 @@
     You should have received a copy of the GNU General Public License
     along with Kraft der Mada. If not, see <http://www.gnu.org/licenses/>.
 */
-
-#include <AL/alut.h>
-
 #include "stdmadainc.h"
-
 
 #include "sound/WavSoundFormat.h"
 
@@ -54,7 +50,7 @@ namespace mada
 
     ALenum WavSoundFormat::open(String fileName)
     {
-	m_fileName = fileName;
+		m_fileName = fileName;
 
         ALenum error;
 
@@ -89,7 +85,7 @@ namespace mada
         return AL_NO_ERROR;
     }
 
-    bool WavSoundFormat::close()
+    void WavSoundFormat::close()
     {
         alutUnloadWAV(m_wavFormat, m_wavData, m_wavSize, m_wavFrequency);
         alDeleteBuffers(1, &m_buffer);

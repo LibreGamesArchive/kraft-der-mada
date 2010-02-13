@@ -26,7 +26,6 @@ namespace mada
 {
     __mada_implement_root_class(SoundFormat);
 
-
     SoundFormat::SoundFormat() : m_isOpen(false)
     {
 
@@ -55,11 +54,11 @@ namespace mada
     ALenum SoundFormat::open(String fileName)
     {
         // Empty. Override in subclass if needed.
+		return AL_INVALID_ENUM;
     }
 
-    bool SoundFormat::close()
+    void SoundFormat::close()
     {
-
     }
 
     void SoundFormat::setLoop(bool loop)

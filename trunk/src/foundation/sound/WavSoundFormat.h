@@ -34,7 +34,7 @@ namespace mada
         void stop();
 
         ALenum open(String fileName);
-        bool close();
+        void close();
 
     protected:
         ALenum m_wavFormat;
