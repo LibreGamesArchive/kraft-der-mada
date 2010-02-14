@@ -18,18 +18,24 @@
     along with Kraft der Mada. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "physics/CollisionShape.h"
+#include "messaging/Message.h"
 
 namespace mada
 {
-	///\todo cache collision shapes.
-	class CollisionShapeFactory : public RefCounted
+	class SetTransformMsg : public Message
 	{
-		__mada_declare_class(CollisionShapeFactory);
-		__mada_declare_singleton(CollisionShapeFactory);
+		__mada_declare_class(SetTransformMsg);
+		__mada_declare_message_id;
 
 	public:
-		CollisionShapeFactory();
-		~CollisionShapeFactory();
+		Vector3 getPosition() const;
+		void setPosition(const Vector3& pos);
+
+		Quaternion getOrientation() const;
+		void setOrientation(const Quaternion& ori);
+
+	private:
+		Vector3 m_position;
+		Quaternion m_orientation;
 	};
 }

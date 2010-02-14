@@ -18,18 +18,32 @@
     along with Kraft der Mada. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "physics/CollisionShape.h"
+#include "physics/PhysicsEntity.h"
 
 namespace mada
 {
-	///\todo cache collision shapes.
-	class CollisionShapeFactory : public RefCounted
+	class PhysicsWorld : public RefCounted
 	{
-		__mada_declare_class(CollisionShapeFactory);
-		__mada_declare_singleton(CollisionShapeFactory);
-
+		__mada_declare_class(PhysicsWorld);
+		__mada_declare_singleton(PhysicsWorld);
 	public:
-		CollisionShapeFactory();
-		~CollisionShapeFactory();
+		PhysicsWorld();
+		~PhysicsWorld();
+
+		void open();
+		void close();
+		bool isOpen() const;
+
+		void step(Time time);
+
+		void attachEntity(Ptr<PhysicsEntity> entity);
+		void detachEntity(Ptr<PhysicsEntity> entity);
+		void clear();
+
+	private:
+		bool m_isOpen;
+
+		///\todo use more suitable container like a quadtree.
+		std::set<Ptr<PhysicsEntity> > m_entities;
 	};
 }

@@ -19,6 +19,7 @@
 */
 
 #include "physics/CollisionShapeFactory.h"
+#include "physics/PhysicsWorld.h"
 
 namespace mada
 {
@@ -34,19 +35,10 @@ namespace mada
 		void close();
 		bool isOpen() const;
 
-		void step(Time time);
-
-		btDynamicsWorld* _getWorld();
-
 	private:
 		bool m_isOpen;
 
-		btCollisionConfiguration* m_collisionConfiguration;
-		btCollisionDispatcher* m_dispatcher;
-		btBroadphaseInterface* m_broadphaseInterface;
-		btConstraintSolver* m_constraintSolver;
-		btDynamicsWorld* m_dynamicsWorld;
-
 		Ptr<CollisionShapeFactory> m_collisionShapeFactory;
+		Ptr<PhysicsWorld> m_physicsWorld;
 	};
 }

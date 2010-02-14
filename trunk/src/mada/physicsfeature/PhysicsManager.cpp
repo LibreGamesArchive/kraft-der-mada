@@ -17,19 +17,23 @@
     You should have received a copy of the GNU General Public License
     along with Kraft der Mada. If not, see <http://www.gnu.org/licenses/>.
 */
+#include "stdmadainc.h"
 
-#include "physics/CollisionShape.h"
+#include "physicsfeature/PhysicsManager.h"
+#include "physicsfeature/PhysicsComponent.h"
 
 namespace mada
 {
-	///\todo cache collision shapes.
-	class CollisionShapeFactory : public RefCounted
-	{
-		__mada_declare_class(CollisionShapeFactory);
-		__mada_declare_singleton(CollisionShapeFactory);
+	__mada_implement_class(PhysicsManager, Manager);
+	__mada_implement_singleton(PhysicsManager);
 
-	public:
-		CollisionShapeFactory();
-		~CollisionShapeFactory();
-	};
+	PhysicsManager::PhysicsManager()
+	{
+		__mada_construct_singleton;
+	}
+
+	PhysicsManager::~PhysicsManager()
+	{
+		__mada_destruct_singleton;
+	}
 }

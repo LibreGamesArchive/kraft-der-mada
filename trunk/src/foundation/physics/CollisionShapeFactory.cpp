@@ -33,26 +33,4 @@ namespace mada
 	{
 		__mada_destruct_singleton;
 	}
-
-	btCollisionShape* CollisionShapeFactory::createCollisionShape(CollisionShape shape, const AxisAlignedBox& aabb)
-	{
-		return NULL;
-	}
-
-	btCollisionShape* CollisionShapeFactory::createCollisionShape(CollisionShape shape, Ogre::MeshPtr mesh)
-	{
-		if (shape == TriMeshShape)
-		{
-			return NULL;
-		}
-		else
-		{
-			return createCollisionShape(shape, mesh->getBounds());
-		}
-	}
-
-	void CollisionShapeFactory::destroyCollisionShape(btCollisionShape* collisionShape)
-	{
-		mada_delete(collisionShape);
-	}
 }

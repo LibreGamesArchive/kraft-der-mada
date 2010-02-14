@@ -1,3 +1,5 @@
+#pragma once
+
 /*
 	This file is part of Kraft der Mada.
 	Copyright (c) 2009 Daniel Wickert
@@ -17,54 +19,73 @@
 */
 #include "stdmadainc.h"
 
-#include "physics/PhysicsServer.h"
+#include "physics/PhysicsWorld.h"
 
 namespace mada
 {
-	__mada_implement_root_class(PhysicsServer);
-	__mada_implement_singleton(PhysicsServer);
+	__mada_implement_root_class(PhysicsWorld);
+	__mada_implement_singleton(PhysicsWorld);
 
-	PhysicsServer::PhysicsServer() :
-		m_isOpen(false),
-		m_collisionShapeFactory(),
-		m_physicsWorld()
+	PhysicsWorld::PhysicsWorld() : m_isOpen(false), m_entities()
 	{
-		m_collisionShapeFactory = CollisionShapeFactory::create();
-		m_physicsWorld = PhysicsWorld::create();
-
 		__mada_construct_singleton;
 	}
 
-	PhysicsServer::~PhysicsServer()
+	PhysicsWorld::~PhysicsWorld()
 	{
-		mada_assert(!isOpen());
-
-		m_collisionShapeFactory = NULL;
-		m_physicsWorld = NULL;
+		mada_assert(!m_isOpen);
 
 		__mada_destruct_singleton;
 	}
 
-	void PhysicsServer::open()
+	void PhysicsWorld::open()
 	{
 		mada_assert(!isOpen());
-
-		m_physicsWorld->open();
 
 		m_isOpen = true;
 	}
 
-	void PhysicsServer::close()
+	void PhysicsWorld::close()
 	{
 		mada_assert(isOpen());
 
-		m_physicsWorld->close();
+		clear();
 
 		m_isOpen = false;
 	}
 
-	bool PhysicsServer::isOpen() const
+	bool PhysicsWorld::isOpen() const
 	{
 		return m_isOpen;
+	}
+
+	void PhysicsWorld::step(Time time)
+	{
+		mada_assert(isOpen());
+
+		// do nothing right now.
+	}
+
+	void PhysicsWorld::attachEntity(Ptr<PhysicsEntity> entity)
+	{
+		mada_assert(isOpen());
+		mada_assert(m_entities.find(entity) == m_entities.end());
+
+		m_entities.insert(entity);
+	}
+
+	void PhysicsWorld::detachEntity(Ptr<PhysicsEntity> entity)
+	{
+		mada_assert(isOpen());
+		mada_assert(m_entities.find(entity) != m_entities.end());
+
+		m_entities.erase(entity);
+	}
+
+	void PhysicsWorld::clear()
+	{
+		mada_assert(isOpen());
+
+		m_entities.clear();
 	}
 }

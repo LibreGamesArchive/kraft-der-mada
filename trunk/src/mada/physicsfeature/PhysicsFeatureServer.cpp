@@ -20,9 +20,11 @@
 
 #include "physicsfeature/PhysicsFeatureServer.h"
 
+#include "physicsfeature/PhysicsManager.h"
 #include "physicsfeature/PhysicsProperties.h"
 
 #include "physics/PhysicsServer.h"
+#include "physics/PhysicsWorld.h"
 #include "properties/PropertyId.h"
 
 #include "GameServer.h"
@@ -37,12 +39,17 @@ namespace mada
 		__mada_construct_singleton;
 
 		// Init properties
-		PropertyId physicsObjectId = prop::_physics_object;
+		PropertyId collisionShape = prop::_collision_shape;
+		PropertyId collisionBoxMin = prop::_collision_box_min;
+		PropertyId collisionBoxMax = prop::_collision_box_max;
+		PropertyId collisionCircleRadius = prop::_collision_circle_radius;
 	}
 
 	PhysicsFeatureServer::~PhysicsFeatureServer()
 	{
 		__mada_destruct_singleton;
+
+		m_managers.push_back(Ptr<Manager>(PhysicsManager::create()));
 	}
 
 	void PhysicsFeatureServer::onActivate()
@@ -60,6 +67,6 @@ namespace mada
 	void PhysicsFeatureServer::onEndFrame()
 	{
 		Time time = MasterTime::getInstance()->getFrameTime();
-		m_physicsServer->step(time);
+		PhysicsWorld::getInstance()->step(time);
 	}
 }

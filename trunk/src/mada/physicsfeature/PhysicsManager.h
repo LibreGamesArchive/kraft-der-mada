@@ -18,18 +18,26 @@
     along with Kraft der Mada. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "physics/CollisionShape.h"
+#include "game/base/Manager.h"
 
 namespace mada
 {
-	///\todo cache collision shapes.
-	class CollisionShapeFactory : public RefCounted
+	class PhysicsManager : public Manager
 	{
-		__mada_declare_class(CollisionShapeFactory);
-		__mada_declare_singleton(CollisionShapeFactory);
-
+		__mada_declare_class(PhysicsManager);
+		__mada_declare_singleton(PhysicsManager);
 	public:
-		CollisionShapeFactory();
-		~CollisionShapeFactory();
+		PhysicsManager();
+		~PhysicsManager();
+
+		//virtual void onActivate();
+		//virtual void onDeactivate();
+
+		//virtual void onLoad();
+		//virtual void onSave();
+
+		//virtual void onBeginFrame();
+		//virtual void onFrame();
+		//virtual void onEndFrame();
 	};
 }

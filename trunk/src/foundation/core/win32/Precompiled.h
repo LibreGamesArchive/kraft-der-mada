@@ -67,9 +67,6 @@
 // Ogre headers
 #include <Ogre.h>
 
-// bullet headers
-#include <btBulletDynamicsCommon.h>
-
 // OpenAL headers
 #include <alut.h>
 //------------------------------------------------------------------------------
