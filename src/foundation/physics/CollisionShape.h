@@ -20,14 +20,12 @@
 
 namespace mada
 {
-	enum CollisionShape
+	class CollisionShape : public RefCounted
 	{
-		BoxShape,
-		SphereShape,
-		CapsuleShape,
-		CylinderShape,
-		ConeShape,
-		ConvexHullShape,
-		TriMeshShape
+	public:
+		CollisionShape();
+		~CollisionShape();
+
+		virtual AxisAlignedBox getAabb() const = 0;
 	};
 }

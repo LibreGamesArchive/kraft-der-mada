@@ -1,5 +1,3 @@
-#pragma once
-
 /*
 	This file is part of Kraft der Mada.
 	Copyright (c) 2009 Daniel Wickert
@@ -17,19 +15,32 @@
     You should have received a copy of the GNU General Public License
     along with Kraft der Mada. If not, see <http://www.gnu.org/licenses/>.
 */
+#include "stdmadainc.h"
 
-#include "physics/CollisionShape.h"
+#include "game/core/CoreMessages.h"
 
 namespace mada
 {
-	///\todo cache collision shapes.
-	class CollisionShapeFactory : public RefCounted
-	{
-		__mada_declare_class(CollisionShapeFactory);
-		__mada_declare_singleton(CollisionShapeFactory);
+	__mada_implement_class(SetTransformMsg, Message);
+	__mada_implement_message_id(SetTransformMsg);
 
-	public:
-		CollisionShapeFactory();
-		~CollisionShapeFactory();
-	};
+	Vector3 SetTransformMsg::getPosition() const
+	{
+		return m_position;
+	}
+
+	void SetTransformMsg::setPosition(const Vector3& pos)
+	{
+		m_position = pos;
+	}
+
+	Quaternion SetTransformMsg::getOrientation() const
+	{
+		return m_orientation;
+	}
+
+	void SetTransformMsg::setOrientation(const Quaternion& ori)
+	{
+		m_orientation = ori;
+	}
 }

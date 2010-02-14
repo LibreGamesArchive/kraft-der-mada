@@ -42,7 +42,7 @@
 				Name="VCCLCompilerTool"
 				AdditionalOptions="-Zm192"
 				Optimization="0"
-				AdditionalIncludeDirectories=".;..\foundation;..\..\dependencies\bullet\src;..\..\dependencies\ogre\build\include;..\..\dependencies\ogre\OgreMain\include;..\..\dependencies\openal\include;&quot;$(BOOST_ROOT)\include&quot;"
+				AdditionalIncludeDirectories=".;..\foundation;..\..\dependencies\ogre\build\include;..\..\dependencies\ogre\OgreMain\include;..\..\dependencies\openal\include;&quot;$(BOOST_ROOT)\include&quot;"
 				PreprocessorDefinitions="WIN32;_DEBUG;_LIB"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
@@ -109,7 +109,7 @@
 				Optimization="2"
 				EnableIntrinsicFunctions="true"
 				WholeProgramOptimization="false"
-				AdditionalIncludeDirectories=".;..\foundation;..\..\dependencies\bullet\src;..\..\dependencies\ogre\build\include;..\..\dependencies\ogre\OgreMain\include;..\..\dependencies\openal\include;&quot;$(BOOST_ROOT)\include&quot;"
+				AdditionalIncludeDirectories=".;..\foundation;..\..\dependencies\ogre\build\include;..\..\dependencies\ogre\OgreMain\include;..\..\dependencies\openal\include;&quot;$(BOOST_ROOT)\include&quot;"
 				PreprocessorDefinitions="WIN32;NDEBUG;_LIB"
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"
@@ -307,6 +307,14 @@
 			</File>
 			<File
 				RelativePath=".\physicsfeature\PhysicsFeatureServer.h"
+				>
+			</File>
+			<File
+				RelativePath=".\physicsfeature\PhysicsManager.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\physicsfeature\PhysicsManager.h"
 				>
 			</File>
 			<File

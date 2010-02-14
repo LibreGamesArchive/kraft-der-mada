@@ -42,7 +42,7 @@
 				Name="VCCLCompilerTool"
 				AdditionalOptions="-Zm192"
 				Optimization="0"
-				AdditionalIncludeDirectories=".;..\..\dependencies\bullet\src;..\..\dependencies\ogre\build\include;..\..\dependencies\ogre\OgreMain\include;..\..\dependencies\openal\include;&quot;$(BOOST_ROOT)\include&quot;"
+				AdditionalIncludeDirectories=".;..\..\dependencies\ogre\build\include;..\..\dependencies\ogre\OgreMain\include;..\..\dependencies\openal\include;&quot;$(BOOST_ROOT)\include&quot;"
 				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
@@ -63,8 +63,7 @@
 			/>
 			<Tool
 				Name="VCLibrarianTool"
-				AdditionalDependencies="libbulletdynamics_dll_d.lib libbulletcollision_dll_d.lib libbulletmath_dll_d.lib"
-				AdditionalLibraryDirectories="..\..\dependencies\bullet\lib"
+				AdditionalLibraryDirectories=""
 			/>
 			<Tool
 				Name="VCALinkTool"
@@ -111,7 +110,7 @@
 				Optimization="2"
 				EnableIntrinsicFunctions="true"
 				WholeProgramOptimization="false"
-				AdditionalIncludeDirectories=".;..\..\dependencies\bullet\src;..\..\dependencies\ogre\build\include;..\..\dependencies\ogre\OgreMain\include;..\..\dependencies\openal\include;&quot;$(BOOST_ROOT)\include&quot;"
+				AdditionalIncludeDirectories=".;..\..\dependencies\ogre\build\include;..\..\dependencies\ogre\OgreMain\include;..\..\dependencies\openal\include;&quot;$(BOOST_ROOT)\include&quot;"
 				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS"
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"
@@ -131,8 +130,7 @@
 			/>
 			<Tool
 				Name="VCLibrarianTool"
-				AdditionalDependencies="libbulletdynamics_dll.lib libbulletcollision_dll.lib libbulletmath_dll.lib"
-				AdditionalLibraryDirectories="..\..\dependencies\bullet\lib"
+				AdditionalLibraryDirectories=""
 			/>
 			<Tool
 				Name="VCALinkTool"
@@ -442,14 +440,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\physics\MotionState.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\physics\MotionState.h"
-				>
-			</File>
-			<File
 				RelativePath=".\physics\PhysicsEntity.cpp"
 				>
 			</File>
@@ -465,26 +455,14 @@
 				RelativePath=".\physics\PhysicsServer.h"
 				>
 			</File>
-			<Filter
-				Name="btogre"
+			<File
+				RelativePath=".\physics\PhysicsWorld.cpp"
 				>
-				<File
-					RelativePath=".\physics\btogre\BtOgre.cpp"
-					>
-				</File>
-				<File
-					RelativePath=".\physics\btogre\BtOgreExtras.h"
-					>
-				</File>
-				<File
-					RelativePath=".\physics\btogre\BtOgreGP.h"
-					>
-				</File>
-				<File
-					RelativePath=".\physics\btogre\BtOgrePG.h"
-					>
-				</File>
-			</Filter>
+			</File>
+			<File
+				RelativePath=".\physics\PhysicsWorld.h"
+				>
+			</File>
 		</Filter>
 		<Filter
 			Name="sound"

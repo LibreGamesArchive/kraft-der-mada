@@ -23,6 +23,9 @@ namespace mada
 {
 	namespace prop
 	{
-		__mada_define_string_property(_physics_object, ReadWrite);
+		__mada_define_string_property(_collision_shape, ReadWrite);
+		__mada_define_vector3_property(_collision_box_min, ReadWrite);
+		__mada_define_vector3_property(_collision_box_max, ReadWrite);
+		__mada_define_float_property(_collision_circle_radius, ReadWrite);
 	}
 }

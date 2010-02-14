@@ -19,7 +19,6 @@
 */
 
 #include "physics/CollisionShape.h"
-#include "physics/MotionState.h"
 
 namespace mada
 {
@@ -30,12 +29,8 @@ namespace mada
 		PhysicsEntity();
 		~PhysicsEntity();
 
-		MotionState getMotionState() const;
-		void setMotionState(const MotionState& motionState);
-
-		CollisionShape getCollisionShape() const;
-		void setCollisionShape(CollisionShape shape, const AxisAlignedBox& aabb);
-		void setCollisionShape(CollisionShape shape, Ogre::MeshPtr mesh);
+		Ptr<CollisionShape> getCollisionShape() const;
+		void setCollisionShape(Ptr<CollisionShape> shape);
 
 		void setMass(float mass);
 		float getMass() const;
@@ -45,15 +40,10 @@ namespace mada
 		void detach();
 
 	private:
-		MotionState m_motionState;
-		btCollisionShape* m_collision;
-		btRigidBody* m_body;
 		bool m_isAttached;
 
 		// construction values used on attach and for getters.
-		CollisionShape m_shape;
-		Ogre::MeshPtr m_mesh;
-		AxisAlignedBox m_aabb;
+		Ptr<CollisionShape> m_shape;
 		float m_mass;
 	};
 }

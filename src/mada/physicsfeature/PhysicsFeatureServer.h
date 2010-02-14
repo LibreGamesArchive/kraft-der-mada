@@ -20,6 +20,8 @@
 
 #include "game/base/FeatureServer.h"
 
+#include "physicsfeature/PhysicsManager.h"
+
 namespace mada
 {
 	class PhysicsServer;
@@ -39,5 +41,7 @@ namespace mada
 
 	private:
 		Ptr<PhysicsServer> m_physicsServer;
+
+		std::vector<Ptr<Manager> > m_managers;
 	};
 }

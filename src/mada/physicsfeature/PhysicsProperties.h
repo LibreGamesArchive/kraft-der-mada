@@ -24,6 +24,9 @@ namespace mada
 {
 	namespace prop
 	{
-		__mada_declare_string_property(_physics_object);
+		__mada_declare_string_property(_collision_shape);
+		__mada_declare_vector3_property(_collision_box_min);
+		__mada_declare_vector3_property(_collision_box_max);
+		__mada_declare_float_property(_collision_circle_radius);
 	}
 }
