@@ -26,10 +26,9 @@ foundation/messaging/Message.cpp
 foundation/messaging/MessagePort.cpp
 foundation/messaging/MessageDispatcher.cpp
 foundation/physics/CollisionShapeFactory.cpp
-foundation/physics/MotionState.cpp
 foundation/physics/PhysicsEntity.cpp	
-foundation/physics/PhysicsServer.cpp	
-foundation/physics/btogre/BtOgre.cpp
+foundation/physics/PhysicsServer.cpp
+foundation/physics/PhysicsWorld.cpp	
 foundation/sound/OggSoundFormat.cpp
 foundation/sound/Sound.cpp
 foundation/sound/SoundEntity.cpp
@@ -57,7 +56,9 @@ mada/graphicsfeature/GraphicsFeatureServer.cpp
 mada/graphicsfeature/GraphicsProperties.cpp
 mada/graphicsfeature/MeshGraphicsComponent.cpp
 mada/graphicsfeature/MeshGraphicsManager.cpp
+mada/physicsfeature/PhysicsComponent.cpp
 mada/physicsfeature/PhysicsFeatureServer.cpp
+mada/physicsfeature/PhysicsManager.cpp
 mada/physicsfeature/PhysicsProperties.cpp
 mada/soundfeature/SoundFeatureServer.cpp
 mada/soundfeature/SoundProperties.cpp
