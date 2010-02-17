@@ -107,6 +107,8 @@ namespace mada
 	template<class T>
 	void Ptr<T>::operator=(T* ptr)
 	{
+		mada_assert(ptr == NULL || ptr->getRtti()->isDerivedFrom(T::RTTI));
+
 		if (m_ptr != ptr)
 		{
 			if (m_ptr != NULL)
