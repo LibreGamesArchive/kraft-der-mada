@@ -36,21 +36,18 @@ namespace mada
 		return m_refCount;
 	}
 
-	///\todo implement
 	String RefCounted::getClassName() const
 	{
-		return "TODO";
+		return RTTI.getName();
 	}
 
-	///\todo implement
-	bool RefCounted::isInstanceOf(const String&) const
+	bool RefCounted::isInstanceOf(const String& other) const
 	{
-		return false;
+		return RTTI.getName() == other;
 	}
 
-	///\todo implement
-	bool RefCounted::isA(const String&) const
+	bool RefCounted::isA(const String& other) const
 	{
-		return false;
+		return RTTI.getName() == other || RTTI.isDerivedFrom(other);
 	}
 }
