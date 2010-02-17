@@ -38,7 +38,7 @@ private:
 #define __mada_declare_abstract_class(class_name) \
 public: \
     static Rtti RTTI; \
-    virtual Rtti* getRtti() const; \
+    virtual const Rtti* getRtti() const; \
 private:
 
 
@@ -55,6 +55,10 @@ private:
 		Factory::instance()->registerClass(&Type::RTTI); \
 		return true; \
     }
+
+#define __mada_implement_abstract_root_class(Type) \
+	Rtti Type::RTTI(#Type, NULL, NULL, sizeof(Type)); \
+    const Rtti* Type::getRtti() const { return &RTTI; }
 
 #define __mada_implement_root_class(Type) \
     Rtti Type::RTTI(#Type, NULL, Type::factoryCreator, sizeof(Type)); \
