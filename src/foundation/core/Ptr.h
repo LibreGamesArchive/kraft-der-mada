@@ -60,6 +60,8 @@ namespace mada
 	template<class T>
 	Ptr<T>::Ptr(T* ptr) : m_ptr(ptr)
 	{
+		mada_assert(ptr == NULL || ptr->getRtti()->isDerivedFrom(T::RTTI));
+
 		if (m_ptr != NULL)
 		{
 			m_ptr->addRef();
