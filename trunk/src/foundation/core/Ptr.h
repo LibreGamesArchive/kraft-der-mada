@@ -176,14 +176,14 @@ namespace mada
 	template<class T>
 	template<class OTHERTYPE> const Ptr<OTHERTYPE>& Ptr<T>::downcast() const
 	{
-		mada_assert(OTHERTYPE::RTTI.IsDerivedFrom(T::RTTI));
+		mada_assert(OTHERTYPE::RTTI.isDerivedFrom(T::RTTI));
 		return *(Ptr<OTHERTYPE>*)this;
 	}
 
 	template<class T>
 	template<class OTHERTYPE> const Ptr<OTHERTYPE>& Ptr<T>::upcast() const
 	{
-		mada_assert(T::RTTI.IsDerivedFrom(OTHERTYPE::RTTI));
+		mada_assert(T::RTTI.isDerivedFrom(OTHERTYPE::RTTI));
 		return *(Ptr<OTHERTYPE>*)this;
 	}
 
