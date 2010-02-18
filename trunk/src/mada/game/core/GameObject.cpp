@@ -169,4 +169,54 @@ namespace mada
 		mada_assert(id.isValid());
 		return m_propertyTable->getValue(id, m_row);
 	}
+
+	void GameObject::setBoolProperty(const PropertyId& id, bool value) const
+	{
+		mada_assert(id.isValid());
+		mada_assert(id.getAccessMode() == ReadWrite);
+		m_propertyTable->setBoolValue(id, m_row, value);
+	}
+
+	void GameObject::setIntProperty(const PropertyId& id, int value) const
+	{
+		mada_assert(id.isValid());
+		mada_assert(id.getAccessMode() == ReadWrite);
+		m_propertyTable->setIntValue(id, m_row, value);
+	}
+
+	void GameObject::setFloatProperty(const PropertyId& id, float value) const
+	{
+		mada_assert(id.isValid());
+		mada_assert(id.getAccessMode() == ReadWrite);
+		m_propertyTable->setFloatValue(id, m_row, value);
+	}
+
+	void GameObject::setStringProperty(const PropertyId& id, const String& value) const
+	{
+		mada_assert(id.isValid());
+		mada_assert(id.getAccessMode() == ReadWrite);
+		m_propertyTable->setStringValue(id, m_row, value);
+	}
+
+	void GameObject::setVector3Property(const PropertyId& id, const Vector3& value) const
+	{
+		mada_assert(id.isValid());
+		mada_assert(id.getAccessMode() == ReadWrite);
+		m_propertyTable->setVector3Value(id, m_row, value);
+	}
+
+	void GameObject::setQuaternionProperty(const PropertyId& id, const Quaternion& value) const
+	{
+		mada_assert(id.isValid());
+		mada_assert(id.getAccessMode() == ReadWrite);
+		m_propertyTable->setQuaternionValue(id, m_row, value);
+	}
+
+	void GameObject::setProperty(const PropertyId& id, const Property& value) const
+	{
+		mada_assert(id.isValid());
+		mada_assert(id.getAccessMode() == ReadWrite);
+		mada_assert(value.getPropertyId() == id);
+		m_propertyTable->setValue(value, m_row);
+	}
 }

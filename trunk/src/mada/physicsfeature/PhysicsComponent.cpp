@@ -96,7 +96,7 @@ namespace mada
 
 	void PhysicsComponent::setPosition(const Vector3& pos)
 	{
-
+		getGameObject()->setVector3Property(prop::_position, pos);
 	}
 
 	Quaternion PhysicsComponent::getOrientation() const
@@ -104,8 +104,8 @@ namespace mada
 		return getGameObject()->getQuaternionProperty(prop::_orientation);
 	}
 
-	void PhysicsComponent::setOrientation(const Quaternion& pos)
+	void PhysicsComponent::setOrientation(const Quaternion& orientation)
 	{
-		mada_assert(false && "implement PhysicsComponent::setOrientation");
+		getGameObject()->setQuaternionProperty(prop::_orientation, orientation);
 	}
 }
