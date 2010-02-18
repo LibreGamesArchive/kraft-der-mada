@@ -53,8 +53,9 @@ namespace mada
 		Ptr<CollisionShape> shape = (BoxShape*) Factory::instance()->createClassInstance(shapeName);
 		if (shape->getRtti()->isDerivedFrom(BoxShape::RTTI))
 		{
-			AxisAlignedBox box(getGameObject()->getVector3Property(
-				prop::_collision_box_min), getGameObject()->getVector3Property(prop::_collision_box_max));
+			AxisAlignedBox box(
+				getGameObject()->getVector3Property(prop::_collision_box_min),
+				getGameObject()->getVector3Property(prop::_collision_box_max));
 			Ptr<BoxShape> boxShape = shape.downcast<BoxShape>();
 			boxShape->setBox(box);
 		}
