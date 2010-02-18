@@ -25,7 +25,8 @@ foundation/graphics/GraphicsServer.cpp
 foundation/messaging/Message.cpp
 foundation/messaging/MessagePort.cpp
 foundation/messaging/MessageDispatcher.cpp
-foundation/physics/CollisionShapeFactory.cpp
+foundation/physics/BoxShape.cpp
+foundation/physics/CollisionShape.cpp
 foundation/physics/PhysicsEntity.cpp	
 foundation/physics/PhysicsServer.cpp
 foundation/physics/PhysicsWorld.cpp	
