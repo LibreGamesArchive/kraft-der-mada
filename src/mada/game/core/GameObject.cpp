@@ -81,6 +81,16 @@ namespace mada
 		return m_propertyTable->getStringValue(prop::_id, m_row);
 	}
 
+	String GameObject::getCategory() const
+	{
+		return m_category;
+	}
+
+	void GameObject::setCategory(const String& category)
+	{
+		m_category = category;
+	}
+
 	void GameObject::attachComponent(const Ptr<Component>& component)
 	{
 		mada_assert(m_components.find(component) == m_components.end());

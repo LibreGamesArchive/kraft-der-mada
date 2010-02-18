@@ -48,7 +48,7 @@ namespace mada
 
 		// Create CollisionShape here.
 		// This place seems strange at first, but I cannot think of a better way right now
-		// But: @todo Investigate better place to do CollisionShape istantiation
+		// But: @todo Investigate better place to do CollisionShape instantiation
 		String shapeName = getGameObject()->getStringProperty(prop::_collision_shape);
 		Ptr<CollisionShape> shape = (BoxShape*) Factory::instance()->createClassInstance(shapeName);
 		if (shape->getRtti()->isDerivedFrom(BoxShape::RTTI))

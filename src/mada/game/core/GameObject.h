@@ -55,8 +55,6 @@ namespace mada
 		void onEndFrame();
 
 		String getId() const;
-
-		void setCategory(const String& category);
 		String getCategory() const;
 
 		void setPropertyTable(Ptr<PropertyTable> propertyTable);
@@ -87,11 +85,15 @@ namespace mada
 		void setProperty(const PropertyId& id, const Property& value) const;
 
 	private:
+		friend class CategoryManager;
+
 		String m_category;
 		typedef std::set<Ptr<Component> > ComponentVector;
 		ComponentVector m_components;
 
 		int m_row;
 		Ptr<PropertyTable> m_propertyTable;
+
+		void setCategory(const String& category);
 	};
 }
