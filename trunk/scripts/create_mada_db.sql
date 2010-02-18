@@ -14,6 +14,9 @@ insert into _categories
       (_category_name, _template_table_name,    _instance_table_name)
 values('person',       '_template_person', '_instance_person');
 
+insert into _categories
+      (_category_name, _template_table_name,    _instance_table_name)
+values('scene_item',       '_template_scene_item', '_instance_scene_item');
 
 drop table if exists _categories_components;
 create table _categories_components
@@ -26,15 +29,26 @@ create table _categories_components
 insert into _categories_components
       (_category_name, _component_name)
 values('environment', 'MeshGraphicsComponent');
+
 insert into _categories_components
       (_category_name, _component_name)
 values('environment', 'PhysicsComponent');
+
 insert into _categories_components
       (_category_name, _component_name)
 values('person', 'MeshGraphicsComponent');
+
 insert into _categories_components
       (_category_name, _component_name)
 values('person', 'PhysicsComponent');
+
+insert into _categories_components
+      (_category_name, _component_name)
+values('scene_item', 'MeshGraphicsComponent');
+
+insert into _categories_components
+      (_category_name, _component_name)
+values('scene_item', 'PhysicsComponent');
 
 drop table if exists _instance_environment;
 create table _instance_environment
@@ -100,3 +114,40 @@ create table _instance_person
    _collision_box_max text,
    _collision_circle_radius float
 );
+
+drop table if exists _template_scene_item;
+create table _template_scene_item
+(
+   _id text primary key,
+   _level text not null,
+   _layer text,
+   _position text,
+   _orientation text,
+   _graphics_object text,
+   _collision_shape text,
+   _collision_box_min text,
+   _collision_box_max text,
+   _collision_circle_radius float,
+   _physics_mass float
+);
+
+drop table if exists _instance_scene_item;
+create table _instance_scene_item
+(
+   _id text primary key,
+   _level text not null,
+   _layer text,
+   _position text,
+   _orientation text,
+   _graphics_object text,
+   _collision_shape text,
+   _collision_box_min text,
+   _collision_box_max text,
+   _collision_circle_radius float,
+   _physics_mass float
+);
+
+-- _collision_box_min and _collision_box_max are null. This means it is determined at runtime from mesh.
+insert into _instance_scene_item
+      (_id,                 _level,      _layer, _position, _graphics_object, _collision_shape, _collision_box_min, _collision_box_max, _collision_circle_radius, _physics_mass)
+values('testlevel_kiste', 'testlevel', 'base', '0 2 0', 'ver_kiste_01.mesh', 'BoxShape', null, null, null, 20.0);

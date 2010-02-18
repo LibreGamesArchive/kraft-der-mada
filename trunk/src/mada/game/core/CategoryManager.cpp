@@ -134,6 +134,9 @@ namespace mada
 			for (int i = 0, end = table->getNumRows(); i < end; ++i)
 			{
 				Ptr<GameObject> go = GameObject::create();
+
+				go->setCategory(it->name);
+
 				go->setPropertyTable(table);
 				go->setPropertyTableRow(i);
 
