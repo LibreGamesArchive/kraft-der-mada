@@ -43,7 +43,7 @@ namespace mada
 	private:
 		bool m_isOpen;
 
-		///\todo use more suitable container like a quadtree.
+		/// @todo use more suitable container like a quadtree.
 		std::set<Ptr<PhysicsEntity> > m_entities;
 	};
 }

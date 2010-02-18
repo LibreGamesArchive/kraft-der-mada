@@ -19,7 +19,10 @@
 
 #include "physicsfeature/PhysicsComponent.h"
 
+#include "physics/BoxShape.h"
+#include "physics/CollisionShape.h"
 #include "physics/PhysicsEntity.h"
+#include "physics/PhysicsWorld.h"
 
 #include "game/core/GameObject.h"
 #include "game/core/CoreProperties.h"
@@ -43,15 +46,45 @@ namespace mada
 	{
 		mada_assert(m_entity == NULL);
 
+		// Create CollisionShape here.
+		// This place seems strange at first, but I cannot think of a better way right now
+		// But: @todo Investigate better place to do CollisionShape istantiation
+		String shapeName = getGameObject()->getStringProperty(prop::_collision_shape);
+		Ptr<CollisionShape> shape = (BoxShape*) Factory::instance()->createClassInstance(shapeName);
+		if (shape->getRtti()->isDerivedFrom(BoxShape::RTTI))
+		{
+			AxisAlignedBox box(getGameObject()->getVector3Property(
+				prop::_collision_box_min), getGameObject()->getVector3Property(prop::_collision_box_max));
+			Ptr<BoxShape> boxShape = shape.downcast<BoxShape>();
+			boxShape->setBox(box);
+		}
+		else
+		{
+			mada_assert(false && "Unknown CollisionShape subclass used");
+		}
+
+		float mass;
+		if (getGameObject()->hasProperty(prop::_physics_mass))
+		{
+			mass = getGameObject()->getFloatProperty(prop::_physics_mass);
+		}
+		else
+		{
+			mass = 0.0f;
+		}
+
 		m_entity = PhysicsEntity::create();
-		m_entity->attach();
+		m_entity->setCollisionShape(shape);
+		m_entity->setMass(mass);
+
+		PhysicsWorld::getInstance()->attachEntity(m_entity);
 	}
 
 	void PhysicsComponent::onDeactivate()
 	{
 		mada_assert(m_entity != NULL);
 
-		m_entity->detach();
+		PhysicsWorld::getInstance()->detachEntity(m_entity);
 		m_entity = NULL;
 	}
 

@@ -121,6 +121,13 @@ namespace mada
 		return m_row;
 	}
 
+	bool GameObject::hasProperty(const PropertyId& id) const
+	{
+		mada_assert(id.isValid());
+
+		return m_propertyTable->hasColumn(id);
+	}
+
 	bool GameObject::getBoolProperty(const PropertyId& id) const
 	{
 		mada_assert(id.isValid());

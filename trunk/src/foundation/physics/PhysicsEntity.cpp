@@ -19,7 +19,6 @@
 
 #include "physics/PhysicsEntity.h"
 
-#include "physics/CollisionShapeFactory.h"
 #include "physics/PhysicsServer.h"
 
 namespace mada
@@ -43,15 +42,18 @@ namespace mada
 		return m_isAttached;
 	}
 
-	void PhysicsEntity::attach()
+	void PhysicsEntity::onAttach()
 	{
 		mada_assert(!isAttached());
+		mada_assert(m_shape != NULL);
+
 		m_isAttached = true;
 	}
 
-	void PhysicsEntity::detach()
+	void PhysicsEntity::onDetach()
 	{
 		mada_assert(isAttached());
+
 		m_isAttached = false;
 	}
 
@@ -69,6 +71,8 @@ namespace mada
 
 	void PhysicsEntity::setMass(float mass)
 	{
+		mada_assert(mass >= 0.0f);
+
 		m_mass = mass;
 	}
 

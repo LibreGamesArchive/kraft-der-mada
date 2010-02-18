@@ -27,5 +27,7 @@ namespace mada
 		__mada_define_vector3_property(_collision_box_min, ReadWrite);
 		__mada_define_vector3_property(_collision_box_max, ReadWrite);
 		__mada_define_float_property(_collision_circle_radius, ReadWrite);
+
+		__mada_define_float_property(_physics_mass, ReadWrite);
 	}
 }

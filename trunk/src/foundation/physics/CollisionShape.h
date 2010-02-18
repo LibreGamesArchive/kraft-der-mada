@@ -22,10 +22,13 @@ namespace mada
 {
 	class CollisionShape : public RefCounted
 	{
+		__mada_declare_abstract_class(CollisionShape);
+
 	public:
 		CollisionShape();
 		~CollisionShape();
 
 		virtual AxisAlignedBox getAabb() const = 0;
 	};
+	__mada_register_type(CollisionShape);
 }

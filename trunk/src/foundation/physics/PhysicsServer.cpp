@@ -26,10 +26,8 @@ namespace mada
 
 	PhysicsServer::PhysicsServer() :
 		m_isOpen(false),
-		m_collisionShapeFactory(),
 		m_physicsWorld()
 	{
-		m_collisionShapeFactory = CollisionShapeFactory::create();
 		m_physicsWorld = PhysicsWorld::create();
 
 		__mada_construct_singleton;
@@ -39,7 +37,6 @@ namespace mada
 	{
 		mada_assert(!isOpen());
 
-		m_collisionShapeFactory = NULL;
 		m_physicsWorld = NULL;
 
 		__mada_destruct_singleton;
