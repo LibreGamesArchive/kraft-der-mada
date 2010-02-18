@@ -41,7 +41,7 @@ namespace mada
 		void setPosition(const Vector3& pos);
 
 		Quaternion getOrientation() const;
-		void setOrientation(const Quaternion& pos);
+		void setOrientation(const Quaternion& orientation);
 	};
 	__mada_register_type(PhysicsComponent);
 }

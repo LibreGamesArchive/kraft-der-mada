@@ -78,6 +78,14 @@ namespace mada
 		Quaternion getQuaternionProperty(const PropertyId& id) const;
 		Property getProperty(const PropertyId& id) const;
 
+		void setBoolProperty(const PropertyId& id, bool value) const;
+		void setIntProperty(const PropertyId& id, int value) const;
+		void setFloatProperty(const PropertyId& id, float value) const;
+		void setStringProperty(const PropertyId& id, const String& value) const;
+		void setVector3Property(const PropertyId& id, const Vector3& value) const;
+		void setQuaternionProperty(const PropertyId& id, const Quaternion& value) const;
+		void setProperty(const PropertyId& id, const Property& value) const;
+
 	private:
 		String m_category;
 		typedef std::set<Ptr<Component> > ComponentVector;
