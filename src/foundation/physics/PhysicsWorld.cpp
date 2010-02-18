@@ -70,12 +70,16 @@ namespace mada
 		mada_assert(m_entities.find(entity) == m_entities.end());
 
 		m_entities.insert(entity);
+
+		entity->onAttach();
 	}
 
 	void PhysicsWorld::detachEntity(Ptr<PhysicsEntity> entity)
 	{
 		mada_assert(isOpen());
 		mada_assert(m_entities.find(entity) != m_entities.end());
+
+		entity->onDetach();
 
 		m_entities.erase(entity);
 	}

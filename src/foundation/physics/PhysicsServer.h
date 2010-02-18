@@ -18,7 +18,6 @@
     along with Kraft der Mada. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "physics/CollisionShapeFactory.h"
 #include "physics/PhysicsWorld.h"
 
 namespace mada
@@ -38,7 +37,6 @@ namespace mada
 	private:
 		bool m_isOpen;
 
-		Ptr<CollisionShapeFactory> m_collisionShapeFactory;
 		Ptr<PhysicsWorld> m_physicsWorld;
 	};
 }

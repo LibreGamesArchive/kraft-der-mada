@@ -28,5 +28,7 @@ namespace mada
 		__mada_declare_vector3_property(_collision_box_min);
 		__mada_declare_vector3_property(_collision_box_max);
 		__mada_declare_float_property(_collision_circle_radius);
+
+		__mada_declare_float_property(_physics_mass);
 	}
 }

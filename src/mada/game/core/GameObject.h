@@ -68,6 +68,8 @@ namespace mada
 		void attachComponent(const Ptr<Component>& component);
 		void detachComponent(const Ptr<Component>& component);
 
+		bool hasProperty(const PropertyId& id) const;
+
 		bool getBoolProperty(const PropertyId& id) const;
 		int getIntProperty(const PropertyId& id) const;
 		float getFloatProperty(const PropertyId& id) const;

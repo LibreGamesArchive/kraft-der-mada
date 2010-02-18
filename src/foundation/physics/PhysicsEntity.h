@@ -36,8 +36,9 @@ namespace mada
 		float getMass() const;
 
 		bool isAttached() const;
-		void attach();
-		void detach();
+
+		void onAttach();
+		void onDetach();
 
 	private:
 		bool m_isAttached;

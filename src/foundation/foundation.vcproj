@@ -428,15 +428,19 @@
 			Name="physics"
 			>
 			<File
+				RelativePath=".\physics\BoxShape.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\physics\BoxShape.h"
+				>
+			</File>
+			<File
+				RelativePath=".\physics\CollisionShape.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\physics\CollisionShape.h"
-				>
-			</File>
-			<File
-				RelativePath=".\physics\CollisionShapeFactory.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\physics\CollisionShapeFactory.h"
 				>
 			</File>
 			<File
