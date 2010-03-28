@@ -25,23 +25,44 @@ namespace mada
 
 	class Timer : public RefCounted
 	{
-		__mada_declare_class(Timer);
+	    __mada_declare_class(Timer);
 
 	private:
-		struct timeval start_time;
-		struct timeval stop_time;
+	    struct timeval start_time;
+	    struct timeval stop_time;
 	public:
-		Timer();
+	    Timer();
 
-		void start();
-		void stop();
-		void reset();
-		bool isRunning() const;
+	    void start();
+	    void stop();
+	    void reset();
+	    bool isRunning() const;
 
-		Time getTime() const;
-		Ticks getTicks() const;
+	 /**
+	  * \brief  getTime()
+	  *
+	  *         This function returns the count of microseconds since start of timer.
+	  *
+	  *	  * \return	            microseconds
+	  *
+	  */
+
+	    Time getTime() const;
+
+	/**
+	  * \brief  getTicks()
+	  *
+	  *         This function returns the smallest countable unit.
+	  *         In linux the smallest countable unit correlates with microseconds.
+	  *
+	  *	  * \return	            ticks
+	  *
+	  */
+
+
+	    Ticks getTicks() const;
 
 	private:
-		bool m_isRunning;
+	    bool m_isRunning;
 	};
 }
