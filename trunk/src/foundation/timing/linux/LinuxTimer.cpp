@@ -17,52 +17,89 @@
 */
 #include "stdmadainc.h"
 
-#include "timing/linux/LinuxTimer.h"
 #include "core/Debug.h"
+
+#include "timing/linux/LinuxTimer.h"
+
+
+
+
 
 namespace mada
 {
 
 	__mada_implement_root_class(Timer)
 
-	Timer::Timer() : m_isRunning(false), m_startTime(0), m_stopTime(0)
+	Timer::Timer() : m_isRunning(false)
 	{
 	}
 
 	void Timer::start()
 	{
-		mada_assert(!m_isRunning);
-		reset();
-                m_isRunning = true;
+	    mada_assert(!m_isRunning);
+	    reset();
+            m_isRunning = true;
 	}
 
 	void Timer::stop()
 	{
-		mada_assert(m_isRunning);
-		//stop timer
+	    mada_assert(m_isRunning);
+	    //stop timer
+	    gettimeofday(&stop_time, NULL);
+	    m_isRunning = false;
 	}
 
 	void Timer::reset()
 	{
-		//reset timer
-		m_stopTime = m_startTime;
+	    //reset timer
+	    gettimeofday(&start_time, NULL);
+	    gettimeofday(&stop_time, NULL);
 	}
 
 	bool Timer::isRunning() const
 	{
-		return m_isRunning;
+	    return m_isRunning;
 	}
+
+	/**
+	  * \brief  getTime()
+	  *
+	  *         This function returns the count of microseconds since start of timer.
+	  *
+	  *	  * \return	            microseconds
+	  *
+	  */
 
 	double Timer::getTime() const
 	{
-		Ticks frequency;
-		//return time
-		return 0;
+	    if(m_isRunning)
+	    {
+		struct timeval now;
+		gettimeofday(&now, NULL);
+		return (now.tv_sec-start_time.tv_sec)*1000000+(now.tv_usec-start_time.tv_usec);
+	    }
+	    return (stop_time.tv_sec-start_time.tv_sec)*1000000+(stop_time.tv_usec-start_time.tv_usec);
 	}
+
+	/**
+	  * \brief  getTicks()
+	  *
+	  *         This function returns the smallest countable unit.
+	  *         In linux the smallest countable unit correlates with microseconds.
+	  *
+	  *	  * \return	            ticks
+	  *
+	  */
+
 
 	long long Timer::getTicks() const
 	{
-		Ticks frequency;
-		return 0;
+	    if(m_isRunning)
+	    {
+		struct timeval now;
+		gettimeofday(&now, NULL);
+		return (now.tv_sec-start_time.tv_sec)*1000+(now.tv_usec-start_time.tv_usec);
+	    }
+	    return (stop_time.tv_sec-start_time.tv_sec)*1000+(stop_time.tv_usec-start_time.tv_usec);
 	}
 }
