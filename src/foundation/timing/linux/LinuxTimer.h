@@ -18,20 +18,18 @@
 */
 
 #include "core/RefCounted.h"
-#include <sys/time.h>
+
 
 namespace mada
 {
-	struct timezone {
-             int     tz_minuteswest; /* of Greenwich */
-             int     tz_dsttime;     /* type of dst correction to apply */
-    	};
-
 
 	class Timer : public RefCounted
 	{
 		__mada_declare_class(Timer);
 
+	private:
+		struct timeval start_time;
+		struct timeval stop_time;
 	public:
 		Timer();
 
@@ -45,10 +43,5 @@ namespace mada
 
 	private:
 		bool m_isRunning;
-		Ticks m_startTime;
-		Ticks m_stopTime;
-
-		timeval _tstart, _tend;
-		timezone tz;
 	};
 }
