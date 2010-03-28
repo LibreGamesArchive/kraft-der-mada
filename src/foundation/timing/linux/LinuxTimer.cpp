@@ -61,14 +61,6 @@ namespace mada
 	    return m_isRunning;
 	}
 
-	/**
-	  * \brief  getTime()
-	  *
-	  *         This function returns the count of microseconds since start of timer.
-	  *
-	  *	  * \return	            microseconds
-	  *
-	  */
 
 	double Timer::getTime() const
 	{
@@ -81,17 +73,7 @@ namespace mada
 	    return (stop_time.tv_sec-start_time.tv_sec)*1000000+(stop_time.tv_usec-start_time.tv_usec);
 	}
 
-	/**
-	  * \brief  getTicks()
-	  *
-	  *         This function returns the smallest countable unit.
-	  *         In linux the smallest countable unit correlates with microseconds.
-	  *
-	  *	  * \return	            ticks
-	  *
-	  */
-
-
+	
 	long long Timer::getTicks() const
 	{
 	    if(m_isRunning)
