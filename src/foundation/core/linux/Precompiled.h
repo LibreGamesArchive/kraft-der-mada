@@ -42,15 +42,14 @@
 #include <AL/alut.h>
 
 //Ogg Vorbis Codec
-#include "ogg/ogg.h"
-#include "vorbis/codec.h"
-#include "vorbis/vorbisfile.h"
+#include <ogg/ogg.h>
+#include <vorbis/codec.h>
+#include <vorbis/vorbisenc.h>
+#include <vorbis/vorbisfile.h>
 
-
-// bullet headers
-#include <btBulletDynamicsCommon.h>
 
 // boost
 #include <boost/variant.hpp>
+
 
 //------------------------------------------------------------------------------
