@@ -23,6 +23,7 @@ namespace mada
 {
 	namespace prop
 	{
-		__mada_define_string_property(_sound_object, ReadWrite);
+		__mada_define_int_property(_sound_volume, ReadWrite);
+		__mada_define_string_property(_sound_file, ReadWrite);
 	}
 }

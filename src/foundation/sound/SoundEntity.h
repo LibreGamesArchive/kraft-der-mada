@@ -32,8 +32,10 @@ namespace mada
             void attach();
             void deattach();
 
-            void setSound(Ptr<Sound> sound, AxisAlignedBox& aab);
-            void setSound(Ptr<Sound> sound, Ogre::MeshPtr mesh);
+            void setSound(Ptr<Sound> sound);
+
+	    void setPosition(const Vector3& pos);
+	    Vector3 getPosition() const;
 
             bool isAttached();
         protected:

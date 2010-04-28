@@ -31,7 +31,8 @@ namespace mada
         virtual void pause();
         virtual void stop();
         virtual ALenum open(String fileName);
-		virtual void close();
+	virtual void close();
+	virtual void update();
 
         void setLoop(bool loop);
 

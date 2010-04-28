@@ -46,15 +46,26 @@ namespace mada
 
         }
 
-        void SoundEntity::setSound(Ptr<Sound> sound, AxisAlignedBox& aab)
+        void SoundEntity::setSound(Ptr<Sound> sound)
         {
             mada_assert(!m_isAttached)
+
+	    m_sound = sound;
         }
 
-        void SoundEntity::setSound(Ptr<Sound> sound, Ogre::MeshPtr mesh)
-        {
-            mada_assert(!m_isAttached)
-        }
+	void SoundEntity::setPosition(const Vector3& pos)
+	{
+	    mada_assert(m_isAttached)
+
+	    m_sound->setPosition(pos);
+	}
+
+	Vector3 SoundEntity::getPosition() const
+	{
+	    mada_assert(!m_isAttached)
+
+	    return m_sound->getPosition();
+	}
 
         bool SoundEntity::isAttached()
         {
