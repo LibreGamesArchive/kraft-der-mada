@@ -35,7 +35,8 @@ namespace mada
 		__mada_construct_singleton;
 
 		// Init properties
-		PropertyId soundObjectId = prop::_sound_object;
+		PropertyId soundVolume = prop::_sound_volume;
+		PropertyId soundFile = prop::_sound_file;
 	}
 
 	SoundFeatureServer::~SoundFeatureServer()

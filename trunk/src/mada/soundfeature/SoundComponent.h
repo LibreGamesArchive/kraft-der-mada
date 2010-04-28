@@ -2,7 +2,7 @@
 
 /*
 	This file is part of Kraft der Mada.
-	Copyright (c) 2009 Timm Eversmeyer
+	Copyright (c) 2010 Timm Eversmeyer
 
     Kraft der Mada is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -18,13 +18,27 @@
     along with Kraft der Mada. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "properties/PropertyDefinition.h"
+#include "game/base/Component.h"
 
 namespace mada
 {
-	namespace prop
+	class SoundEntity;
+
+	class SoundComponent : public Component
 	{
-	    __mada_declare_string_property(_sound_file);
-	    __mada_declare_int_property(_sound_volume);
-	}
+		__mada_declare_class(SoundComponent);
+	public:
+		SoundComponent();
+		~SoundComponent();
+
+		void onActivate();
+		void onDeactivate();
+
+	private:
+		Ptr<SoundEntity> m_entity;
+
+		Vector3 getPosition() const;
+		void setPosition(const Vector3& pos);
+	};
+	__mada_register_type(SoundComponent);
 }

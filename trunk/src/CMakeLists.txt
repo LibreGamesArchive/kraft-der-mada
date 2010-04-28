@@ -61,6 +61,7 @@ mada/physicsfeature/PhysicsComponent.cpp
 mada/physicsfeature/PhysicsFeatureServer.cpp
 mada/physicsfeature/PhysicsManager.cpp
 mada/physicsfeature/PhysicsProperties.cpp
+mada/soundfeature/SoundComponent.cpp
 mada/soundfeature/SoundFeatureServer.cpp
 mada/soundfeature/SoundProperties.cpp
 )

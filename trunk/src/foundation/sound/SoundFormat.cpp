@@ -61,6 +61,11 @@ namespace mada
     {
     }
 
+    void SoundFormat::update()
+    {
+
+    }
+
     void SoundFormat::setLoop(bool loop)
     {
         m_loop = loop;

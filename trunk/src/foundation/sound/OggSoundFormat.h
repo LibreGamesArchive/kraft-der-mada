@@ -38,6 +38,8 @@ namespace mada
         ALenum open(String fileName);
         void close();
 
+	void update();
+
     protected:
         OggVorbis_File* m_oggVorbisFile;
     };

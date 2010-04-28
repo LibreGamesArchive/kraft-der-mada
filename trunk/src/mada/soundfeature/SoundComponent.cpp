@@ -18,53 +18,53 @@
 
 #include "stdmadainc.h"
 
+#include "soundfeature/SoundComponent.h"
 
-#include "sound/OggSoundFormat.h"
+#include "game/core/GameObject.h"
+#include "game/core/CoreProperties.h"
 
-
-#define OGG_BUFFER_SIZE (4096 * 8)
+#include "sound/SoundEntity.h"
+#include "sound/Sound.h"
+#include "SoundComponent.h"
 
 namespace mada
 {
-    __mada_implement_class(OggSoundFormat, SoundFormat);
+	__mada_implement_class(SoundComponent, Component);
 
-    OggSoundFormat::OggSoundFormat()
-    {
+	SoundComponent::SoundComponent() : m_entity(NULL)
+	{
 
-    }
+	}
 
-    OggSoundFormat::~OggSoundFormat()
-    {
+	SoundComponent::~SoundComponent()
+	{
 
-    }
+	}
 
-    void OggSoundFormat::play()
-    {
+	void SoundComponent::onActivate()
+	{
+	    mada_assert(m_entity ==  NULL)
 
-    }
+	    Ptr<Sound> _sound = Sound::create();
 
-    void OggSoundFormat::pause()
-    {
 
-    }
+	    m_entity = SoundEntity::create();
 
-    void OggSoundFormat::stop()
-    {
+	    m_entity->setSound(_sound);
+	}
 
-    }
+	void SoundComponent::onDeactivate()
+	{
+	    m_entity = NULL;
+	}
 
-    ALenum OggSoundFormat::open(String fileName)
-    {
-		return AL_INVALID_ENUM;
-    }
+	void SoundComponent::setPosition(const Vector3& pos)
+	{
+	    m_entity->setPosition(pos);
+	}
 
-    void OggSoundFormat::close()
-    {
-
-    }
-
-    void OggSoundFormat::update()
-    {
-
-    }
+	Vector3 SoundComponent::getPosition() const
+	{
+	    return m_entity->getPosition();
+	}
 }
