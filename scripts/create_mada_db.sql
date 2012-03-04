@@ -80,23 +80,23 @@ create table _instance_environment
 );
 
 insert into _instance_environment
-      (_id,                 _level,      _layer, _position, _graphics_object, _collision_shape, _collision_box_min, _collision_box_max, _collision_circle_radius, _sound_file, -_sound_volume)
+      (_id,                 _level,      _layer, _position, _graphics_object, _collision_shape, _collision_box_min, _collision_box_max, _collision_circle_radius, _sound_file, _sound_volume)
 values('testlevel_chunk1', 'testlevel', 'base', '0 -0.5 0', 'testlevel_chunk1.mesh', 'BoxShape', '-5 -0.5 0', '5 0.5 0', null, 'test.wav', 100);
 
 insert into _instance_environment
-      (_id,                 _level,      _layer, _position, _graphics_object, _collision_shape, _collision_box_min, _collision_box_max, _collision_circle_radius, _sound_file, -_sound_volume)
+      (_id,                 _level,      _layer, _position, _graphics_object, _collision_shape, _collision_box_min, _collision_box_max, _collision_circle_radius, _sound_file, _sound_volume)
 values('testlevel_chunk2', 'testlevel', 'base', '-6 0.5 0', 'testlevel_chunk2.mesh', 'BoxShape', '-2 -0,5 0', '2 0.5 0', null, null, null);
 
 insert into _instance_environment
-      (_id,                 _level,      _layer, _position, _graphics_object, _collision_shape, _collision_box_min, _collision_box_max, _collision_circle_radius, _sound_file, -_sound_volume)
+      (_id,                 _level,      _layer, _position, _graphics_object, _collision_shape, _collision_box_min, _collision_box_max, _collision_circle_radius, _sound_file, _sound_volume)
 values('testlevel_chunk3', 'testlevel', 'base', '-7.5 4 0', 'testlevel_chunk3.mesh', 'BoxShape', '-0.5 -3 0', '0.5 3 0', null, null, null);
 
 insert into _instance_environment
-      (_id,                 _level,      _layer, _position, _graphics_object, _collision_shape, _collision_box_min, _collision_box_max, _collision_circle_radius, _sound_file, -_sound_volume)
+      (_id,                 _level,      _layer, _position, _graphics_object, _collision_shape, _collision_box_min, _collision_box_max, _collision_circle_radius, _sound_file, _sound_volume)
 values('testlevel_chunk4', 'testlevel', 'base', '4.5 3.5 0', 'testlevel_chunk4.mesh', 'BoxShape', '-0.5 3.0 0', '0.5 3.5 0', null, null, null);
 
 insert into _instance_environment
-      (_id,                 _level,      _layer, _position, _graphics_object, _collision_shape, _collision_box_min, _collision_box_max, _collision_circle_radius, _sound_file, -_sound_volume)
+      (_id,                 _level,      _layer, _position, _graphics_object, _collision_shape, _collision_box_min, _collision_box_max, _collision_circle_radius, _sound_file, _sound_volume)
 values('testlevel', 'testlevel_pnyx', 'bg2', '0.0 0.0 0.0', 'testlevel.mesh', null, null, null, null, null, null);
 
 drop table if exists _template_person;
@@ -146,7 +146,7 @@ create table _template_scene_item
    _collision_box_min text,
    _collision_box_max text,
    _collision_circle_radius float,
-   _physics_mass float
+   _physics_mass float,
    _sound_file text,
    _sound_volume int
 );
@@ -164,7 +164,7 @@ create table _instance_scene_item
    _collision_box_min text,
    _collision_box_max text,
    _collision_circle_radius float,
-   _physics_mass float
+   _physics_mass float,
    _sound_file text,
    _sound_volume int
 );

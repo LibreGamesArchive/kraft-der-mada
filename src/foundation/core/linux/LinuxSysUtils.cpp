@@ -31,6 +31,7 @@ void SysUtils::init()
 
 void SysUtils::showMessageBox(const char* message, const char* caption)
 {
+    std::cerr << caption << ": " << message << std::endl;
 	//todo
 }
 

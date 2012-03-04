@@ -74,8 +74,10 @@ namespace mada
 
 		if (sqlite3_open_v2(m_path.c_str(), &m_db, flags, NULL) != SQLITE_OK)
 		{
-			String msg = "db error in Database::open (sqlite3_open_v2): ";
+			String msg = "db error in Database::open (sqlite3_open_v2): " ;
 			msg += sqlite3_errmsg(m_db);
+			msg += " Path to file: ";
+			msg += m_path;
 			SysUtils::error(msg.c_str());
 		}
 	}
