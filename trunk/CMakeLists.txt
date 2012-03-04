@@ -6,6 +6,10 @@ SET(MADA_MAJOR_VERSION 0)
 SET(MADA_MINOR_VERSION 0)
 SET(MADA_PATCH_VERSION 1)
 
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}")
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}")
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}")
+
 # Add directory with MADA's own macro definitions
 # (checked before ${CMAKE_ROOT}/Modules)
 SET(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake)
@@ -29,7 +33,7 @@ SET(BINDIR "bin" CACHE STRING "Where to install binaries")
 # Include subdirectories
 ADD_SUBDIRECTORY(src)
 
-
+add_definitions(-DDEBUG -DMADA_DEBUG)
 
 
 
